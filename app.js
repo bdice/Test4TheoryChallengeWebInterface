@@ -237,10 +237,16 @@ app.get('/', function(req, res) {
 
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
 
+app.listen(443) //HTTPS
 
-app.listen(7076)
+console.log("Serving on port 443")
 
+// HTTP -> HTTPS redirect
+// Redirect from http port 80 to https
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
 
-console.log("Serving on port 7076")
 
 
