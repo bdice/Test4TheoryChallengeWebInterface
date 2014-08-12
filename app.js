@@ -13,7 +13,6 @@ var SSLoptions = {
 }
 
 //OAUTH specific params
-var config = require("./oauth.js")
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
