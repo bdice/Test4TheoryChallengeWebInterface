@@ -84,7 +84,7 @@ var app = express()
 var A = app.https(SSLoptions).io()
 
 var redis = require("redis");
-var client = redis.createClient({host:'t4tc-mcplots-db', port:6379});
+var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
 setInterval(function(){
 
@@ -152,7 +152,6 @@ app.use(express.session({ secret: 'my_precious_036129c4c9508c6521605cfea4509d2b'
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
-app.use(express.logger());
 
 
 
