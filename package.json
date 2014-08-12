@@ -2,6 +2,7 @@
 	"name" : "T4TC_Web_front_end",
 	"version" : "0.0.1",
 	"dependencies" : {
+		"redis" : "*",
 		"express.io" : "*",
 		"jade" : "*",
 		"passport" : "*",
