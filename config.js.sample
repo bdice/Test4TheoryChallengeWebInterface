@@ -1,0 +1,21 @@
+// config
+
+var ids={ facebook : { 
+	clientID: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+ 	clientSecret: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+ 	callbackURL: "https://t4tc-mcplots-web.cern.ch:7076/auth/facebook/callback"
+},
+google :{
+	clientID: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+	clientSecret: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+	callbackURL: "https://t4tc-mcplots-web.cern.ch:7076/auth/google/callback"
+},
+twitter : {
+ consumerKey: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+ consumerSecret: "daskjdgkjhagsdjgakjsdgjhgsadasd",
+ callbackURL: "https://t4tc-mcplots-web.cern.ch:7076/auth/twitter/callback"
+}
+
+}
+
+module.exports = ids

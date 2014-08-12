@@ -1,0 +1,9 @@
+html, body {
+height:100%;
+padding: 0px;
+margin: 0px;
+}
+
+.locked-slide .content .content-container .text .container h3 {
+	display : none!important;
+}

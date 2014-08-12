@@ -1,0 +1,9 @@
+extends layout
+
+block content
+
+		h1 You are logged in.
+			p.lead Say something worthwhile here. #{user.displayName}
+			a(href="/") Go home
+			br
+			a(href="/logout") Logout

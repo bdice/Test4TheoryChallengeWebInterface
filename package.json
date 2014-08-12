@@ -1,0 +1,13 @@
+{
+	"name" : "T4TC_Web_front_end",
+	"version" : "0.0.1",
+	"dependencies" : {
+		"express.io" : "*",
+		"jade" : "*",
+		"passport" : "*",
+		"passport-facebook" : "*",
+		"passport-google-oauth" : "*",
+		"passport-twitter" : "*",
+		"passport-saml" : "*"
+	}
+}
