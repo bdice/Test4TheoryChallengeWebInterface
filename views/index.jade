@@ -8,7 +8,7 @@ block content
 
 	script(type="text/javascript", src="/data/accelerators.js")
 	script(type="text/javascript", src="/js/jquery.base64.min.js")
-	script(type="text/javascript", src="/js/t4tc-monitor.js")
+	script(type="text/javascript", src="/js/t4tc-monitor-index.js")
 	style(type="text/css", src="/css/timeline.css")
 
 	//Div for the timeline
@@ -22,9 +22,6 @@ block content
 			div(id="SVG_dashboard", style="width:100%")
 
 
-	//Div for the accelerator grid
-	div.row#accelerator_grid
-
 	div(class="clearfix", style="height:50px")
 
 	script(type="text/javascript").
@@ -37,13 +34,6 @@ block content
 
 
 
-	//Invisible divs holding templates 
-	div(id="small_accel_template", style="display:none")
-	div(id="panel_template", style="display:none")
 
-		.panel.panel-success
-			.panel-heading
-				h3.panel-title
-			.panel-body
 
 

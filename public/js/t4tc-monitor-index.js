@@ -8,14 +8,6 @@ var global_is_locked = {}; //says if an index is locked
 $(document).ready(function(d){
 window.isAcceleratorGridInitialized = false;
 
-/*var acceleratorList = ['CDF', 'STAR', 'UA1', 'DELPHI', 'UA5', 'ALICE', 'TOTEM', 'SLD', 'LHCB', 'ALEPH', 'LHCF', 'ATLAS', 'CMS', 'OPAL', 'D0'] ;
-for(var i=0; i<acceleratorList.length;i++){
-	$("#"+acceleratorList[i]).click(function(){
-		currentAccelerator = $(this).attr("id").replace("accelerator_","");
-		generateDashBoardForAccelerator(currentAccelerator, "timeline-embed" , "400px");
-	});
-}*/
-
 //Set up Big accel
 $.get("/big_accel.svg", function(data){
 	$("#SVG_dashboard").html($(data).find("svg")[0].outerHTML);
@@ -34,22 +26,17 @@ io = io.connect();
 // Send the ready event.
 io.emit('ready')
 
-// Listen for the new visitor event.
 io.on('update', function(d) {
      d = (jQuery.parseJSON(d));
-     //console.log(d);
 
      if(d[currentAccelerator] != undefined) {
-     	//console.log(d);
      	window[currentAccelerator]["eventsCompleted"] = parseInt(d[currentAccelerator]["events"]);
      }
 
-     //console.log(currentAccelerator)
      var jobsFailed = 0;
      if(d[currentAccelerator]["jobs_failed"]){ 
      	jobsFailed = d[currentAccelerator].jobs_failed;
      }
-     //console.log(jobsFailed)
 
      $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
      $("#totalJobs").html(d[currentAccelerator].jobs_completed);
@@ -57,40 +44,7 @@ io.on('update', function(d) {
      $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
 
 
-     $("#data").html(JSON.stringify(d, undefined, 2));
-
-
-     if(window.isAcceleratorGridInitialized){
-     	//console.log(window.isAcceleratorGridInitialized);
-
-     }else{
-     	//Initialize accelerator grid here
-     	window.D = d;
-
-     	var count = 0;
-     	for(var i in d){
-     		if(i=="TOTAL" || i =="Events Leaderboard" || i == "Jobs Leaderboard"){continue;}
-
-     		//Setup a new 
-     		if(count%1==0){
-     			$("#accelerator_grid").append('<div class="col-lg-4"></div>');
-     			//
-     			//$("#accelerator_grid").append($("#small_accel_template").html());
-     		}
-//   		$("#accelerator_grid .col-lg-4:eq("+parseInt(count/1)+")").append($("#panel_template").html()).find(".panel-title").html(i);
-     		$("#accelerator_grid .col-lg-4:eq("+parseInt(count/1)+")").append($("#panel_template").html()).attr("id", "accelName_"+i);
-     		$("#accelName_"+i).find(".panel-title").html(i);
-     		$("#accelName_"+i).find(".panel-body").html($("#small_accel_template").html());
-     		$("#accelName_"+i).find(".accel_name").html(i);
-
-  //	$("#accelerator_grid .col-lg-4:eq("+parseInt(count/1)+")").find(".panel-body").html();
-
-
-     		count+=1;
-     	}
-
-     	window.isAcceleratorGridInitialized = true;
-     }
+     //$("#data").html(JSON.stringify(d, undefined, 2));
 
 });
 

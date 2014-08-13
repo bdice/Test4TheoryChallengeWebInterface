@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	script(type="text/javascript", src="/socket.io/socket.io.js")
+	script(type="text/javascript", src="/data/accelerators.js")
+	script(type="text/javascript", src="/js/jquery.base64.min.js")
+	script(type="text/javascript", src="/js/t4tc-monitor-grid-status.js")
+
+
+	div#accelerator_grid
+
+	//Invisible divs holding templates 
+	div(id="small_accel_template", style="display:none")
+	div(id="panel_template", style="display:none")
+
+		.panel.panel-success
+			.panel-heading
+				h3.panel-title
+			.panel-body
