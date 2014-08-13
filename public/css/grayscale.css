@@ -368,6 +368,5 @@ body {
 
  .dropdown-menu{background:rgba(100,100,100,0.5); color:white; }
  .dropdown-menu li>a{color:white; }
-   .dropdown-menu>li{padding:5px; border-bottom:1px solid white;border-left:1px 
-              solid white;border-right:1px solid white }
+   .dropdown-menu>li{padding:5px; }
    .dropdown-menu li>a:hover{background:white; }
