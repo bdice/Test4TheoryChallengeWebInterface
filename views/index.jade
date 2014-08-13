@@ -1,39 +1,185 @@
-extends layout
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    title Test 4 Theory
+    // Bootstrap Core CSS
+    link(href="css/bootstrap.min.css", rel="stylesheet")
+    // Custom CSS
+    link(href="css/grayscale.css", rel="stylesheet")
+    // Custom Fonts
+    link(href="font-awesome-4.1.0/css/font-awesome.min.css", rel="stylesheet", type="text/css")
+    link(href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic", rel="stylesheet", type="text/css")
+    link(href="https://fonts.googleapis.com/css?family=Montserrat:400,700", rel="stylesheet", type="text/css")
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    
+    if IE==9 
+      script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+      script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+    
 
-block content
+  body#page-top(data-spy="scroll", data-target=".navbar-fixed-top")
+    // Navigation
+    nav.navbar.navbar-custom.navbar-fixed-top(role="navigation")
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-main-collapse")
+            i.fa.fa-bars
+          a.navbar-brand.page-scroll(href="#page-top")
+            i.fa.fa-play-circle
+            span.light Test 4 Theory
+        // Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+          ul.nav.navbar-nav
+            // Hidden li included to remove active class from about link when scrolled up past about section
+            li.hidden
+              a(href="#page-top")
+            li
+              a.page-scroll(href="#about") About
+            li
+              a.page-scroll(href="#download") Grid Status
+            li
+              a.page-scroll(href="#contact") Take Part
 
-	script(type="text/javascript", src="/socket.io/socket.io.js")
-	script(type="text/javascript", src="/js/storyjs-embed.js")
-	script(type="text/javascript", src="/js/timeline-min.js")
+          // Sign In/ Accounts Tab
+          if(user)
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown")
 
-	script(type="text/javascript", src="/data/accelerators.js")
-	script(type="text/javascript", src="/js/jquery.base64.min.js")
-	script(type="text/javascript", src="/js/t4tc-monitor-index.js")
-	style(type="text/css", src="/css/timeline.css")
+                  if ( user.provider == 'facebook') 
+                    | #{user.displayName} | 
+                    img(src="https://graph.facebook.com/"+user.id+"/picture?type=square", height="25px")
+                    |  | 
+                    img(src="/icons/facebook.ico", height="25px")
 
-	//Div for the timeline
-	div.row
-		div.col-lg-12
-			div(id="timeline-embed", style="height:400px")
+                  if ( user.provider == 'google') 
+                    | #{user.displayName} | 
+                    img(src=JSON.parse(user._raw).picture, height="25px")
+                    |  | 
+                    img(src="/icons/google.ico", height="25px")
 
-	// Div for the SVG Dashboard
-	div.row
-		div.col-lg-12.col-centered
-			div(id="SVG_dashboard", style="width:100%")
-
-
-	div(class="clearfix", style="height:50px")
-
-	script(type="text/javascript").
-		jQuery(function ($) {
-			$('[data-toggle="popover"]').popover();
-			$('[data-toggle="tooltip"]').tooltip();
-		});
+                  if ( user.provider == 'twitter') 
+                    | #{user.displayName} | 
+                    img(src=user.photos[0].value, height="25px")
+                    |  | 
+                    img(src="/icons/twitter.ico", height="25px")
 
 
+                  span.caret
+                ul.dropdown-menu(role="menu")
+                  li
+                    a.page-scroll-submenu(href="#my-accounts") My Account
+                  li
+                    a(href="/logout") Sign Out
+          else
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown")
+                  | Sign In
+                  span.glyphicon.glyphicon-log-in
+
+                ul.dropdown-menu(role="menu", aria-labelledby="dropdownMenu")
+                  li
+                    a(href="/auth/facebook")
+                      img(src="/icons/facebook.ico", height="20px")
+                      |   Facebook
+                  li
+                    a(href="/auth/google")
+                      img(src="/icons/google.ico", height="20px" )
+                      |   Google
+                  li
+                    a(href="/auth/twitter")
+                      img(src="/icons/twitter.ico", height="20px")
+                      |   Twitter
 
 
 
 
 
+
+        // /.navbar-collapse
+      // /.container
+    // Intro Header
+    header.intro
+      .intro-body
+        .container
+          .row
+            .col-md-8.col-md-offset-2
+              h1.brand-heading Test4Theory
+              p.intro-text
+                | An attempt to simulate the LHC using Volunteer Computing 
+              a.btn.btn-circle.page-scroll(href="#about")
+                i.fa.fa-angle-double-down.animated
+    // About Section
+    section#about.container-fluid.content-section.text-center
+      .row
+        .col-lg-12
+          h2 About Test 4 Theory
+          p
+          | Some sample description
+          div(id="timeline-embed", style="height:400px;")
+          div(id="SVG_dashboard", style="width:100%")
+
+
+    // Download Section
+    section#download.content-section.text-center
+      .download-section
+        .container
+          .col-lg-8.col-lg-offset-2
+            h2 Grid Status
+            p The Grid of Accelerators goes here
+    // Contact Section
+    section#contact.container.content-section.text-center
+      .row
+        .col-lg-8.col-lg-offset-2
+          h2 Take Part
+          p
+            | The CERN VM Web API goes here ??
+
+
+    if(user)
+      // My Accounts Section (Conditional that the user is logged in)
+      section#my-accounts.container.content-section.text-center
+        .row
+          .col
+            h2 My Contributions   
+            p
+              My Contributions go here...
+            p #{JSON.stringify(user)}
+
+
+
+
+    // Map Section
+    #map
+    // Footer
+    footer
+      .container.text-center
+        p Copyright &#169; CERN 2014
+    // jQuery Version 1.11.0
+    script(src="js/jquery-1.11.0.js")
+    // Bootstrap Core JavaScript
+    script(src="js/bootstrap.min.js")
+    // Plugin JavaScript
+    script(src="js/jquery.easing.min.js")
+    script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP4TbEsEUGhIO9ZCyMKnTuzJPhlzR9twE&sensor=false")
+
+
+    script(type="text/javascript", src="/socket.io/socket.io.js")
+    script(type="text/javascript", src="/js/storyjs-embed.js")
+    script(type="text/javascript", src="/js/timeline-min.js")
+
+    script(type="text/javascript", src="/data/accelerators.js")
+    script(type="text/javascript", src="/js/jquery.base64.min.js")
+    script(type="text/javascript", src="/js/t4tc-monitor-index.js")
+    style(type="text/css", src="/css/timeline.css")
+
+    // Custom Theme JavaScript
+    script(src="js/grayscale.js")
 

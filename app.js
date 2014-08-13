@@ -177,7 +177,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: '/login' , scope : "profile" }),
 	function(req, res) {
-		res.redirect('/account');
+		res.redirect('/');
 	});
 app.get('/auth/twitter',
 	passport.authenticate('twitter'),
@@ -186,7 +186,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/account');
+		res.redirect('/');
 	});
 
 
@@ -239,7 +239,7 @@ app.get('/grid-status', function(req, res){
 })
 
 app.get('/new', function(req, res){
-	res.render('new-layout', {pageTitle : 'Test 4 Theory | Grid Status', user : req.user});
+	res.render('index', {pageTitle : 'Test 4 Theory', user : req.user});
 })
 
 
