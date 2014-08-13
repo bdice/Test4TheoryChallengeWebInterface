@@ -238,6 +238,10 @@ app.get('/grid-status', function(req, res){
 	res.render('grid-status', {pageTitle : 'Test 4 Theory | Grid Status', user : req.user});
 })
 
+app.get('/new', function(req, res){
+	res.render('new-layout', {pageTitle : 'Test 4 Theory | Grid Status', user : req.user});
+})
+
 
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
 
