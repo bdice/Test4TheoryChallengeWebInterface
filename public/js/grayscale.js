@@ -106,4 +106,15 @@ function init() {
 
 $(document).ready(function(d){
 
+$(".dropdown .dropdown-menu li").hover(function(){
+//Mouse IN
+$(".dropdown .dropdown-menu li").removeClass("active");
+$(this).addClass("active");
+}, function(){
+//Mouse Out
+$(".dropdown .dropdown-menu li").removeClass("active");
+
+}
+);
+
 });
