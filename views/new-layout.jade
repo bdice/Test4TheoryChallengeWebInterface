@@ -51,14 +51,13 @@ html(lang="en")
                   li
                     a(href="#about") About
                   li
-                    a(href="#service") Timeline
-                  li
-                    a(href="#works") Grid State
+                    a(href="#timeline") Timeline
                   li
                     a(href="#contact") Take Part
               // /.Navbar-collapse
         // /.container
     // /Navigation
+
     // Section: about
     section#about.home-section.color-dark.bg-white
       .container.marginbot-50
@@ -77,88 +76,58 @@ html(lang="en")
               p
                 | Some sample description !! Some sample description !! Some sample description !! Some sample description !! Some sample description !! 
               
-              a.btn.btn-skin.btn-scroll(href="#service") TimeLine
+              a.btn.btn-skin.btn-scroll(href="#timeline") TimeLine
     // /Section: about
-    // Section: services
-    section#service.home-section.color-dark.bg-gray
+    
+    // Section: timelines
+    section#timeline.home-section.color-dark.bg-gray
       .container.marginbot-50
         .row
           .col-lg-8.col-lg-offset-2
             div
               .section-heading.text-center
-                h2.h-bold Stats about accelerators
+                h2.h-bold Timeline
                 .divider-header
-      .text-center
-        .container
-          .row.animatedParent
-            .col-xs-6.col-sm-4.col-md-4
-              .animated.fadeInDown
-                .service-box
-                  .service-icon
-                    span.fa.fa-laptop.fa-2x
-                  .service-desc
-                    h5 Accelerator-1
-                    .divider-header
-                    p
-                      | Some Sample Description and and and and stats
-                    a.btn.btn-skin(href="#") Learn more
-            .col-xs-6.col-sm-4.col-md-4
-              .animated.fadeInUp.slow
-                .service-box
-                  .service-icon
-                    span.fa.fa-camera.fa-2x
-                  .service-desc
-                    h5 Accelerator-2
-                    .divider-header
-                    p
-                      | More description and and and and stats
-                    a.btn.btn-skin(href="#") Learn more
-            .col-xs-6.col-sm-4.col-md-4
-              .animated.fadeInDown.slower
-                .service-box
-                  .service-icon
-                    span.fa.fa-code.fa-2x
-                  .service-desc
-                    h5 Accelerator-3
-                    .divider-header
-                    p
-                      | more and more description and stats
-                    a.btn.btn-skin(href="#") Learn more
+      div(id="timeline-embed", style="height:400px;")
 
-    // /Section: services
-    //- // Section: works
-    //- section#works.home-section.color-dark.text-center.bg-white
-    //-   .container.marginbot-50
-    //-     .row
-    //-       .col-lg-8.col-lg-offset-2
-    //-         div
-    //-           .animatedParent
-    //-             .section-heading.text-center
-    //-               h2.h-bold.animated.bounceInDown Grid State
-    //-               .divider-header
-    //-   .container
-    //-     .row.animatedParent
-    //-       .col-sm-12.col-md-12.col-lg-12
-    //-         .row.gallery-item
-    //-           .col-md-3.animated.fadeInUp
-    //-             a(href="img/works/1.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/1.jpg", alt="img")
-    //-           .col-md-3.animated.fadeInUp.slow
-    //-             a(href="img/works/2.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/2.jpg", alt="img")
-    //-           .col-md-3.animated.fadeInUp.slower
-    //-             a(href="img/works/3.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/3.jpg", alt="img")
-    //-           .col-md-3.animated.fadeInUp
-    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")
-    //-           .col-md-3.animated.fadeInUp.slow
-    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")
-    //-           .col-md-3.animated.fadeInUp.slower
-    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
-    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")                                    
-    // /Section: works
+      //- .text-center
+      //-   .container
+      //-     .row.animatedParent
+      //-       .col-xs-6.col-sm-4.col-md-4
+      //-         .animated.fadeInDown
+      //-           .service-box
+      //-             .service-icon
+      //-               span.fa.fa-laptop.fa-2x
+      //-             .service-desc
+      //-               h5 Accelerator-1
+      //-               .divider-header
+      //-               p
+      //-                 | Some Sample Description and and and and stats
+      //-               a.btn.btn-skin(href="#") Learn more
+      //-       .col-xs-6.col-sm-4.col-md-4
+      //-         .animated.fadeInUp.slow
+      //-           .service-box
+      //-             .service-icon
+      //-               span.fa.fa-camera.fa-2x
+      //-             .service-desc
+      //-               h5 Accelerator-2
+      //-               .divider-header
+      //-               p
+      //-                 | More description and and and and stats
+      //-               a.btn.btn-skin(href="#") Learn more
+      //-       .col-xs-6.col-sm-4.col-md-4
+      //-         .animated.fadeInDown.slower
+      //-           .service-box
+      //-             .service-icon
+      //-               span.fa.fa-code.fa-2x
+      //-             .service-desc
+      //-               h5 Accelerator-3
+      //-               .divider-header
+      //-               p
+      //-                 | more and more description and stats
+      //-               a.btn.btn-skin(href="#") Learn more
+
+
     // Section: contact
     section#contact.home-section.nopadd-bot.color-dark.bg-gray.text-center
       .container.marginbot-50
@@ -216,3 +185,12 @@ html(lang="en")
     script(src="js/custom.js")
     script(src="js/my-custom.js")
     script(src="js/css3-animate-it.js")
+
+    script(type="text/javascript", src="/socket.io/socket.io.js")
+    script(type="text/javascript", src="/js/storyjs-embed.js")
+    script(type="text/javascript", src="/js/timeline-min.js")
+
+    script(type="text/javascript", src="/data/accelerators.js")
+    script(type="text/javascript", src="/js/jquery.base64.min.js")
+    script(type="text/javascript", src="/js/t4tc-monitor-index.js")
+    style(type="text/css", src="/css/timeline.css")
