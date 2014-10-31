@@ -167,7 +167,7 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/');
+		res.redirect('/acc.io');
 	});
 
 app.get('/auth/google',
@@ -177,7 +177,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: '/login' , scope : "profile" }),
 	function(req, res) {
-		res.redirect('/');
+		res.redirect('/acc.io');
 	});
 app.get('/auth/twitter',
 	passport.authenticate('twitter'),
@@ -186,7 +186,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/');
+		res.redirect('/acc.io');
 	});
 
 
@@ -206,8 +206,8 @@ app.get('/auth/cern/callback',
 **/
 
 app.get('/logout', function(req, res){
-req.logout();
-res.redirect('/');
+	req.logout();
+	res.redirect('/acc.io');
 });
 
 // test authentication
@@ -231,7 +231,7 @@ app.get('/login', function(req, res){
 
 //Setup index route.
 app.get('/', function(req, res) {
-    res.render('index', {pageTitle:'Test 4 Theory | Home', user : req.user })
+    res.render('new-layout', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
 
 app.get('/grid-status', function(req, res){
@@ -240,6 +240,10 @@ app.get('/grid-status', function(req, res){
 
 app.get('/new', function(req, res){
 	res.render('index', {pageTitle : 'Test 4 Theory', user : req.user});
+})
+
+app.get('/acc.io', function(req, res){
+	res.render('account-io', {pageTitle : 'Account', user : req.user});
 })
 
 
