@@ -1,0 +1,218 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    title Bocor bootstrap 3 one page template
+    // css
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(href="font-awesome/css/font-awesome.min.css", rel="stylesheet", type="text/css")
+    link(href="css/nivo-lightbox.css", rel="stylesheet")
+    link(href="css/nivo-lightbox-theme/default/default.css", rel="stylesheet", type="text/css")
+    link(href="css/animations.css", rel="stylesheet")
+    link(href="css/style.css", rel="stylesheet")
+    link(href="color/default.css", rel="stylesheet")
+  body#page-top(data-spy="scroll", data-target=".navbar-custom")
+    section#intro.hero
+      .container
+        .row
+          .col-md-12.text-right.navicon
+            a#nav-toggle.nav_slide_button(href="#")
+              span
+        .row
+          .col-md-8.col-md-offset-2.text-center.inner
+            .animatedParent
+              h1.animated.fadeInDown CERN 60
+              p.animated.fadeInUp Test 4 Theory Challenge
+        .row
+          .col-md-6.col-md-offset-3.text-center
+            a.learn-more-btn.btn-scroll(href="#about") Learn more
+    // Navigation
+    #navigation
+      nav.navbar.navbar-custom(role="navigation")
+        .container
+          .row
+            .col-md-2
+              .site-logo
+                a.brand(href="#")
+                  img(src="/img/logo.png", height="50px")
+            .col-md-10
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target="#menu")
+                  i.fa.fa-bars
+              // Collect the nav links, forms, and other content for toggling
+              #menu.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li.active
+                    a(href="#intro") Home
+                  li
+                    a(href="#about") About
+                  li
+                    a(href="#service") Timeline
+                  li
+                    a(href="#works") Grid State
+                  li
+                    a(href="#contact") Take Part
+              // /.Navbar-collapse
+        // /.container
+    // /Navigation
+    // Section: about
+    section#about.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold About the Test 4 Theory Project
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p
+                | Some sample description !! Some sample description !! Some sample description !! Some sample description !! 
+              p
+                | Some sample description !! Some sample description !! Some sample description !! Some sample description !! Some sample description !! 
+              
+              a.btn.btn-skin.btn-scroll(href="#service") TimeLine
+    // /Section: about
+    // Section: services
+    section#service.home-section.color-dark.bg-gray
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            div
+              .section-heading.text-center
+                h2.h-bold Stats about accelerators
+                .divider-header
+      .text-center
+        .container
+          .row.animatedParent
+            .col-xs-6.col-sm-4.col-md-4
+              .animated.fadeInDown
+                .service-box
+                  .service-icon
+                    span.fa.fa-laptop.fa-2x
+                  .service-desc
+                    h5 Accelerator-1
+                    .divider-header
+                    p
+                      | Some Sample Description and and and and stats
+                    a.btn.btn-skin(href="#") Learn more
+            .col-xs-6.col-sm-4.col-md-4
+              .animated.fadeInUp.slow
+                .service-box
+                  .service-icon
+                    span.fa.fa-camera.fa-2x
+                  .service-desc
+                    h5 Accelerator-2
+                    .divider-header
+                    p
+                      | More description and and and and stats
+                    a.btn.btn-skin(href="#") Learn more
+            .col-xs-6.col-sm-4.col-md-4
+              .animated.fadeInDown.slower
+                .service-box
+                  .service-icon
+                    span.fa.fa-code.fa-2x
+                  .service-desc
+                    h5 Accelerator-3
+                    .divider-header
+                    p
+                      | more and more description and stats
+                    a.btn.btn-skin(href="#") Learn more
+
+    // /Section: services
+    //- // Section: works
+    //- section#works.home-section.color-dark.text-center.bg-white
+    //-   .container.marginbot-50
+    //-     .row
+    //-       .col-lg-8.col-lg-offset-2
+    //-         div
+    //-           .animatedParent
+    //-             .section-heading.text-center
+    //-               h2.h-bold.animated.bounceInDown Grid State
+    //-               .divider-header
+    //-   .container
+    //-     .row.animatedParent
+    //-       .col-sm-12.col-md-12.col-lg-12
+    //-         .row.gallery-item
+    //-           .col-md-3.animated.fadeInUp
+    //-             a(href="img/works/1.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/1.jpg", alt="img")
+    //-           .col-md-3.animated.fadeInUp.slow
+    //-             a(href="img/works/2.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/2.jpg", alt="img")
+    //-           .col-md-3.animated.fadeInUp.slower
+    //-             a(href="img/works/3.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/3.jpg", alt="img")
+    //-           .col-md-3.animated.fadeInUp
+    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")
+    //-           .col-md-3.animated.fadeInUp.slow
+    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")
+    //-           .col-md-3.animated.fadeInUp.slower
+    //-             a(href="img/works/4.jpg", title="This is an image title", data-lightbox-gallery="gallery1", data-lightbox-hidpi="img/works/1@2x.jpg")
+    //-               img.img-responsive(src="/img/works/4.jpg", alt="img")                                    
+    // /Section: works
+    // Section: contact
+    section#contact.home-section.nopadd-bot.color-dark.bg-gray.text-center
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center
+                h2.h-bold.animated.bounceInDown Take Part
+                .divider-header
+      .container
+        .row.marginbot-80
+          .col-md-8.col-md-offset-2
+            | The Accelerating WEB-GL graphics goes here with link to Start the Accelerator
+      //- .container
+      //-   .row.marginbot-80
+      //-     .col-md-8.col-md-offset-2
+      //-       form#contact-form
+      //-         .row.marginbot-20
+      //-           .col-md-6.xs-marginbot-20
+      //-             input#name.form-control.input-lg(type="text", placeholder="Enter name", required="required")
+      //-           .col-md-6
+      //-             input#email.form-control.input-lg(type="email", placeholder="Enter email", required="required")
+      //-         .row
+      //-           .col-md-12
+      //-             .form-group
+      //-               input#subject.form-control.input-lg(type="text", placeholder="Subject", required="required")
+      //-             .form-group
+      //-               textarea#message.form-control(name="message", rows="4", cols="25", required="required", placeholder="Message")
+      //-             button#btnContactUs.btn.btn-skin.btn-lg.btn-block(type="submit")
+      //-               | Send Message
+    // /Section: contact
+
+    #map(style="height:300px")
+
+    //- footer
+    //-   .container
+    //-     .row
+    //-       .col-md-6
+    //-         ul.footer-menu
+    //-           li
+    //-             a(href="#") Home
+    //-           li
+    //-             a(href="#") Press release
+
+    // Core JavaScript Files
+    script(src="js/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP4TbEsEUGhIO9ZCyMKnTuzJPhlzR9twE&sensor=false")
+    script(src="js/jquery.sticky.js")
+    script(src="js/jquery.easing.min.js")
+    script(src="js/jquery.scrollTo.js")
+    script(src="js/jquery.appear.js")
+    script(src="js/stellar.js")
+    script(src="js/nivo-lightbox.min.js")
+    script(src="js/custom.js")
+    script(src="js/my-custom.js")
+    script(src="js/css3-animate-it.js")
