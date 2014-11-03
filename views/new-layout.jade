@@ -28,7 +28,9 @@ html(lang="en")
               p.animated.fadeInUp Public Computing Challenge
         .row
           .col-md-6.col-md-offset-3.text-center
-            a.learn-more-btn.btn-scroll(href="#about") Learn more
+            a.start-computing-btn.btn-scroll(href="#join") Start Computing        
+            a.learn-more-btn.btn-scroll(href="#about", style="margin-left:10px") Learn more
+
     // Navigation
     #navigation
       nav.navbar.navbar-custom(role="navigation")
@@ -57,9 +59,10 @@ html(lang="en")
                   li
                     a(href="#stats") Stats
                   li
-                    a(href="#contact-us") Contact Us 
+                    a(href="#more") More                     
                   li
-                    a(href="#contact") Getting Started
+                    a(href="#contact") Contact Us 
+
               // /.Navbar-collapse
         // /.container
     // /Navigation
@@ -80,13 +83,39 @@ html(lang="en")
               p
                 | The CERN 60 Public Computing Challenge is a 15-day event, where we invite volunteers around the world to help us compute simulations of particle collisions in the Large Hadron Collider (LHC) and other particle accelerators that have been active around the world during the 60 years of CERN's history. 
               p 
-                | The challenge will allow us to do two things: one is to create a large database of results for a new science learning game which is due to be launched in 2015, as part of the Citizen Cyberlab project. The other is to test a new browser-based approach to volunteer computing, which will be used in the game.
+                | The challenge will allow us to do two things: one is to create a large database of results for a new science learning game which is due to be launched in 2015, as part of the #[a(href="google.co.in") Citizen Cyberlab] project. The other is to test a new browser-based approach to volunteer computing, which will be used in the game.
               p
                 | We're excited to see how many people get involved in the challenge over two weeks, and how much computing we can get done with your help. Can we reach rates of simulated particle collisions that rival the actual rate at which the LHC stores data, and create a virtual atom smasher? That is the CERN 60 Public Computing Challenge.
               p 
-                | To make the Challenge more interactive, we've created a Timeline of significant events in particle physics through the 60 years of CERN's history, which will be filled in at the rate of one year of history every six hours during the Challenge. A Stats page allows you to explore in more detail how much computing all the volunteers have done. And we're connecting you with More ways to participate in particle physics research on the Web.
+                | To make the Challenge more interactive, we've created a #[a(href="google.co.in") Timeline] of significant events in particle physics through the 60 years of CERN's history, which will be filled in at the rate of one year of history every six hours during the Challenge. A #[a(href="google.co.in") Stats] page allows you to explore in more detail how much computing all the volunteers have done. And we're connecting you with #[a(href="google.co.in") More] ways to participate in particle physics research on the Web.
   
-              a.btn.btn-skin.btn-scroll(href="#timeline") TimeLine
+              a.btn.btn-skin.btn-scroll(href="http://labs.wavesoft.gr/t4t/new/run.html", target="_blank") 
+                | Start Computing
+              p
+              p
+              p 
+                | If you'd like to know more about how the technology works, read these #[a(href="google.co.in") Frequently Asked Questions]. If you run into any problems when trying to participate, #[a(href="google.co.in") please let us know] – we need to learn from you! There is a #[a(href="google.co.in") Timeline] that monitors progress of the challenge, as well as a #[a(href="google.co.in") Stats] page with more detailed information.
+
+    // /Section: about
+
+    // Section: Join
+    section#join.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Join the CERN 60 Public Computing Challenge
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p 
+                | Click on the button below and you will be taken through a few simple steps to turn your laptop or desktop into part of the CERN 60 Public Computing Challenge. 
+
+              a.btn.btn-skin.btn-scroll(href="http://labs.wavesoft.gr/t4t/new/run.html", target="_blank") 
+                | Take Part
 
     // /Section: about
     
@@ -99,89 +128,134 @@ html(lang="en")
               .section-heading.text-center
                 h2.h-bold Timeline
                 .divider-header
+        .row
+           p
+             | Learn about significant events in particle physics through the 60 years of CERN's history, which will be filled in at the rate of one year of history every six hours during the CERN 60 Public Computing Challenge. While you're waiting for history to happen, why not join in some More ways to participate in particle physics research on the Web.
       div(id="timeline-embed", style="height:500px;")
 
-      //- .text-center
-      //-   .container
-      //-     .row.animatedParent
-      //-       .col-xs-6.col-sm-4.col-md-4
-      //-         .animated.fadeInDown
-      //-           .service-box
-      //-             .service-icon
-      //-               span.fa.fa-laptop.fa-2x
-      //-             .service-desc
-      //-               h5 Accelerator-1
-      //-               .divider-header
-      //-               p
-      //-                 | Some Sample Description and and and and stats
-      //-               a.btn.btn-skin(href="#") Learn more
-      //-       .col-xs-6.col-sm-4.col-md-4
-      //-         .animated.fadeInUp.slow
-      //-           .service-box
-      //-             .service-icon
-      //-               span.fa.fa-camera.fa-2x
-      //-             .service-desc
-      //-               h5 Accelerator-2
-      //-               .divider-header
-      //-               p
-      //-                 | More description and and and and stats
-      //-               a.btn.btn-skin(href="#") Learn more
-      //-       .col-xs-6.col-sm-4.col-md-4
-      //-         .animated.fadeInDown.slower
-      //-           .service-box
-      //-             .service-icon
-      //-               span.fa.fa-code.fa-2x
-      //-             .service-desc
-      //-               h5 Accelerator-3
-      //-               .divider-header
-      //-               p
-      //-                 | more and more description and stats
-      //-               a.btn.btn-skin(href="#") Learn more
+    // Section: Stats
+    section#stats.home-section.color-dark.bg-gray
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            div
+              .section-heading.text-center
+                h2.h-bold Stats
+                .divider-header
+        .row
+          p
+            |  Here are the latest results for the CERN 60 Public Computing Challenge. Find out about More ways for you to participate in particle physics research on the Web. 
+          div(id="SVG_dashboard", style="width:100%")
 
 
-    // Section: contact
+    // Section: more
+    section#more.home-section.color-dark.bg-gray
+        .container.marginbot-50
+            .row
+              .col-lg-8.col-lg-offset-2
+                div
+                  .section-heading.text-center
+                    h2.h-bold More Activities
+                    .divider-header
+          .text-center
+            .container
+              .row.animatedParent
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="/icons/icon-antimatter-01.png")
+                      .service-desc
+                        h5 Analyze Antimatter
+                        .divider-header
+                        p
+                          | Contribute to analyzing antimatter data produced at CERN..
+                        a.btn.btn-skin(href='#') Learn more
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="/icons/icon-clicker-01.png")
+                      .service-desc
+                        h5 Particle Clicker
+                        .divider-header
+                        p
+                          | Try out Particle Clickers, a game made by students at CERN.
+                        a.btn.btn-skin(href='#') Learn more
+
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="/icons/icon-recognize-this-01.png")
+                      .service-desc
+                        h5 Recognize This?
+                        .divider-header
+                        p
+                          | Test your knowledge of historical physics hardware at CERN.
+                        a.btn.btn-skin(href='#') Learn more      
+
+              .row.animatedParent
+                br
+              .row.animatedParent
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="/icons/icon-subscribe-01.png")
+                      .service-desc
+                        h5 Particle Clicker
+                        .divider-header
+                        p
+                          | Descriptions Descriptions.
+                        a.btn.btn-skin(href='#') Learn more
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="/icons/icon-test4theory-01.png")
+                      .service-desc
+                        h5 Compute Beyond the Challenge
+                        .divider-header
+                        p
+                          | Join the LHC@home project for volunteer computing at CERN.
+                        a.btn.btn-skin(href='#') Learn more
+
+
+
+                                         
+
     section#contact.home-section.nopadd-bot.color-dark.bg-gray.text-center
       .container.marginbot-50
         .row
           .col-lg-8.col-lg-offset-2
             .animatedParent
               .section-heading.text-center
-                h2.h-bold.animated.bounceInDown Getting Started
+                h2.h-bold.animated.bounceInDown Get in touch with us
                 .divider-header
       .container
         .row.marginbot-80
           .col-md-8.col-md-offset-2
-            p 
-            | Some text description
-
-            p 
-            | Some text description
-
-            p 
-            | Click here to Take Part
-
-            br
-            a(href='http://labs.wavesoft.gr/t4t/new/run.html', target="_blank")
-              button.btn.btn-success(type='button') Take Part
-
-      //- .container
-      //-   .row.marginbot-80
-      //-     .col-md-8.col-md-offset-2
-      //-       form#contact-form
-      //-         .row.marginbot-20
-      //-           .col-md-6.xs-marginbot-20
-      //-             input#name.form-control.input-lg(type="text", placeholder="Enter name", required="required")
-      //-           .col-md-6
-      //-             input#email.form-control.input-lg(type="email", placeholder="Enter email", required="required")
-      //-         .row
-      //-           .col-md-12
-      //-             .form-group
-      //-               input#subject.form-control.input-lg(type="text", placeholder="Subject", required="required")
-      //-             .form-group
-      //-               textarea#message.form-control(name="message", rows="4", cols="25", required="required", placeholder="Message")
-      //-             button#btnContactUs.btn.btn-skin.btn-lg.btn-block(type="submit")
-      //-               | Send Message
-    // /Section: contact
+            p
+              | The CERN 60 Public Computing Challenge is brought to you by the Citizen Cyberlab project and the Citizen Cyberscience Centre. We're pushing the boundaries of citizen science and informal learning on the Web. Want to learn more about us? Subscribe to our Newsletter or follow us on Facebook and Twitter. 
+            form#contact-form
+              .row.marginbot-20
+                .col-md-6.xs-marginbot-20
+                  input#name.form-control.input-lg(type='text', placeholder='Enter name', required='required')
+                .col-md-6
+                  input#email.form-control.input-lg(type='email', placeholder='Enter email', required='required')
+              .row
+                .col-md-12
+                  button#btnContactUs.btn.btn-skin.btn-lg.btn-block(type='submit')
+                    | Subscribe
 
     #map(style="height:300px")
 
@@ -194,6 +268,10 @@ html(lang="en")
     //-             a(href="#") Home
     //-           li
     //-             a(href="#") Press release
+
+
+
+
 
     // Core JavaScript Files
     script(src="js/jquery.min.js")
