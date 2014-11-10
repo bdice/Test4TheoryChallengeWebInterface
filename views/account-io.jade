@@ -16,9 +16,9 @@ html
 				div(class="text-center")
 					p Welcome #{JSON.stringify(user)}
 					p
-						a(href="/logout",class="btn btn-default") Sign-out
-					script(type="text/javascript")
-						| if (window.parent && window.parent.loginCallback) { window.parent.loginCallback(!{JSON.stringify(user)}); };
+						a(href="logout",class="btn btn-default") Sign-out
+				script(type="text/javascript")
+					| window.opener.location = "http://test4theory.cern.ch/vlhc/#user="+btoa(JSON.stringify(!{JSON.stringify(user)}));
 			else
 				p Log-in with one of your prefered social account and start collecting credits! The first 50 users with the biggest credit will participate on the preliminary beta of the upcoming <em>Virtual Atom Smasher</em> game!
 				.row
@@ -28,18 +28,20 @@ html
 							.banner-leaves
 					.col-xs-6
 						p
-							a(href="/auth/facebook",class="btn btn-block btn-primary")
+							a(href="auth/facebook",class="btn btn-block btn-primary")
 								img(class="pull-left" src="style/img/icons/social-fb.png")
 								| Log-in with Facebook
 						p
-							a(href="/auth/google",class="btn btn-block btn-danger",target="_blank")
+							a(href="auth/google",class="btn btn-block btn-danger")
 								img(class="pull-left" src="style/img/icons/social-g.png")
 								| Log-in with Google+
 						p
-							a(href="/auth/twitter",class="btn btn-block btn-info")
+							a(href="auth/twitter",class="btn btn-block btn-info")
 								img(class="pull-left" src="style/img/icons/social-twitter.png")
 								| Log-in with Twitter
 						p
 							a(href="#",class="btn btn-block btn-success")
 								img(class="pull-left" src="style/img/icons/social-boinc.png")
 								| Log-in with BOINC
+				script(type="text/javascript")
+					| window.opener.location = "http://test4theory.cern.ch/vlhc/#user=none";

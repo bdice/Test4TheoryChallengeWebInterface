@@ -22,7 +22,7 @@ $("#small_accel_template").html($(data).find("svg")[0].outerHTML); // Initialize
 
 data = {};
 
-io = io.connect();
+io = io.connect('https://test4theory.cern.ch',{resource:'challenge/socket.io'});
 // Send the ready event.
 io.emit('ready')
 
@@ -38,16 +38,104 @@ io.on('update', function(d) {
      	jobsFailed = d[currentAccelerator].jobs_failed;
      }
 
-     $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
-     $("#totalJobs").html(d[currentAccelerator].jobs_completed);
-     $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
-     $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
+     var pending = 0;
+     if(d[currentAccelerator]["pending"]){
+     	pending = d[currentAccelerator].pending;
+     }
+
+     var online_users = 0;
+     if(d[currentAccelerator]["online_users"]){
+     	online_users = d[currentAccelerator].online_users;
+     }
+
+     // $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
+     // $("#totalJobs").html(d[currentAccelerator].jobs_completed);
+     // $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
+     // $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
+
+     statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
+     statusScreen.setLabelValue('j_completed', d[currentAccelerator].jobs_completed );
+     statusScreen.setLabelValue('j_failed', jobsFailed );
+     statusScreen.setLabelValue('j_pending', pending);
 
 
+	statusScreen.setLabelValue('v_connected', online_users);
+	     
      //$("#data").html(JSON.stringify(d, undefined, 2));
 
+ //    function random(count, range) {
+	// 	var ans = [];
+	// 	for (var i=0; i<count; i++)
+	// 		ans.push(parseInt(Math.random() * range));
+	// 	return ans;
+	// }
      
+	// var make_dataset = function(startAt, interval, data) {
 
+	// 	// Prepare the datasets field
+	// 	var fDatasets = [],
+	// 		fMaxDataPoints = 0;
+	// 	for (var i=0; i<data.length; i++) {
+
+	// 		// Update maximum number of data points
+	// 		if (fMaxDataPoints == 0) {
+	// 			fMaxDataPoints = data[i].data.length;
+	// 		} else {
+	// 			if (fMaxDataPoints != data[i].data.length) {
+	// 				console.error("A dataset has invalid sample count");
+	// 				return;
+	// 			}
+	// 		}
+
+	// 		// Extract datapoint color
+	// 		var col_r = parseInt(data[i].color.substr(1,2),16),
+	// 			col_g = parseInt(data[i].color.substr(3,2),16),
+	// 			col_b = parseInt(data[i].color.substr(5,2),16);
+
+	// 		// Return dataset configuration
+	// 		fDatasets.push({
+	// 			label: data[i].label,
+	// 			fillColor: "rgba("+col_r+","+col_g+","+col_b+",0.2)",
+	// 			strokeColor: "rgba("+col_r+","+col_g+","+col_b+",1)",
+	// 			pointColor: "rgba("+col_r+","+col_g+","+col_b+",1)",
+	// 			pointStrokeColor: "#fff",
+	// 			pointHighlightFill: "#fff",
+	// 			pointHighlightStroke: "rgba("+col_r+","+col_g+","+col_b+",1)",
+	// 			data: data[i].data
+	// 		});
+
+	// 	}
+
+	// 	// Return compatible dataset
+	// 	return {
+	// 		labels: timeseries_labels(fMaxDataPoints, startAt, interval, 1),
+	// 		datasets: fDatasets
+	// 	};
+	// }
+	
+ //    statusScreen.regenPlot("jobs",
+	// 		make_dataset(
+	// 			Date.now()/1000,
+	// 			3600,
+	// 			[
+	// 				{
+	// 					'label': 'Random',
+	// 					'color': '#428bca',
+	// 					'data': random(10, 1000)
+	// 				},
+	// 				{
+	// 					'label': 'Left',
+	// 					'color': '#999999',
+	// 					'data': random(10, 1000)
+	// 				},
+	// 				{
+	// 					'label': 'Error',
+	// 					'color': '#f0ad4e',
+	// 					'data': random(10, 1000)
+	// 				}
+	// 			]
+	// 		)
+	// 	);
 });
 
 
@@ -56,7 +144,6 @@ generateDashBoardForAccelerator(currentAccelerator, "timeline-embed" , "400px");
 
 
 //Setup the lock_unlock monitor
-
 window.setInterval(function(){
 
 // Make jquery do the CSS work :'(
@@ -85,8 +172,10 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 				//Update the Marker Text
 				$("#"+markerId).find(".flag .flag-content h3").html(  currentRecord.headline  );
 				try {
-				//Update the Thumbnail 
-				$("#"+markerId).find(".flag .flag-content .thumbnail img").attr("src",  currentRecord.asset.thumbnail );
+					//Update the Thumbnail if its not the same already.
+					if($("#"+markerId).find(".flag .flag-content .thumbnail img").attr("src")!= currentRecord.asset.thumbnail){
+						$("#"+markerId).find(".flag .flag-content .thumbnail img").attr("src",  currentRecord.asset.thumbnail );
+					}
 				} catch (err) {
 					//Do nothing if one element has no thumbnail defined 
 				} 
@@ -99,8 +188,10 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 				//Update the description too
 				$(".data_"+currentAccelerator+"_"+i.toString()+" .content .content-container .text .container p").html(currentRecord.text);
 
-				//Update the image too
-				$(".data_"+currentAccelerator+"_"+i.toString()+" .content .content-container .media .media-wrapper .media-container .media-image img").attr("src", currentRecord.asset.media);
+				//Update the image too if its not already the same
+				if($(".data_"+currentAccelerator+"_"+i.toString()+" .content .content-container .media .media-wrapper .media-container .media-image img").attr("src") != currentRecord.asset.media){
+					$(".data_"+currentAccelerator+"_"+i.toString()+" .content .content-container .media .media-wrapper .media-container .media-image img").attr("src", currentRecord.asset.media);
+				}
 
 
 				global_is_locked[i] = false;
@@ -188,8 +279,8 @@ for(var i=0;i<window[acceleratorName].majorEvents.length;i++){
 		"text" : "This milestone will be unlocked once enough virtual events have been computed in the virtual atom smasher !!",
 		"classname" : "data_"+acceleratorName+"_"+i.toString(),
 		"asset" : {
-			"media" : "/images/icons/lock.png",
-			"thumbnail" : "/images/icons/Crystal_Project_Lock.png",
+			"media" : "images/icons/lock.png",
+			"thumbnail" : "images/icons/Crystal_Project_Lock.png",
 		}
 	});
 }
@@ -280,8 +371,10 @@ function setProgressBar(value) {
 	$(".timeline-progress-bar .progress-bar").attr("aria-valuenow", value);
 	$(".timeline-progress-bar .progress-bar").css("width", value.toString()+"%");
 	$(".timeline-progress-bar .progress-bar").html(value.toString()+"%");	
-	$("#progressClip rect").attr("transform", "scale("+(value/100).toString()+",-1)")
-	$("#progressText").html(value.toString()+"%");
+	//$("#progressClip rect").attr("transform", "scale("+(value/100).toString()+",-1)")
+	//$("#progressText").html(value.toString()+"%");
+	statusScreen.setProgress(value);
+
 }
 
 function addProgressBar(value){

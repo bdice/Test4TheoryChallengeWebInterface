@@ -1,7 +1,7 @@
 var TOTAL = {
 	"headline" : "CERN 60 years",
-	"description" : " ",
-	"totalEvents" : 95800000,
+	"description" : "Learn about significant events in particle physics through the 60 years of CERN's history, which will be filled in at the rate of one year of history every six hours during the CERN 60 Public Computing Challenge. While you're waiting for history to happen, why not join in some <a href='google.co.in'>More</a> ways to participate in particle physics research on the Web.",
+	"totalEvents" : 717445350000,
 	"startDate" : "1949,12,9",
 	"endDate" : "2012,7,4",
 	"majorEvents" : [

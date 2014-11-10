@@ -88,24 +88,30 @@ var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
 setInterval(function(){
 
-	var acceleratorList = ['CDF', 'STAR', 'UA1', 'DELPHI', 'UA5', 'ALICE', 'TOTEM', 'SLD', 'LHCB', 'ALEPH', 'LHCF', 'ATLAS', 'CMS', 'OPAL', 'D0'];
+	// var acceleratorList = ['CDF', 'STAR', 'UA1', 'DELPHI', 'UA5', 'ALICE', 'TOTEM', 'SLD', 'LHCB', 'ALEPH', 'LHCF', 'ATLAS', 'CMS', 'OPAL', 'D0'];
+	var acceleratorList = [];
 	var multi = client.multi();
 	
-	//All accelerator field Params
-	for(var i=0;i<acceleratorList.length;i++){
-			multi.hgetall("T4TC_MONITOR/"+acceleratorList[i]+"/");
-			multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
+	// //All accelerator field Params
+	// for(var i=0;i<acceleratorList.length;i++){
+	// 		multi.hgetall("T4TC_MONITOR/"+acceleratorList[i]+"/");
+	// 		multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
 
-	}
+	// }
 
 	//TOTAL Stats
 	multi.hgetall("T4TC_MONITOR/TOTAL/");
 	multi.scard("T4TC_MONITOR/TOTAL/users");
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/events",0,10,'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",0,10,'WITHSCORES']);
+	multi.get("T4TC_MONITOR/TOTAL/pending");
+	multi.get("T4TC_MONITOR/TOTAL/online_users");
+
 	var resultObject = {};
 	multi.exec(function(err, replies){
 		    replies.forEach(function (reply, index) {
+
+
 			if(index<acceleratorList.length*2){
 				if(index%2==0){
 					resultObject[acceleratorList[index/2]] = reply;
@@ -126,8 +132,17 @@ setInterval(function(){
 					resultObject["Events Leaderboard"] = reply;
 				}else if(newIndex == 3){
 					resultObject["Jobs Leaderboard"] = reply;
+				}else if(newIndex == 4){
+					if(resultObject["TOTAL"]){
+						resultObject["TOTAL"]["pending"] = reply;
+					}
+				}else if(newIndex == 5) {
+					if(resultObject["TOTAL"]){
+						resultObject["TOTAL"]["online_users"] = reply;
+					}	
 				}
 			}
+
 		    });
 		    //console.log(resultObject);
 
@@ -167,7 +182,7 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/acc.io');
+		res.redirect('/challenge/acc.io');
 	});
 
 app.get('/auth/google',
@@ -177,7 +192,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: '/login' , scope : "profile" }),
 	function(req, res) {
-		res.redirect('/acc.io');
+		res.redirect('/challenge/acc.io');
 	});
 app.get('/auth/twitter',
 	passport.authenticate('twitter'),
@@ -186,7 +201,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/acc.io');
+		res.redirect('/challenge/acc.io');
 	});
 
 
@@ -207,7 +222,7 @@ app.get('/auth/cern/callback',
 
 app.get('/logout', function(req, res){
 	req.logout();
-	res.redirect('/acc.io');
+	res.redirect('/challenge/acc.io');
 });
 
 // test authentication
@@ -244,6 +259,10 @@ app.get('/new', function(req, res){
 
 app.get('/acc.io', function(req, res){
 	res.render('account-io', {pageTitle : 'Account', user : req.user});
+})
+app.get('/acc.json', function(req, res){
+	res.set("Access-Control-Allow-Origin", "*");
+	res.send({ user : req.user || false });
 })
 
 

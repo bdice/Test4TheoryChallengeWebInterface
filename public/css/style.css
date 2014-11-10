@@ -420,7 +420,7 @@ hr.bold {
 
 /*.hero { background: url(../img/hero-bg.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
 */
-.hero { background: url(../img/accelerator.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
+.hero { background: url(../img/event-back.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
 
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 40px 0 10px; font-weight: 900; color: #fff;}
 .hero h1 span { color: #a1a9b0; display: inline-block; }
@@ -948,12 +948,12 @@ a.btn:focus{
 
 /* --- progress --- */
 .progress {
-  height: 40px;
+  height: 8px;
 
 }
 .progress-bar {
-  font-size: 14px;
-  line-height: 40px;
+  font-size: 10px;
+  line-height: 8px;
 }
 
 /* Media queries */
@@ -1056,3 +1056,148 @@ a.btn:focus{
 		margin-bottom: 30px;
 	}
 }
+
+
+/* ===========================
+--- Challenge
+============================ */
+
+/* --- Tweet banner --- */
+.c-tweet {
+	text-align: left;
+	color: #333;
+	height: 50px;
+}
+
+.c-tweet #tweet-date { font-weight: bold; }
+.c-tweet a.c-tweet-icon { 
+	float: right;
+}
+
+
+/* --- Service box ---  */
+.c-service > div:not(:last-child) > div {
+	border-right: solid 1px #ddd;
+}
+
+.c-service-icon {
+	margin-bottom: 20px;
+}	
+
+.c-service-desc h5 {
+	text-transform: uppercase;
+	color: #666;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.c-service-desc .divider-header {
+	height: 1px;
+}
+
+/* --- Gauge --- */
+
+#gauge-events {
+	width: 130px;
+	height: 100px;
+}
+
+/* --- Table in Service --- */
+
+.c-service .table {
+	font-size: 18px;
+}
+.c-service .table th {
+	font-weight: normal;
+}
+.c-service .table td {
+	font-weight: 700;
+	text-align: right;
+}
+.c-service .table td small {
+	font-weight: normal;
+	font-size: 75%;
+}
+
+/* --- Icons --- */
+.c-icons {
+	width: 60px;
+	height: 48px;
+	background-image: url(../img/status-icons.png);
+	background-repeat: no-repeat;
+	margin: 0 auto;
+}
+
+.c-icons.c-icon-1 { background-position: 0 0; }
+.c-icons.c-icon-2 { background-position: -60px 0; }
+.c-icons.c-icon-3 { background-position: -120px 0; }
+.c-icons.c-icon-4 { background-position: -180px 0; }
+
+.c-status {
+	border-bottom: solid 2px;
+	padding: 0 0 5px;
+}
+.c-status-subtext {
+	margin: -25px 0 25px;
+}
+
+/* --- Coloring --- */
+
+.c-success { color: #5cb85c; }
+.c-status.c-success { border-color: #4cae4c; }
+.c-status.c-success + .c-status-subtext { color: #3c763d; }
+
+.c-danger { color: #d9534f; }
+.c-status.c-danger { border-color: #d43f3a; }
+.c-status.c-danger + .c-status-subtext { color: #a94442; }
+
+.c-warning { color: #f0ad4e; }
+.c-status.c-warning { border-color: #eea236; }
+.c-status.c-warning + .c-status-subtext { color: #8a6d3b; }
+
+.c-primary { color: #428bca; }
+.c-status.c-primary { border-color: #357ebd; }
+.c-status.c-primary + .c-status-subtext { color: #428bca; }
+
+/* -- Custom backgrounds -- */
+
+.c-img-computer { 
+   background: url(../img/computer-center.jpg) no-repeat center center; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover; 
+   padding: 200px 0 200px 0; 
+   height: auto;
+   position: relative;
+}
+.c-white-backframe {
+   position: absolute;
+   left: 40px;
+   right: 40px;
+   top: 100px;
+   bottom: 100px;
+   background-color: rgba(255,255,255,0.75);
+}
+
+/* -- Glow styles -- */
+
+.c-glow-black {
+   text-shadow: 2px 2px 3px #000;
+   -webkit-text-shadow: 2px 2px 3px #000;
+   -moz-text-shadow: 2px 2px 3px #000;
+   -ms-text-shadow: 2px 2px 3px #000;
+   -o-text-shadow: 2px 2px 3px #000;
+}
+
+/* -- Fixing ugly font issue in the container */
+#storyjs-timeline .container p {
+    font-family: 'Ek Mukta', sans-serif !important;
+}
+#storyjs-timeline .container h1,
+#storyjs-timeline .container h2,
+#storyjs-timeline .container h3,
+#storyjs-timeline .container h4 {
+    font-family: 'Roboto', sans-serif;
+}
+

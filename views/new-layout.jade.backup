@@ -7,7 +7,7 @@ html(lang="en")
     meta(name="author", content="")
     title CERN 60 Public Computing Challenge
     // css
-    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
     link(href="font-awesome/css/font-awesome.min.css", rel="stylesheet", type="text/css")
     link(href="css/nivo-lightbox.css", rel="stylesheet")
     link(href="css/nivo-lightbox-theme/default/default.css", rel="stylesheet", type="text/css")
@@ -23,7 +23,7 @@ html(lang="en")
               span
         .row
           .col-md-8.col-md-offset-2.text-center.inner
-            .animatedParent.c-glow-black
+            .animatedParent
               h1.animated.fadeInDown CERN 60
               p.animated.fadeInUp Public Computing Challenge
         .row
@@ -39,7 +39,7 @@ html(lang="en")
             .col-md-2
               .site-logo
                 a.brand(href="#")
-                  img(src="img/logo.png", height="50px")
+                  img(src="/img/logo.png", height="50px")
             .col-md-10
               // Brand and toggle get grouped for better mobile display
               .navbar-header
@@ -57,7 +57,7 @@ html(lang="en")
                   li
                     a(href="#timeline") Timeline
                   li
-                    a(href="#status") Status
+                    a(href="#stats") Stats
                   li
                     a(href="#more") More                     
                   li
@@ -89,8 +89,7 @@ html(lang="en")
     // /Section: about
 
     // Section: Join
-    section#join.home-section.color-dark.bg-white.c-img-computer
-      .c-white-backframe
+    section#join.home-section.color-dark.bg-white
       .container.marginbot-50
         .row
           .col-lg-8.col-lg-offset-2
@@ -105,8 +104,7 @@ html(lang="en")
               p 
                 | Click on the button below and you will be taken through a few simple steps to turn your laptop or desktop into part of the CERN 60 Public Computing Challenge. 
 
-              //a.btn.btn-skin.btn-scroll(href="http://labs.wavesoft.gr/t4t/new/run.html", target="_blank") 
-              a.btn.btn-skin.btn-scroll(href="http://test4theory.cern.ch/vlhc", target="_blank") 
+              a.btn.btn-skin.btn-scroll(href="http://labs.wavesoft.gr/t4t/new/run.html", target="_blank") 
                 | Start Computing
               p
               p 
@@ -128,106 +126,19 @@ html(lang="en")
                 .divider-header
       div(id="timeline-embed", style="height:500px;")
 
-    // Section: Status
-    section#status.home-section.color-dark.bg-gray
-      .container.marginbot-10
-          .row
-            .col-lg-8.col-lg-offset-2
-              .animatedParent
-                .section-heading.text-center
-                  h2.h-bold.animated.bounceInDown Challenge status
-                  .divider-header
-        .text-center
-          .container
-            .container
-              .row
-                .col-sm-2
-                  #gauge-events.c-gauge
-                .col-sm-8
-                  h3#status-global.h-bold.c-status.c-success IN PROGRESS
-                  .c-tweet.c-status-subtext
-                    a.c-tweet-icon.c-icons.c-icon-4(href='#')
-                    span#tweet-date [00/00/0000 00:00]
-                    span#tweet-text
-                      | This is a sample status message, that should be obtained from the twitter feed of the Test4Theory Virtual Atom Smasher challenge.
-                .col-sm-2
-                  #gauge-progress.c-gauge
-            .row.c-service
-              #service-volunteers.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-1
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Volunteers
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-volunteers.h-bold.c-status.c-success RAMPING UP
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Users connected:
-                          td.lbl-connected 1,312
-                        tr
-                          th Newcomers:
-                          td.lbl-newcomers
-                            | +5
-                            small /h
-                        tr
-                          th Achievements:
-                          td.lbl-achievements
-                            | 10
-                            small /124
-                    canvas#chart-volunteers(width='280', height='128')
-              #service-jobs.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-2
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Computing Tasks
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-jobs.h-bold.c-status.c-warning STALE
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Pending:
-                          td.lbl-pending 14,348,907
-                        tr
-                          th Completed:
-                          td.lbl-completed 1,931,221
-                        tr
-                          th Failed:
-                          td.lbl-failed 41
-                    canvas#chart-jobs(width='280', height='128')
-              #service-infr.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-3
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Infrastructure
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-infr.h-bold.c-status.c-warning HIGH LOAD
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Online machines:
-                          td.lbl-online
-                            | 14
-                            small /14
-                        tr
-                          th System load:
-                          td.lbl-load 5.41%
-                        tr
-                          th Alerts:
-                          td.lbl-alerts None
-                    canvas#chart-infr(width='280', height='128')
+    // Section: Stats
+    section#stats.home-section.color-dark.bg-gray
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            div
+              .section-heading.text-center
+                h2.h-bold Stats
+                .divider-header
+        .row
+          p
+            |  Here are the latest results for the CERN 60 Public Computing Challenge. Find out about #[a(href="google.co.in") More] ways for you to participate in particle physics research on the Web. 
+          div(id="SVG_dashboard", style="width:100%")
 
 
     // Section: more
@@ -247,7 +158,7 @@ html(lang="en")
                     .service-box
                       .service-icon
                         span
-                          img(src="icons/icon-antimatter-01.png")
+                          img(src="/icons/icon-antimatter-01.png")
                       .service-desc
                         h5 Analyze Antimatter
                         .divider-header
@@ -260,7 +171,7 @@ html(lang="en")
                     .service-box
                       .service-icon
                         span
-                          img(src="icons/icon-clicker-01.png")
+                          img(src="/icons/icon-clicker-01.png")
                       .service-desc
                         h5 Particle Clicker
                         .divider-header
@@ -274,7 +185,7 @@ html(lang="en")
                     .service-box
                       .service-icon
                         span
-                          img(src="icons/icon-recognize-this-01.png")
+                          img(src="/icons/icon-recognize-this-01.png")
                       .service-desc
                         h5 Recognize This?
                         .divider-header
@@ -290,7 +201,7 @@ html(lang="en")
                     .service-box
                       .service-icon
                         span
-                          img(src="icons/icon-test4theory-01.png")
+                          img(src="/icons/icon-test4theory-01.png")
                       .service-desc
                         h5 Keep on Computing
                         .divider-header
@@ -303,7 +214,7 @@ html(lang="en")
                     .service-box
                       .service-icon
                         span
-                          img(src="icons/icon-subscribe-01.png")
+                          img(src="/icons/icon-subscribe-01.png")
                       .service-desc
                         h5 Stay Tuned
                         .divider-header
@@ -330,16 +241,16 @@ html(lang="en")
       .container
         .col-xs-4.col-sm-3.col-md-3
                 span
-                  img(src="images/partners/citizen_cyberlab.jpg")
+                  img(src="/images/partners/citizen_cyberlab.jpg")
         .col-xs-4.col-sm-3.col-md-3
                 span
-                  img(src="images/partners/fp7.jpg")
+                  img(src="/images/partners/fp7.jpg")
         .col-xs-4.col-sm-3.col-md-3
                 span
-                  img(src="images/partners/eu.jpg")
+                  img(src="/images/partners/eu.jpg")
         .col-xs-4.col-sm-3.col-md-3
                 span
-                  img(src="images/partners/cern.jpg")
+                  img(src="/images/partners/cern.jpg")
 
     #map(style="height:300px")
 
@@ -357,8 +268,8 @@ html(lang="en")
 
     // Core JavaScript Files
     script(src="js/jquery.min.js")
-    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
-    script(type="text/javascript", src="//maps.googleapis.com/maps/api/js?key=AIzaSyCP4TbEsEUGhIO9ZCyMKnTuzJPhlzR9twE&sensor=false")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP4TbEsEUGhIO9ZCyMKnTuzJPhlzR9twE&sensor=false")
     script(src="js/jquery.sticky.js")
     script(src="js/jquery.easing.min.js")
     script(src="js/jquery.scrollTo.js")
@@ -369,17 +280,11 @@ html(lang="en")
     script(src="js/my-custom.js")
     script(src="js/css3-animate-it.js")
 
-    script(type="text/javascript", src="socket.io/socket.io.js")
-    script(type="text/javascript", src="js/storyjs-embed.js")
-    script(type="text/javascript", src="js/timeline-min.js")
+    script(type="text/javascript", src="/socket.io/socket.io.js")
+    script(type="text/javascript", src="/js/storyjs-embed.js")
+    script(type="text/javascript", src="/js/timeline-min.js")
 
-    script(type="text/javascript", src="data/accelerators.js")
-    script(type="text/javascript", src="js/jquery.base64.min.js")
-    script(type="text/javascript", src="js/t4tc-monitor-index.js")
-
-    script(src='js/Chart.min.js')
-    script(src='js/raphael-min.js')
-    script(src='js/justgage.js')
-    script(src='js/challenge-dashboard.js')
-
-    style(type="text/css", src="css/timeline.css")
+    script(type="text/javascript", src="/data/accelerators.js")
+    script(type="text/javascript", src="/js/jquery.base64.min.js")
+    script(type="text/javascript", src="/js/t4tc-monitor-index.js")
+    style(type="text/css", src="/css/timeline.css")
