@@ -428,9 +428,9 @@ hr.bold {
 .learn-more-btn { background: #ffffff; padding: 20px 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #ffffff; text-transform: uppercase; letter-spacing: 1px; display: inline-block; -webkit-box-shadow: 0px 3px 0px 0px #ffffff; -moz-box-shadow: 0px 3px 0px 0px #ffffff; box-shadow: 0px 3px 0px 0px #ffffff; margin: 60px 0 0; font-weight: bold; color:black; }
 .learn-more-btn:hover, .learn-more-btn:focus { background: rgba(61, 201, 179, 0.6); color: #fff; }
 
-.start-computing-btn { background: #00BFFF; padding: 20px 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: inline-block; -webkit-box-shadow: 0px 3px 0px 0px #01A9DB; -moz-box-shadow: 0px 3px 0px 0px #309383; box-shadow: 0px 3px 0px 0px #01A9DB; margin: 60px 0 0; font-weight: bold; }
+.start-computing-btn { background: #00BFFF; padding: 20px 40px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; color: #fff; text-transform: uppercase; letter-spacing: 1px; display: inline-block; -webkit-box-shadow: 0px 3px 0px 0px #01A9DB; -moz-box-shadow: 0px 3px 0px 0px #309383; box-shadow: 0px 3px 0px 0px #01A9DB; font-weight: bold; }
 .start-computing-btn:hover, .learn-more-btn:focus { background: rgba(61, 201, 179, 0.6); color: #fff; }
-
+.hero .start-computing-btn { margin: 60px 0 0; }
 
 
 

@@ -110,8 +110,7 @@ html(lang="en")
                 | More Projects
 
     // Section: Join
-    section#join.home-section.color-dark.bg-white.c-img-computer
-      .c-white-backframe
+    section#join.home-section.color-dark.bg-gray
       .container.marginbot-50
         .row
           .col-lg-8.col-lg-offset-2
@@ -123,20 +122,70 @@ html(lang="en")
         .row
           .col-lg-8.col-lg-offset-2.animatedParent
             .text-center
-              p 
-                | Three simple steps to turn your laptop or desktop into part of the CERN 60 Public Computing Challenge. 
-              //a.btn.btn-skin.btn-scroll(href="http://labs.wavesoft.gr/t4t/new/run.html", target="_blank") 
-              a.btn.btn-skin.btn-scroll(href="http://test4theory.cern.ch/vlhc", target="_blank") 
-                | Start Computing
-              p
-              p 
-                | ((illustration of three step process with pop-up details explaining the purpose of each step goes here) 
+              p Click the following button and be part of the CERN 60 Public Computing Challenge
+              p.marginbot-20
+                a.start-computing-btn(href="http://test4theory.cern.ch/vlhc", target="_blank") Start Computing
+              p &nbsp;
+              p.text-center
+                em Curious to know what happens when you click this button? Read below!
+
+      .text-center
+        .container
+          .row
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/ico-cernvm.png")
+                .service-desc
+                  h5 You install CernVM WebAPI
+                  p
+                    | The first time you join the challenge, you will be prompted to install an application called “CernVM WebAPI”. This takes care of delivering the required software for the challenge to your machine.
+                  p
+                    em Details for the curious:
+                    br
+                    small
+                      | This is a tiny system service (about 1MB) which provides the interface between the web browser and a Virtual Machine in your computer.
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/ico-virtualbox.png")
+                .service-desc
+                  h5 CernVM WebAPI installs VirtualBox
+                  p
+                    | We have packed all the scientific software required to run the challenge into a compact, virtual computer. Virtualbox is a free, open-source software that runs this virtual computer.
+                  p
+                    em Details for the curious:
+                    br
+                    small
+                      | The scientific software that we use runs only on Linux. That’s why we packed our Linux distribution in a virtual machine so it can run on almost any operating system.
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/icon-antimatter-01.png")
+                .service-desc
+                  h5 You are now in control
+                  p
+                    | After all this software is installed on your computer, just click “Start” on the interface and join the challenge! Please be patient, it might take a few minutes to see something happening...
+                  p
+                    em Details for the curious:
+                    br
+                    small
+                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Don’t forget to click Apply!
+
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p &nbsp;
               p 
                 | If you run into any problems when trying to participate, #[a.btn-scroll(href="#contact") please let us know] we want to learn from you!
   
 
     // Section: timelines
-    section#timeline.home-section.color-dark.bg-gray
+    section#timeline.home-section.color-dark.bg-white
       .container
         .row
           .col-lg-8.col-lg-offset-2
@@ -147,7 +196,7 @@ html(lang="en")
       div(id="timeline-embed", style="height:500px;")
 
     // Section: Status
-    section#status.home-section.color-dark.bg-gray
+    section#status.home-section.color-dark.bg-white
       .container.marginbot-10
           .row
             .col-lg-8.col-lg-offset-2
@@ -331,7 +380,7 @@ html(lang="en")
 
                                          
 
-    section#contact.home-section.nopadd-bot.color-dark.bg-gray.text-center
+    section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
       .container.marginbot-50
         .row
           .col-lg-8.col-lg-offset-2
@@ -358,6 +407,9 @@ html(lang="en")
         .col-xs-4.col-sm-3.col-md-3
                 span
                   img(src="images/partners/cern.jpg")
+
+      p &nbsp;
+      p &nbsp;
 
     #map(style="height:300px")
 
