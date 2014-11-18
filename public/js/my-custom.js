@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-
+/**
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
         zoom: 16,
@@ -47,6 +47,5 @@ $(document).ready(function(){
     // Create the Google Map using out element and options defined above
     var map = new google.maps.Map(mapElement, mapOptions);
 
-    console.log("i am here");
-
+**/
 });
