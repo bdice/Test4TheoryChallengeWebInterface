@@ -9,14 +9,14 @@ $(document).ready(function(d){
 window.isAcceleratorGridInitialized = false;
 
 //Set up Big accel
-$.get("/big_accel.svg", function(data){
-	$("#SVG_dashboard").html($(data).find("svg")[0].outerHTML);
-});
+//$.get("/big_accel.svg", function(data){
+//	$("#SVG_dashboard").html($(data).find("svg")[0].outerHTML);
+//});
 
 
-$.get("/small_accel.svg", function(data){
-$("#small_accel_template").html($(data).find("svg")[0].outerHTML); // Initialize the SVG of all the small accelerators
-});
+//$.get("/small_accel.svg", function(data){
+//$("#small_accel_template").html($(data).find("svg")[0].outerHTML); // Initialize the SVG of all the small accelerators
+//});
 
 
 
@@ -160,6 +160,11 @@ $(".slider-item").not(".locked-slide").find(".content .content-container .text .
 
 for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 	var currentRecord = window[currentAccelerator].pureDataStore[i];
+
+	//Adding exception for the first N= 3 data points(which are always unlocked)
+	if(i<3){
+		currentRecord.is_locked = false;
+	}	
 
 	// if the current record in pure data store looks unlocked but is actually rendered as locked
 	if(!currentRecord.is_locked && global_is_locked[i]){

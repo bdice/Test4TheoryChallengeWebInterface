@@ -89,7 +89,7 @@ html(lang="en")
               p
                 h5
                   font(color="#00BFFF")
-                    | testing technology
+                    | testing cool technology
               p 
                 | The challenge will allow us to do two things: one is to create a large database of results for a new science learning game which is due to be launched in 2015, as part of the #[a(href="http://citizencyberlab.eu/", target="_blank") Citizen Cyberlab] project. The other is to test a new browser-based approach to volunteer computing, which will be used in the game.
               p
@@ -128,131 +128,53 @@ html(lang="en")
               p &nbsp;
               p.text-center
                 em Curious to know what happens when you click this button? Read below!
-
-      .text-center
-        .container
-          .row
-            .col-sm-4
-              .service-box
-                .service-icon
-                  span
-                    img(src="icons/ico-cernvm.png")
-                .service-desc
-                  h5 You install CernVM WebAPI
-                  p
-                    | The first time you join the challenge, you will be prompted to install an application called “CernVM WebAPI”. This takes care of delivering the required software for the challenge to your machine.
-                  p
-                    em What is this, really?
-                    br
-                    small
-                      | This is a tiny system service (about 1MB) which provides the interface between the web browser and a Virtual Machine in your computer.
-            .col-sm-4
-              .service-box
-                .service-icon
-                  span
-                    img(src="icons/ico-virtualbox.png")
-                .service-desc
-                  h5 CernVM WebAPI installs VirtualBox
-                  p
-                    | We have packed all the scientific software required to run the challenge into a compact, virtual computer. Virtualbox is a free, open-source software that runs this virtual computer.
-                  p
-                    em Why is this necessary?
-                    br
-                    small
-                      | The scientific software that we use runs only on Linux. That’s why we packed our Linux distribution in a virtual machine so it can run on almost any operating system.
-            .col-sm-4
-              .service-box
-                .service-icon
-                  span
-                    img(src="icons/icon-antimatter-01.png")
-                .service-desc
-                  h5 You are now in control
-                  p
-                    | After all this software is installed on your computer, just click “Start” on the interface and join the challenge! Please be patient, it might take a few minutes to see something happening...
-                  p
-                    em What can I control?
-                    br
-                    small
-                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Don’t forget to click Apply!
-
-      .container
-        .row
-          .col-lg-8.col-lg-offset-2.animatedParent
-            .text-center
+              .row
+                .col-sm-4
+                  .service-box
+                    .service-icon
+                      span
+                        img(src="icons/ico-cernvm.png")
+                    .service-desc
+                      h5 You install CernVM WebAPI
+                      p
+                        | The first time you join the challenge, you will be prompted to install an application called “CernVM WebAPI”. This takes care of delivering the required software for the challenge to your machine.
+                      p
+                        em Geeky details:
+                        br
+                        small
+                          | This is a tiny system service (about 1MB) which provides the interface between the web browser and a Virtual Machine in your computer.
+                .col-sm-4
+                  .service-box
+                    .service-icon
+                      span
+                        img(src="icons/ico-virtualbox.png")
+                    .service-desc
+                      h5 CernVM WebAPI installs VirtualBox
+                      p
+                        | We have packed all the scientific software required to run the challenge into a compact, virtual computer. Virtualbox is a free, open-source software that runs this virtual computer.
+                      p
+                        em Geeky details:
+                        br
+                        small
+                          | The scientific software that we use runs only on Linux. That’s why we packed our Linux distribution in a virtual machine so it can run on almost any operating system.
+                .col-sm-4
+                  .service-box
+                    .service-icon
+                      span
+                        img(src="icons/icon-antimatter-01.png")
+                    .service-desc
+                      h5 You are now in control
+                      p
+                        | After all this software is installed on your computer, just click “Start” on the interface and join the challenge! Please be patient, it might take a few minutes to see something happening...
+                      p
+                        em Geeky details:
+                        br
+                        small
+                          | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Don’t forget to click Apply!
               p &nbsp;
-              h5 Frequently Asked Questions
-              #accordion.panel-group
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordionOne")
-                              | To take part in the challenge do I need to have my computer switched on all the time?
-                  #accordionOne.panel-collapse.collapse
-                    .panel-body
-                            | No! In fact, to avoid wasting energy, you should only participate while you are doing other stuff on your computer. For example trying out some of the other #[a.btn-scroll(href="#more") CERN-related public participation projects]. 
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion2")
-                              | How much effort is involved for me to be part of the challenge? 
-                  #accordion2.panel-collapse.collapse
-                    .panel-body
-                            | None! The virtual machine in your computer takes care of everything and sends us results periodically. It restarts automatically every time you restart your computer. 
-
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion3")
-                              | Why is this just a fifteen-day challenge? What happens afterwards?
-                  #accordion3.panel-collapse.collapse
-                    .panel-body
-                      | We're building up a database of results that will help people play a game about particle physics, to be launched next year. Fifteen days will produce enough data. If you want to be the first to know once the game is launched, #[a.btn-scroll(href="#contact") drop us a line].
-
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion4")
-                              | Are there any prizes involved in this challenge? 
-                  #accordion4.panel-collapse.collapse
-                    .panel-body
-                      | As computers around the world return results, the Timeline on this page will gradually fill out. If a result from your computer comes at just the right time to unlock a historical fact, you'll get a special mention on the timeline. 
-
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion5")
-                              | Will I get any feedback about how much I have contributed personally to the project?  
-                  #accordion5.panel-collapse.collapse
-                    .panel-body
-                      | Once you've got the project running, you'll be able to see your progress on a web page that comes up every time you click Start Computing on this challenge page. 
-
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion6")
-                              | Does the software I install respect my privacy? And how do I get rid of it, if I want to? 
-                  #accordion6.panel-collapse.collapse
-                    .panel-body
-                      | The only data about you that we keep on our server is a unique identifier for your computer, which we use to attribute your contributions, and your login username, but not the password. To uninstall at any time, see #[a(href="http://google.com") these instructions].
-
-                .panel.panel-primary
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion7")
-                              | Can I install this challenge on several computers, and see their total performance? 
-                  #accordion7.panel-collapse.collapse
-                    .panel-body
-                      | Yes, just make sure you login with the same account everywhere, so you can aggregate your results. 
-
-
-
-    // Section: timelines
-
-    // Section: timelines
-
-    // Section: timelines
-
-    // Section: timelines
+              p 
+                | If you run into any problems when trying to participate, #[a.btn-scroll(href="#contact") please let us know] we want to learn from you!
+  
 
     // Section: timelines
     section#timeline.home-section.color-dark.bg-white
@@ -464,25 +386,24 @@ html(lang="en")
             p
               | The CERN 60 Public Computing Challenge is brought to you by the Citizen Cyberlab project and the Citizen Cyberscience Centre. We're pushing the boundaries of citizen science and informal learning on the Web. Want to learn more about us? Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
 
-
-      #LOGOS.container
-        span
-          img(src="images/partners/citizen_cyberlab.jpg")
-        span
-          img(src="images/partners/ccyberscience.png")
-        span
-          img(src="images/partners/fp7.jpg")
-        span
-          img(src="images/partners/eu.jpg")
-        span
-          img(src="images/partners/cern.jpg")
+      .container
+        .col-xs-4.col-sm-3.col-md-3
+                span
+                  img(src="images/partners/citizen_cyberlab.jpg")
+        .col-xs-4.col-sm-3.col-md-3
+                span
+                  img(src="images/partners/fp7.jpg")
+        .col-xs-4.col-sm-3.col-md-3
+                span
+                  img(src="images/partners/eu.jpg")
+        .col-xs-4.col-sm-3.col-md-3
+                span
+                  img(src="images/partners/cern.jpg")
 
       p &nbsp;
       p &nbsp;
 
     #map(style="height:300px")
-    //footer
-    //img(src="images/bubble.jpeg", width="100%", height="200px")
 
     //- footer
     //-   .container

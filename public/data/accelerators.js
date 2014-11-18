@@ -2,23 +2,9 @@ var TOTAL = {
 	"headline" : "CERN 60 years",
 	"description" : "Learn about significant events in particle physics through the 60 years of CERN's history, which will be released chronologically as the challenge progresses. Each task your computer processes advances the timeline.",
 	"totalEvents" : 717445350000,
-	"startDate" : "1949,12,9",
+	"startDate" : "1954,3,17",
 	"endDate" : "2012,7,4",
 	"majorEvents" : [
-					   {
-					      "headline":"Origins",
-					      "date":"1949,12,9",
-					      "media":"https://c2.staticflickr.com/6/5087/5248565279_56c7a0d787_z.jpg",
-					      "description":"<p>At the end of the Second World War, European science was no longer world-class. Following the example of international organizations, a handful of visionary scientists imagined creating a European atomic physics laboratory. Raoul Dautry, Pierre Auger and Lew Kowarski in France, Edoardo Amaldi in Italy and Niels Bohr in Denmark were among these pioneers. Such a laboratory would not only unite European scientists but also allow them to share the increasing costs of nuclear physics facilities.</p>\n<p>French physicist Louis de Broglie put forward the first official proposal for the creation of a European laboratory at the European Cultural Conference, which opened in Lausanne on 9 December 1949. A further push came at the fifth UNESCO General Conference, held in Florence in June 1950, where American physicist and Nobel laureate Isidor Rabi tabled a resolution authorizing UNESCO to \"assist and encourage the formation of regional research laboratories in order to increase international scientific collaboration&hellip;\"</p>\n<p>At an intergovernmental meeting of UNESCO in Paris in December 1951, the first resolution concerning the establishment of a European Council for Nuclear Research was adopted. Two months later, 11 countries signed an agreement establishing the provisional council &ndash; the acronym CERN was born.</p>\n",
-					      "icon":"https://upload.wikimedia.org/wikipedia/commons/c/cc/Ambox_green_tick.png"
-					   },
-					   {
-					      "headline":"Where to build?",
-					      "date":"1952,10,1",
-					      "media":"http://timeline.web.cern.ch/sites/timeline.web.cern.ch/files/council-session-1952.jpg",
-					      "description":"<p>Geneva was selected as the site for the CERN Laboratory at the third session of the provisional council in 1952. This selection successfully passed a referendum in the canton of Geneva in June 1953 by 16,539 votes to 7332.</p>\n",
-					      "icon":"http://timeline.web.cern.ch/sites/timeline.web.cern.ch/files/council-session-1952.jpg"
-					   },
 					   {
 					      "headline":"Breaking ground",
 					      "date":"1954,3,17",

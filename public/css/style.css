@@ -1201,3 +1201,6 @@ a.btn:focus{
     font-family: 'Roboto', sans-serif;
 }
 
+#LOGOS span {
+	margin-right:10px;
+}
