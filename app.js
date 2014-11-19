@@ -271,12 +271,12 @@ app.get('/auth/boinc', function(req, res){
 	res.render('login-boinc', {});
 })
 
-app.post('/auth/boinc/login', function(req, res, next) {
+app.post('/auth/boinc', function(req, res, next) {
 	passport.authenticate('local', function(err, user, info) {
 		if (err) {
 		        return res.render('login-boinc', {errorMessage: err});
 		} else if (!user) {
-		        return res.render('login-boinc', {errorMessage: 'A server error occured while loggin-in'});
+		        return res.render('login-boinc', {errorMessage: "Could not log-in (" + (info['message'] || "Server error") + ")"});
 		} else {
 			req.logIn(user, function(err) {
 				if (err) return res.render('login-boinc', {errorMessage: err});

@@ -67,7 +67,8 @@ function boinc_login(arg_email, arg_password, callback) {
 							'country': rec['country'][0],
 							'weak_auth': rec['weak_auth'][0],
 							'cpid': rec['cpid'][0],
-							'authenticator': auth
+							'authenticator': auth,
+							'provider': 'boinc'
 						});
 					}
 				});
