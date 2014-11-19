@@ -1201,6 +1201,17 @@ a.btn:focus{
     font-family: 'Roboto', sans-serif;
 }
 
+/* -- Image footer -- */
+
+div.image-footer {
+    height: 180px;
+    background-image: url(../img/bubble-pale.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #333366;
+}
+
 #LOGOS span {
 	margin-right:10px;
 }
