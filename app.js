@@ -1,6 +1,7 @@
 var http = require('http')
 var https = require('https')
 var fs = require('fs')
+var BoincStrategy = require('./boinc.js')
 
 var authenticationConfig = require("./config.js")
 
@@ -18,7 +19,6 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var SamlStrategy = require('passport-saml').Strategy;
-
 
 
 // serialize and deserialize
@@ -53,6 +53,8 @@ function(accessToken, refreshToken, profile, done) {
  });
 }
 ));
+
+passport.use(BoincStrategy);
 
 /**
 
@@ -265,6 +267,24 @@ app.get('/acc.json', function(req, res){
 	res.send({ user : req.user || false });
 })
 
+app.get('/auth/boinc', function(req, res){
+	res.render('login-boinc', {});
+})
+
+app.post('/auth/boinc/login', function(req, res, next) {
+	passport.authenticate('local', function(err, user, info) {
+		if (err) {
+		        return res.render('login-boinc', {errorMessage: err});
+		} else if (!user) {
+		        return res.render('login-boinc', {errorMessage: 'A server error occured while loggin-in'});
+		} else {
+			req.logIn(user, function(err) {
+				if (err) return res.render('login-boinc', {errorMessage: err});
+				return res.redirect('/challenge/acc.io');
+			});
+		}
+	})(req, res, next);
+});
 
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
 

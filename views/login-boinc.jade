@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		title= pageTitle
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+		link(rel="stylesheet", href="style/css/challenge.css")
+		script(type="text/javascript", src="//code.jquery.com/jquery-1.11.0.min.js")
+		script(type="text/javascript", src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+		script(type="text/javascript", src="//cdn.rawgit.com/carhartl/jquery-cookie/master/src/jquery.cookie.js")
+
+	body
+		.container(id="credits")
+			.row
+				.col-sm-3
+				.col-sm-6
+					h1.text-center Test4Theory BOINC Login
+					p &nbsp;
+					-if(errorMessage)
+						.alert.alert-danger(role="alert")
+							span.glyphicon.glyphicon-exclamation-sign
+							span.sr-only Error:
+							span &nbsp; #{errorMessage}
+					.well
+						p
+							span Fill-in your
+							a(href="http://lhcathome2.cern.ch/vLHCathome/") test4theory account
+							span information and click
+								em Login
+						form(role='form',action="boinc/login",method="post")
+							.form-group
+								label(for='boincEmail') Email address
+								input#boincEmail.form-control(name='username', type='email', placeholder='Enter email')
+							.form-group
+								label(for='boincPassword') Password
+								input#boincPassword.form-control(name='password', type='password', placeholder='Password')
+							button.btn.btn-default(type='submit') Login
+				.col-sm-6
+

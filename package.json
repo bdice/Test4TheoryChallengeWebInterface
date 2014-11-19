@@ -9,6 +9,9 @@
 		"passport-facebook" : "*",
 		"passport-google-oauth" : "*",
 		"passport-twitter" : "*",
-		"passport-saml" : "*"
+		"passport-saml" : "*",
+		"passport-local" : "*",
+                "crypto" : "*",
+		"xml2js" : "*"
 	}
 }
