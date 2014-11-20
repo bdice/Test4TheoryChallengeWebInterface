@@ -51,7 +51,7 @@ function boinc_login(arg_email, arg_password, callback) {
 			} else {
 
 				// We have an authenticator
-				var auth = data['account_out']['authenticator'];
+				var auth = data['account_out']['authenticator'][0];
 
 				// Get account details
 				boinc_api("am_get_info.php?account_key=" + auth, function(data) {
