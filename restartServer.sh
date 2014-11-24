@@ -2,4 +2,4 @@
 
 
 killall node
-node app.js&
+nohup node app.js&

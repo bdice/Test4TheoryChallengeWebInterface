@@ -43,7 +43,9 @@ function boinc_login(arg_email, arg_password, callback) {
 
 	// Send boinc API query
 	boinc_api("lookup_account.php?email_addr="+arg_email+"&passwd_hash="+md5sum.digest('hex')+"&get_opaque_auth=1", function(data) {
-		if (!data || (data['error'] != undefined)) {
+		if (!data) {
+			callback(false, "Could not parse response!" );
+		} else if (data['error'] != undefined) {
 			callback(false, data['error']['error_msg'] || "Could not handle response!" );
 		} else {
 			if ((data['account_out'] == undefined) || (data['account_out']['authenticator'] == undefined)) {
@@ -55,7 +57,9 @@ function boinc_login(arg_email, arg_password, callback) {
 
 				// Get account details
 				boinc_api("am_get_info.php?account_key=" + auth, function(data) {
-					if (!data || (data['error'] != undefined)) {
+					if (!data) {
+						callback(false, "Could not parse response!" );
+					} else if (data['error'] != undefined) {
 						callback(false, data['error']['error_msg'] || "Could not handle response!" );
 					} else if (data['am_get_info_reply'] == undefined) {
 						callback(false, "Could not get user accunt information");
