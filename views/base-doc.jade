@@ -44,19 +44,19 @@ html(lang="en")
               #menu.collapse.navbar-collapse
                 ul.nav.navbar-nav.navbar-right
                   li.active
-                    a(href="#intro") Home
+                    a(href="/challenge/#intro") Home
                   li
-                    a(href="#about") About
+                    a(href="/challenge/#about") About
                   li
-                    a(href="#join") Join
+                    a(href="/challenge/#join") Join
                   li
-                    a(href="#timeline") Timeline
+                    a(href="/challenge/#timeline") Timeline
                   li
-                    a(href="#status") Status
+                    a(href="/challenge/#status") Status
                   li
-                    a(href="#more") More
+                    a(href="/challenge/#more") More
                   li
-                    a(href="#contact") Contact Us 
+                    a(href="/challenge/#contact") Contact Us 
 
               // /.Navbar-collapse
         // /.container
@@ -70,24 +70,10 @@ html(lang="en")
             .animatedParent
               .section-heading.text-center.animated.bounceInDown
                 h2.h-bold
-                  block page-title
+                  block doc-title
                 .divider-header
       .container
-        block page-body
-
-    section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
-      .container.marginbot-50
-        .row
-          .col-lg-8.col-lg-offset-2
-            .animatedParent
-              .section-heading.text-center
-                h2.h-bold.animated.bounceInDown Stay in touch
-                .divider-header
-      .container
-        .row.marginbot-80
-          .col-md-8.col-md-offset-2
-            p
-              | The CERN 60 Public Computing Challenge is brought to you by the Citizen Cyberlab project and the Citizen Cyberscience Centre. We're pushing the boundaries of citizen science and informal learning on the Web. Want to learn more about us? Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
+        block doc-content
 
       #LOGOS.container
         span
