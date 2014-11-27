@@ -249,6 +249,10 @@ app.get('/', function(req, res) {
     res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
 
+app.get('/doc-test', function(req, res) {
+    res.render('doc-test', { user : req.user })
+})
+
 // Accounting information
 app.get('/account', function(req, res){
 	res.render('vlhc-login', {pageTitle : 'Account', user : req.user});

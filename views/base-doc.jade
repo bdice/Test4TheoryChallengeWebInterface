@@ -1,0 +1,122 @@
+// Authors : S.P. Mohanty<sp.mohanty@cern.ch> , Ioannis Charampidis<Ioannis.Charalampidis@cern.ch>
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    title CERN 60 Public Computing Challenge
+    // css
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(href="font-awesome/css/font-awesome.min.css", rel="stylesheet", type="text/css")
+    link(href="css/nivo-lightbox.css", rel="stylesheet")
+    link(href="css/nivo-lightbox-theme/default/default.css", rel="stylesheet", type="text/css")
+    link(href="css/animations.css", rel="stylesheet")
+    link(href="css/style.css", rel="stylesheet")
+    link(href="color/default.css", rel="stylesheet")
+  body#page-top(data-spy="scroll", data-target=".navbar-custom")
+
+    noscript
+      iframe(src='//www.googletagmanager.com/ns.html?id=GTM-5JPWNS', height='0', width='0', style='display: none; visibility: hidden;')
+    script
+      | (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      | new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      | j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      | '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      | })(window,document,'script','dataLayer','GTM-5JPWNS');
+
+    // Navigation
+    #navigation
+      nav.navbar.navbar-custom(role="navigation")
+        .container
+          .row
+            .col-md-2
+              .site-logo
+                a.brand(href="#")
+                  img(src="img/logo.png", height="50px")
+            .col-md-10
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target="#menu")
+                  i.fa.fa-bars
+              // Collect the nav links, forms, and other content for toggling
+              #menu.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li.active
+                    a(href="#intro") Home
+                  li
+                    a(href="#about") About
+                  li
+                    a(href="#join") Join
+                  li
+                    a(href="#timeline") Timeline
+                  li
+                    a(href="#status") Status
+                  li
+                    a(href="#more") More                     
+                  li
+                    a(href="#contact") Contact Us 
+
+              // /.Navbar-collapse
+        // /.container
+    // /Navigation
+
+    // Section: document
+    section#document.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold
+                	block page-title
+                .divider-header
+      .container
+      	block page-body
+
+    section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center
+                h2.h-bold.animated.bounceInDown Stay in touch
+                .divider-header
+      .container
+        .row.marginbot-80
+          .col-md-8.col-md-offset-2
+            p
+              | The CERN 60 Public Computing Challenge is brought to you by the Citizen Cyberlab project and the Citizen Cyberscience Centre. We're pushing the boundaries of citizen science and informal learning on the Web. Want to learn more about us? Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
+
+      #LOGOS.container
+        span
+          img(src="images/partners/citizen_cyberlab.jpg")
+        span
+          img(src="images/partners/fp7.jpg")
+        span
+          img(src="images/partners/eu.jpg")
+        span
+          img(src="images/partners/cern.jpg")
+        span
+          img(src="images/partners/ccyberscience.png")
+
+      p &nbsp;
+      p &nbsp;
+
+    //#map(style="height:300px")
+    //footer
+    div(class="image-footer")
+
+    // Core JavaScript Files
+    script(src="js/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(src="js/jquery.sticky.js")
+    script(src="js/jquery.easing.min.js")
+    script(src="js/jquery.scrollTo.js")
+    script(src="js/jquery.appear.js")
+    script(src="js/stellar.js")
+    script(src="js/nivo-lightbox.min.js")
+    script(src="js/custom.js")
+    script(src="js/my-custom.js")
+    script(src="js/css3-animate-it.js")
