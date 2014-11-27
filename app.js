@@ -187,7 +187,7 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/challenge/acc.io');
+		res.redirect('/challenge/vlc_login.callback');
 	});
 
 app.get('/auth/google',
@@ -197,7 +197,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: '/login' , scope : "profile" }),
 	function(req, res) {
-		res.redirect('/challenge/acc.io');
+		res.redirect('/challenge/vlc_login.callback');
 	});
 
 app.get('/auth/twitter',
@@ -207,7 +207,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/login' }),
 	function(req, res) {
-		res.redirect('/challenge/acc.io');
+		res.redirect('/challenge/vlc_login.callback');
 	});
 
 app.get('/auth/boinc', function(req, res){
@@ -222,7 +222,7 @@ app.post('/auth/boinc', function(req, res, next) {
 			} else {
 				req.logIn(user, function(err) {
 					if (err) return res.render('login-boinc', {errorMessage: err});
-					return res.redirect('/challenge/acc.io');
+					return res.redirect('/challenge/vlc_login.callback');
 				});
 			}
 		})(req, res, next);
@@ -230,7 +230,7 @@ app.post('/auth/boinc', function(req, res, next) {
 
 app.get('/logout', function(req, res){
 	req.logout();
-	res.redirect('/challenge/acc.io');
+	res.redirect('/challenge/vlc_login');
 });
 
 app.get('/login', function(req, res){
@@ -271,9 +271,16 @@ app.get('/vlhc_login', function(req, res){
 	res.render('account-io', {pageTitle : 'Account', user : req.user});
 })
 
+// Login callback that just forwards the json information to the 
+// oppener window and then closes it
+app.get('/vlc_login.callback', function(req, res) {
+	// Render the account page
+	res.render('vlhc-callback', {user : req.user});
+});
+
 // Credits screen
 app.get('/vlhc_credits', function(req, res){
-	res.render('credits', {
+	res.render('vlhc-credits', {
 		pageTitle : 'Account',
 		user : req.user
 	});

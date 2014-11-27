@@ -68,6 +68,7 @@ function boinc_login(arg_email, arg_password, callback) {
 						callback({
 							'id': rec['id'][0],
 							'name': rec['name'][0],
+							'displayName': rec['name'][0],
 							'country': rec['country'][0],
 							'weak_auth': rec['weak_auth'][0],
 							'cpid': rec['cpid'][0],
