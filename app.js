@@ -262,18 +262,17 @@ app.get('/account.json', function(req, res){
 // --------------------
 
 // Log user in (logging him out if needed before)
-app.get('/vlhc/login', function(req, res){
+app.get('/vlhc_login', function(req, res){
 	if(req.isAuthenticated()){
 		// Logout if prompted to log-in
 		req.logout();
-		res.redirect('/challenge/vlhc/login');
 	}
 	// Render the account page
 	res.render('account-io', {pageTitle : 'Account', user : req.user});
 })
 
 // Credits screen
-app.get('/vlhc/credits', function(req, res){
+app.get('/vlhc_credits', function(req, res){
 	res.render('credits', {
 		pageTitle : 'Account',
 		user : req.user
