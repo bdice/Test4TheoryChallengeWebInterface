@@ -1,91 +1,86 @@
+
+// Global includes
 var http = require('http')
 var https = require('https')
 var fs = require('fs')
-var BoincStrategy = require('./boinc.js')
+var path = require('path');
+var express = require('express.io')
+var redis = require("redis");
 
-var authenticationConfig = require("./config.js")
-
+// Tuning
 http.globalAgent.maxSockets = 100000
 https.globalAgent.maxSockets = 100000
 
+// Setup SSL
 var SSLoptions = {
 	key :  fs.readFileSync('keys/key.pem'),
 	cert : fs.readFileSync('keys/cert.pem')
 }
 
-//OAUTH specific params
+// Setup express application
+var app = express()
+var A = app.https(SSLoptions).io()
+
+////////////////////////////////////////////////
+// OAUTH and Log-In configuration
+////////////////////////////////////////////////
+
+// Load authentiation config
+var authenticationConfig = require("./config.js")
+
+// OAUTH specific params
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
-var SamlStrategy = require('passport-saml').Strategy;
-
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
-done(null, user);
+	done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
-done(null, obj);
+	done(null, obj);
 });
 
-// config
+// LOGIN: Facebook
 passport.use(new FacebookStrategy(authenticationConfig.facebook,
-function(accessToken, refreshToken, profile, done) {
- process.nextTick(function () {
-   return done(null, profile);
- });
-}
+	function(accessToken, refreshToken, profile, done) {
+		process.nextTick(function () {
+			return done(null, profile);
+		});
+	}
 ));
 
+// LOGIN: Google
 passport.use(new GoogleStrategy(authenticationConfig.google,
-function(token, tokenSecret, profile, done) {
-	process.nextTick(function () {
-		return done(null, profile);
-	});
-}
+	function(token, tokenSecret, profile, done) {
+		process.nextTick(function () {
+			return done(null, profile);
+		});
+	}
 ));
 
+// LOGIN: Twitter
 passport.use(new TwitterStrategy(authenticationConfig.twitter,
-function(accessToken, refreshToken, profile, done) {
- process.nextTick(function () {
-   return done(null, profile);
- });
-}
+	function(accessToken, refreshToken, profile, done) {
+		process.nextTick(function () {
+			return done(null, profile);
+		});
+	}
 ));
 
+// LOGIN: Boinc
+var BoincStrategy = require('./boinc.js')
 passport.use(BoincStrategy);
-
-/**
-
-passport.use(new SamlStrategy(
-  {
-    entryPoint: 'https://login-dev.cern.ch/adfs/ls/',
-    issuer: 'CERN Test 4 Theory',
-	callbackURL: "https://t4tc-mcplots-web.cern.ch:7076/auth/cern/callback"
-  },
-function(accessToken, refreshToken, profile, done) {
- process.nextTick(function () {
-   return done(null, profile);
- });
-}
-
-));
-
-**/
-
 
 
 //OAUTH specific params end
 
+////////////////////////////////////////////////
+// Express application initialization
+////////////////////////////////////////////////
 
-var path = require('path');
-var express = require('express.io')
-var app = express()
 
-var A = app.https(SSLoptions).io()
-
-var redis = require("redis");
 var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
 setInterval(function(){
@@ -98,7 +93,6 @@ setInterval(function(){
 	// for(var i=0;i<acceleratorList.length;i++){
 	// 		multi.hgetall("T4TC_MONITOR/"+acceleratorList[i]+"/");
 	// 		multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
-
 	// }
 
 	//TOTAL Stats
@@ -156,7 +150,9 @@ setInterval(function(){
 //Redis Code ends
 
 
-//setting up app
+////////////////////////////////////////////////
+// Setup Application
+////////////////////////////////////////////////
 
 //Redering Engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -170,7 +166,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
 
+// test authentication
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) { return next(); }
+	res.redirect('/')
+}
 
+// Authentication URLs
+// --------------------
 
 //Auth specific
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -196,6 +199,7 @@ app.get('/auth/google/callback',
 	function(req, res) {
 		res.redirect('/challenge/acc.io');
 	});
+
 app.get('/auth/twitter',
 	passport.authenticate('twitter'),
 	function(req, res){
@@ -206,32 +210,28 @@ app.get('/auth/twitter/callback',
 		res.redirect('/challenge/acc.io');
 	});
 
-
-/**
-app.get('/auth/cern',
-  passport.authenticate('saml', { failureRedirect: '/login', failureFlash: true }),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
-//CERN custom callback
-app.get('/auth/cern/callback',
-	passport.authenticate('saml', { failureRedirect: '/login' }),
-	function(req, res) {
-		res.redirect('/account');
+app.get('/auth/boinc', function(req, res){
+		res.render('login-boinc', {});
+	})
+app.post('/auth/boinc', function(req, res, next) {
+		passport.authenticate('local', function(err, user, info) {
+			if (err) {
+			        return res.render('login-boinc', {errorMessage: err});
+			} else if (!user) {
+			        return res.render('login-boinc', {errorMessage: "Could not log-in (" + (info['message'] || "Server error") + ")"});
+			} else {
+				req.logIn(user, function(err) {
+					if (err) return res.render('login-boinc', {errorMessage: err});
+					return res.redirect('/challenge/acc.io');
+				});
+			}
+		})(req, res, next);
 	});
-**/
 
 app.get('/logout', function(req, res){
 	req.logout();
 	res.redirect('/challenge/acc.io');
 });
-
-// test authentication
-function ensureAuthenticated(req, res, next) {
-if (req.isAuthenticated()) { return next(); }
-res.redirect('/')
-}
 
 app.get('/login', function(req, res){
 	if(req.isAuthenticated()){
@@ -241,15 +241,46 @@ app.get('/login', function(req, res){
 	}
 });
 
+// General purpose URLs
+// --------------------
 
-//Auth specific code end
-
-
-
-//Setup index route.
+// Landing page
 app.get('/', function(req, res) {
-    res.render('new-layout', {pageTitle:'Test 4 Theory | Home', user : req.user })
+    res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
+
+// Accounting information
+app.get('/account', function(req, res){
+	res.render('account-io', {pageTitle : 'Account', user : req.user});
+})
+app.get('/account.json', function(req, res){
+	res.set("Access-Control-Allow-Origin", "*");
+	res.send({ user : req.user || false });
+})
+
+// VLHC URLs
+// --------------------
+
+// Log user in (logging him out if needed before)
+app.get('/vlhc/login', function(req, res){
+	if(req.isAuthenticated()){
+		// Logout if prompted to log-in
+		req.logout();
+		res.redirect('/challenge/vlhc/login');
+	}
+	// Render the account page
+	res.render('account-io', {pageTitle : 'Account', user : req.user});
+})
+
+// Credits screen
+app.get('/vlhc/credits', function(req, res){
+	res.render('credits', {
+		pageTitle : 'Account',
+		user : req.user
+	});
+})
+// Backup URLs
+// --------------------
 
 app.get('/grid-status', function(req, res){
 	res.render('grid-status', {pageTitle : 'Test 4 Theory | Grid Status', user : req.user});
@@ -259,37 +290,13 @@ app.get('/new', function(req, res){
 	res.render('index', {pageTitle : 'Test 4 Theory', user : req.user});
 })
 
-app.get('/acc.io', function(req, res){
-	res.render('account-io', {pageTitle : 'Account', user : req.user});
-})
-app.get('/acc.json', function(req, res){
-	res.set("Access-Control-Allow-Origin", "*");
-	res.send({ user : req.user || false });
-})
+////////////////////////////////////////////////
+// Server initialization
+////////////////////////////////////////////////
 
-app.get('/auth/boinc', function(req, res){
-	res.render('login-boinc', {});
-})
-
-app.post('/auth/boinc', function(req, res, next) {
-	passport.authenticate('local', function(err, user, info) {
-		if (err) {
-		        return res.render('login-boinc', {errorMessage: err});
-		} else if (!user) {
-		        return res.render('login-boinc', {errorMessage: "Could not log-in (" + (info['message'] || "Server error") + ")"});
-		} else {
-			req.logIn(user, function(err) {
-				if (err) return res.render('login-boinc', {errorMessage: err});
-				return res.redirect('/challenge/acc.io');
-			});
-		}
-	})(req, res, next);
-});
-
+//  Serve static files
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
-
 app.listen(443) //HTTPS
-
 console.log("Serving on port 443")
 
 // HTTP -> HTTPS redirect
