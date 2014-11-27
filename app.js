@@ -286,9 +286,17 @@ app.get('/vlc_login.callback', function(req, res) {
 
 // Credits screen
 app.get('/vlhc_credits', function(req, res){
+
+	// Get VM ID from the query
+	var vmid = req.query['vmid'],
+		user = req.query['user'];
+
+	// Render
 	res.render('vlhc-credits', {
-		user : req.user
+		vmid : vmid,
+		userName : user
 	});
+
 })
 // Backup URLs
 // --------------------
