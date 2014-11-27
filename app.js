@@ -271,6 +271,12 @@ app.get('/vlhc_login', function(req, res){
 	res.render('vlhc-login', {pageTitle : 'Account', user : req.user});
 })
 
+// Logout request
+app.get('/vlhc_logout', function(req, res) {
+	req.logout();
+	res.redirect('/challenge/vlc_login.callback')
+});
+
 // Login callback that just forwards the json information to the 
 // oppener window and then closes it
 app.get('/vlc_login.callback', function(req, res) {
@@ -281,7 +287,6 @@ app.get('/vlc_login.callback', function(req, res) {
 // Credits screen
 app.get('/vlhc_credits', function(req, res){
 	res.render('vlhc-credits', {
-		pageTitle : 'Account',
 		user : req.user
 	});
 })
