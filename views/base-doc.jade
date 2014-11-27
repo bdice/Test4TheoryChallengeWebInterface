@@ -33,7 +33,7 @@ html(lang="en")
           .row
             .col-md-2
               .site-logo
-                a.brand(href="#")
+                a.brand(href="/challenge/")
                   img(src="img/logo.png", height="50px")
             .col-md-10
               // Brand and toggle get grouped for better mobile display
@@ -63,16 +63,7 @@ html(lang="en")
     // /Navigation
 
     // Section: document
-    section#document.home-section.color-dark.bg-white
-      .container.marginbot-20
-        .row
-          .col-lg-8.col-lg-offset-2
-            .section-heading.text-center
-              h2.h-bold
-                block doc-title
-              .divider-header
-      .container
-        block doc-content
+    block content
 
     // Logos and footer
     section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
