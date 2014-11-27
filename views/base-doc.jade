@@ -64,17 +64,20 @@ html(lang="en")
 
     // Section: document
     section#document.home-section.color-dark.bg-white
-      .container.marginbot-50
+      .container.marginbot-20
         .row
           .col-lg-8.col-lg-offset-2
-            .animatedParent
-              .section-heading.text-center.animated.bounceInDown
-                h2.h-bold
-                  block doc-title
-                .divider-header
+            .section-heading.text-center
+              h2.h-bold
+                block doc-title
+              .divider-header
       .container
         block doc-content
 
+    // Logos and footer
+    section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
+      .container.marginbot-50
+        .row
       #LOGOS.container
         span
           img(src="images/partners/citizen_cyberlab.jpg")
