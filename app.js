@@ -251,7 +251,7 @@ app.get('/', function(req, res) {
 
 // Accounting information
 app.get('/account', function(req, res){
-	res.render('account-io', {pageTitle : 'Account', user : req.user});
+	res.render('vlhc-login', {pageTitle : 'Account', user : req.user});
 })
 app.get('/account.json', function(req, res){
 	res.set("Access-Control-Allow-Origin", "*");
@@ -268,7 +268,7 @@ app.get('/vlhc_login', function(req, res){
 		req.logout();
 	}
 	// Render the account page
-	res.render('account-io', {pageTitle : 'Account', user : req.user});
+	res.render('vlhc-login', {pageTitle : 'Account', user : req.user});
 })
 
 // Login callback that just forwards the json information to the 
