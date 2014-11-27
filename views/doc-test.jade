@@ -1,15 +1,376 @@
 extends base-doc
 
 block content
-	section#document.home-section.color-dark.bg-white
-		.container.marginbot-20
-			.row
-				.col-lg-8.col-lg-offset-2
-					.section-heading.text-center
-						h2.h-bold
-							| This is a test document
-						.divider-header
-		.container
-			h1 Hello world
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit luctus sem a volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras rutrum convallis ante, sit amet tempus neque eleifend quis. Duis nec dapibus magna. Cras sed finibus arcu. Maecenas laoreet mollis erat, vitae malesuada metus maximus vitae. Quisque dapibus, sem ut euismod interdum, lacus risus rhoncus nulla, at fermentum nunc eros vel nisi. Nullam in maximus erat, eu vestibulum massa. Fusce lectus velit, molestie sed condimentum sit amet, ultricies non augue. Integer semper, justo non ullamcorper aliquet, elit leo gravida felis, eget maximus nunc nisl et lectus. Mauris imperdiet, nibh et pulvinar volutpat, ipsum metus congue sem, sollicitudin sagittis nulla enim eget leo. Integer auctor, orci a tempus consequat, sapien augue consequat leo, in suscipit risus magna et magna. Pellentesque luctus ex vitae odio facilisis maximus. Etiam vestibulum tortor nunc, sit amet hendrerit sapien maximus sed. Aenean mollis metus urna, at tempor dolor rhoncus ut.
-			p Vivamus molestie malesuada faucibus. Pellentesque sit amet molestie dolor, nec rhoncus ante. Cras a enim ac dolor egestas faucibus non sit amet purus. Suspendisse dignissim mi sed cursus varius. Curabitur vel tellus sit amet mi feugiat fermentum in ut sem. Nam consectetur arcu convallis, feugiat erat in, vestibulum libero. Sed molestie porta pulvinar. Curabitur gravida blandit elementum. Fusce malesuada venenatis ex, ac sodales eros lacinia vehicula. Sed congue risus eu finibus ultrices. Integer imperdiet sapien in magna viverra tempus. Mauris cursus augue orci, at iaculis augue rhoncus id. Aliquam luctus felis eget finibus pellentesque. Etiam metus lorem, tempor et luctus eu, tincidunt sed metus.
+  section#document.home-section.color-dark.bg-white
+    .container.marginbot-20
+      .row
+        .col-lg-8.col-lg-offset-2
+          .section-heading.text-center
+            h2.h-bold
+              | This is a test document
+            .divider-header
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2
+          p
+              p(align='center')
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')
+                      | T4T_WebAPI
+                      | test instructions and hints
+                p  
+                p
+                  | The current
+                  | prototype supports the following platforms:
+                p  
+                p
+                  span(style='font-weight: bold;') MacOSX
+                  | :
+                  | 10.8 and later
+                p
+                  span(style='font-weight: bold;') Windows
+                  | : XP SP3+ including Win7 and
+                  | Win8
+                p
+                  span(style='font-weight: bold;') Linux
+                  | : Ubuntu 13.0+ (Debian) and SLC6
+                  | (Red Hat)
+                p  
+                p
+                  | Browsers
+                  | supported are:
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    | Internet
+                    | Explorer
+                  | 10+,
+                  span(style='font-weight: bold;') Firefox
+                  | 11+,
+                  span(style='font-weight: bold;') Chrome
+                  | 14+,
+                  span(style='font-weight: bold;') Safari
+                  | 6+,
+                  span(style='font-weight: bold;') Opera
+                  | 12.1+,
+                  span(style='font-weight: bold;') SeaMonkey
+                  | 2.10.1+
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') TEST SEQUENCE
+                  span(style='text-decoration: underline;') :
+                p  
+                p
+                  | a.
+                  | Point your browser to the URL
+                  span(style='font-weight: bold;') http://test4theory.cern.ch/vlhc
+                p     
+                p
+                  | b. First you will be guided through
+                  | the installation of a small app ("cernvm-webapi", currently version
+                  | 2.0.10)
+                  span(style='font-weight: bold;') (see *** NOTES below)
+                  | .
+                p  
+                p
+                  | c. Next you will be helped to install
+                  span(style='font-weight: bold;')
+                    | VirtualBox
+                    | plus its Extension Pack
+                  | (if you don't already have them) - this may take
+                  | several minutes to download.
+                p  
+                p
+                  | d. Next you will be asked to allow starting
+                  | a VM: click OK for this. Then you should be able to
+                  span(style='font-weight: bold;')
+                    | create and start
+                    | your virtual accelerator
+                  | using the button "
+                  span(style='font-weight: bold;') Start
+                  | ".
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') NOTE
+                  span(style='font-weight: bold;') :
+                  | The very first
+                  | time, your new VM has to be downloaded and installed - this takes several
+                  | minutes so be patient! This image is kept permanently so this only happens
+                  | once.
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    | When the VM is
+                    | running
+                  | ,
+                  | you get jobs from CERN, and your Web page shows you information on each job's
+                  | type, progress, event rate, etc. Each job contains 100,000 events and needs
+                  | some tens of minutes to complete. Several job types appear, some taking longer
+                  | than others. If you leave the VM running, you will continually process jobs. If
+                  | this is sufficient for you, just ENJOY! You are contributing to real physics
+                  | research at CERN.
+                p  
+                p
+                  | You can
+                  span(style='font-weight: bold;')
+                    | stop and
+                    | save
+                  | your VM with the same button ("
+                  span(style='font-weight: bold;') Stop
+                  | ").
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    | Note that just
+                    | leaving or closing the web page does not by itself stop the VM
+                  | , which will
+                  | happily go on running jobs if it is not stopped !!!
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')
+                      | For existing
+                      | BOINC Test4Theory users
+                  span(style='text-decoration: underline;') :
+                p
+                  | We support a
+                  span(style='font-weight: bold;')
+                    | BOINC
+                    | login feature
+                  | so that the jobs you complete with T4T_WebAPI contribute to
+                  | your T4T account's MCPlots stats, Billionaires Club data and so on.
+                p  
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')
+                      | In all cases of
+                      | errors or strange behaviour, REFRESH THE WebAPI BROWSER WINDOW to recover
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                  span(style='font-weight: bold;')
+                p  
+                p  
+                p(align='center')
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') For advanced users:
+                p  
+                p
+                  | For more
+                  | information and control of your VM, press the
+                  span(style='font-weight: bold;') Toolbox button
+                  | (small
+                  | gearwheel) next to "Start/Stop" to see the
+                  span(style='font-weight: bold;') Status panel
+                  | :
+                p  
+                p
+                  | - under "
+                  span(style='font-weight: bold;') Subsystem status
+                  | "
+                  | you can see the system components during startup passing from grey to green (or
+                  | red for errors).
+                p  
+                p
+                  | - under "
+                  span(style='font-weight: bold;')
+                    | Virtual Machine
+                    | Configuration
+                  | " you can
+                  span(style='font-weight: bold;') see and modify
+                  | the items:
+                p :
+                p(align='center')
+                  span(style='font-weight: bold;') Allocated RAM (MB)
+                  | , the
+                  span(style='font-weight: bold;')
+                    | Number
+                    | of CPUs
+                  | , and the
+                  span(style='font-weight: bold;') Allocated CPU power
+                  | (the execution cap of each
+                  | CPU).
+                p(align='center')
+                  | After
+                  | any modification(s), press the "
+                  span(style='font-weight: bold;') Apply
+                  | " button to make
+                  | the change(s).
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') NOTE
+                  span(style='font-weight: bold;') :
+                  | Changing the
+                  span(style='font-weight: bold;')
+                    | Allocated
+                    | RAM
+                  | or
+                  span(style='font-weight: bold;') Number of CPUs
+                  | will cause a
+                  span(style='font-weight: bold;') VM reboot
+                  | when
+                  | "Apply" is activated.
+                p     
+                p
+                  | At the left of
+                  | the
+                  span(style='font-weight: bold;') "Apply"
+                  | button are
+                  span(style='font-weight: bold;') three other buttons
+                  | :
+                p  
+                p
+                  | - the "
+                  span(style='font-weight: bold;') Destroy
+                  | " button
+                  span(style='font-weight: bold;')  
+                  | (a
+                  | trashcan) which will
+                  span(style='font-weight: bold;') destroy your VM
+                  | (it warns you first).
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') NOTE
+                  span(style='font-weight: bold;') : 
+                  | You can restart
+                  | from a "Destroyed" state using
+                  span(style='font-weight: bold;') "Start"
+                  | . The initial
+                  | CernVM image is cached so doesn't need to be downloaded again, even after
+                  | "Destroy".
+                p  
+                p
+                  | - the "
+                  span(style='font-weight: bold;') Open screen
+                  | " button (an eye):
+                  | this shows your
+                  span(style='font-weight: bold;') VM consoles
+                  | . The important ones are:
+                p  
+                p
+                  | "Console 1": the
+                  span(style='font-weight: bold;')
+                    | boot sequence
+                    | plus job scheduler
+                  | ; "Console 2": the
+                  span(style='font-weight: bold;') job output
+                  | ;
+                  | "Console 5": the Unix
+                  span(style='font-weight: bold;') "top" command
+                  | .
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;') NOTE
+                  span(style='font-weight: bold;') : 
+                  | You need
+                  span(style='font-weight: bold;')  FLASH
+                  | for
+                  span(style='font-weight: bold;')  "
+                  | Open screen" to work.
+                  span(style='font-weight: bold;')  
+                p  
+                p
+                  | - the "
+                  span(style='font-weight: bold;')
+                    | Open
+                    | Application Website
+                  | " button (an arrow) will show the
+                  span(style='font-weight: bold;')
+                    | T4T Web output
+                    | and logs
+                  | of the VM.
+                p  
+                p
+                  | At any time you
+                  | are able to open the
+                  span(style='font-weight: bold;') VirtualBox Manager
+                  | window and check on the state of
+                  | your VM instance which is called "
+                  span(style='font-weight: bold;') VirtualLHC_Challenge
+                  | ". You
+                  | can make changes to this VM with the VirtualBox Manager interface and these
+                  | will be reflected in the WebAPI browser window (perhaps after refreshing it).
+                  | You can also point additional Web browser tabs or windows to the URL
+                  span(style='font-weight: bold;') http://test4theory.cern.ch/vlhc
+                  | and they will show the same output from your VM.
+                p  
+                p  
+                p
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')
+                      | In all cases of
+                      | errors or strange behaviour, REFRESH THE WebAPI BROWSER WINDOW to recover
+                  span(style='font-weight: bold;')
+                    span(style='text-decoration: underline;')  
+                  span(style='font-weight: bold;')
+                p
+                  span(style='font-weight: bold;')  
+                p
+                  span(style='font-weight: bold;')  
+                p(align='center')
+                  span(style='font-weight: bold;')
+                    | ***
+                    | NOTES ON INSTALLATION OF THE CernVM-WebAPI APP CURRENTLY:
+                p
+                  span(style='font-weight: bold;')  
+                p
+                  | As the
+                  | CernVM-WebAPI app isn't yet registered with an authority, it may currently need
+                  | a few extra clicks to install, e.g. on MacOSX you may have to view the
+                  | downloaded install icon in the Finder Download window and then right-click on
+                  | it to open it. This will not be needed after registration of the software.
+                p  
+                p
+                  span(style='font-weight: bold;') To uninstall
+                  | the
+                  | CernVM-WebAPI app, follow the following procedures for the respective
+                  | platforms:
+                p  
+                p
+                  | -
+                  span(style='font-weight: bold;') Windows
+                  | : There is an uninstall link on the start menu
+                p
+                  | -
+                  span(style='font-weight: bold;')
+                    | Linux
+                    | (Debian)
+                  | :  sudo apt-get remove
+                  | cernvm-webapi
+                p
+                  | -
+                  span(style='font-weight: bold;')
+                    | Linux (Red
+                    | Hat)
+                  | : sudo yum remove cernvm-webapi
+                p
+                  | -
+                  span(style='font-weight: bold;') Mac OSX 
+                  | :  run this first (in a terminal):
+                  span(style='font-weight: bold;')
+                    | launchctl unload
+                    | ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist
+                p
+                  | ...and then you can drag
+                  | the CernVM WebAPI from the applications to the trash can.
+                p  
+                p  
+                p  
+                p  
