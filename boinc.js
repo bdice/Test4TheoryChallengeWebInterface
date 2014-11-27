@@ -42,7 +42,7 @@ function boinc_login(arg_email, arg_password, callback) {
 	md5sum.update(arg_password + arg_email.toLowerCase());
 
 	// Send boinc API query
-	boinc_api("lookup_account.php?email_addr="+arg_email+"&passwd_hash="+md5sum.digest('hex')+"&get_opaque_auth=1", function(data) {
+	boinc_api("lookup_account.php?email_addr="+escape(arg_email)+"&passwd_hash="+escape(md5sum.digest('hex'))+"&get_opaque_auth=1", function(data) {
 		if (!data) {
 			callback(false, "Could not parse response!" );
 		} else if (data['error'] != undefined) {
@@ -56,7 +56,7 @@ function boinc_login(arg_email, arg_password, callback) {
 				var auth = data['account_out']['authenticator'][0];
 
 				// Get account details
-				boinc_api("am_get_info.php?account_key=" + auth, function(data) {
+				boinc_api("am_get_info.php?account_key=" + escape(auth), function(data) {
 					if (!data) {
 						callback(false, "Could not parse response!" );
 					} else if (data['error'] != undefined) {
