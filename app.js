@@ -249,8 +249,8 @@ app.get('/', function(req, res) {
     res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
 
-app.get('/doc-test', function(req, res) {
-    res.render('doc-test', { user : req.user })
+app.get('/t4t-hints.html', function(req, res) {
+    res.render('doc-hints', { user : req.user })
 })
 
 // Accounting information

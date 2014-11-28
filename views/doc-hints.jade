@@ -1,0 +1,182 @@
+extends base-doc
+
+block content
+  section#document.home-section.color-dark.bg-white
+    .container.marginbot-20
+      .row
+        .col-lg-8.col-lg-offset-2
+          .section-heading.text-center
+            h2.h-bold
+              | T4TWebAPI :: Test instructions and hints
+            .divider-header
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2
+          p
+            | The current prototype supports the following platforms:
+          ul
+            li
+              strong MacOSX
+              | : 10.8 and later
+            li
+              strong Windows
+              | : XP SP3+ including Win7 and Win8
+            li
+              strong Linux
+              | : Ubuntu 13.0+ and SLC6 (Red Hat)
+          p
+            | Browsers supported are:
+          ul
+            li
+              strong Internet Explorer
+              | 10+
+            li
+              strong Firefox
+              | 11+
+            li
+              strong Chrome
+              | 14+
+            li
+              strong Safari
+              | 6+
+            li
+              strong Opera
+              | 12.1+
+            li
+              strong SeaMonkey
+              | 2.10.1+
+          h1
+            | Test sequence
+          ol
+            li(style='margin: 10px;')
+              | Point your browser to the URL
+              a(href='http://test4theory.cern.ch/vlhc') http://test4theory.cern.ch/vlhc
+            li(style='margin: 10px;')
+              | First you will be guided through the installation of a small app "cernvm-webapi" (currently version 2.0.11).
+              br
+              | (see INSTALLATION NOTES below).
+            li(style='margin: 10px;')
+              | Next you will be helped to install VirtualBox plus its Extension Pack (if you don't already have them) - this may take several minutes to download.
+            li(style='margin: 10px;')
+              | Next you will be asked to allow starting a VM: click OK for this.
+            li(style='margin: 10px;')
+              | Then create and start your virtual accelerator using the button "Start".
+          p
+            strong NOTE
+            | : The very first time, your new VM has to be downloaded and installed - this takes several minutes so be patient! This image is kept permanently so this only happens once.
+          p
+            strong When the VM is running
+            | , you get jobs from CERN, and your WebAPI page shows you information on each job's type, progress, event rate, etc. Each job contains 100,000 events and needs some tens of minutes to complete. Several job types appear, some taking longer than others.
+          p
+            | If you leave the VM running,
+            strong you will continually process jobs
+            | .  You stop and save your VM with the button "Stop".
+          p
+            strong NOTE:
+            | Just leaving or closing the web page does not by itself stop the VM, which will happily go on running jobs if it is not stopped !!!
+          p
+            span(style='color: #ff0000;')
+              | In all cases of errors or strange behaviour, REFRESH THE WebAPI BROWSER WINDOW to recover
+          h2
+            | For existing BOINC Test4Theory users
+          p
+            | We support a BOINC login feature so that the jobs you complete with T4T_WebAPI contribute to your T4T account's MCPlots stats, Billionaires Club, etc.
+          p
+            | Once logged-in, click on your log-in name to see your MCPlots credits. (The results appear under "Host Unknown" in the MC Production output for your T4T user ID).
+          p
+            strong NOTE:
+            | The other logins and credits (Facebook, etc) are not yet fully implemented.
+          h1
+            | For advanced users
+          p
+            | For more information and control of your VM, press the Toolbox button (small gearwheel) next to "Start/Stop" to see the Status panel:
+          ul
+            li(style='margin: 10px;')
+              | under "Subsystem status" you see the system components during startup passing from grey to green (or red for errors).
+            li(style='margin: 10px;')
+              | under "Virtual Machine Configuration" you can see and modify the items:
+              br
+              | Allocated RAM (MB), the Number of CPUs, and the Allocated CPU power (the execution cap of each CPU)...
+              br
+              | ... and after any modification(s), press the "Apply" button to make the change(s)...
+          p
+            strong NOTE:
+            | Changing the Allocated RAM or Number of CPUs will cause a VM reboot when "Apply" is activated.
+          p
+            | At the left of the "Apply" button are three other buttons:
+          ul
+            li
+              | the "Destroy" button (a trashcan) which will delete your VM (it warns you first).
+          p
+            strong NOTE:
+            | You can restart from a "Destroyed" state using "Start". The initial CernVM image is cached so doesn't need to be downloaded again, even after "Destroy".
+          ul
+            li
+              | the "Open screen" button (an eye): this shows your VM consoles. The important ones are:
+              ul
+                li
+                  | "Console 1": the boot sequence plus job scheduler
+                li
+                  | "Console 2": the job output
+                li
+                  | "Console 5": the Unix "top" command.
+          p
+            strong NOTE: 
+            | You need FLASH for "Open screen" to work.
+          ul
+            li
+              | the "Open Application Website" button (an arrow) will show the T4T Web output and logs of the VM.
+          p
+            | At any time you are able to open the
+            strong VirtualBox Manager window
+            | and check on the state of your VM instance which is called "
+            strong VirtualLHC_Challenge
+            | ". You can make changes to this VM with the VirtualBox Manager interface and these will be reflected in the WebAPI browser window (perhaps after refreshing it). You can also point additional Web browser tabs or windows to the URL
+            a(href='http://test4theory.cern.ch/vlhc') http://test4theory.cern.ch/vlhc
+            | and they will synchronise with the same output from WebAPI.
+          p
+            span(style='color: #ff0000;')
+              | In all cases of errors or strange behaviour, REFRESH THE WebAPI BROWSER WINDOW to recover
+          h1
+            | Installation notes for the cernvm-webapi application
+          p
+            | As the cernvm-webapi app isn't yet registered with an authority, it may currently need a few extra clicks to install, e.g. on MacOSX you may have to view the downloaded install icon in the Finder Download window and then right-click on it to open it. This will not be needed after registration of the software which is currently being done.
+          h2
+            | Uninstall instructions
+          p
+            | To uninstall the app cernvm-webapi, follow the following procedures for the respective platforms:
+          ul
+            li
+              strong Windows
+              | :  There is an uninstall link on the start menu
+            li
+              strong Linux (Ubuntu)
+              | :  sudo apt-get remove cernvm-webapi
+            li
+              strong Linux (SLC6 Red Hat)
+              | : sudo yum remove cernvm-webapi
+            li
+              strong Mac OSX
+              | :
+              ul
+                li
+                  | run this first (in a terminal):
+                  br
+                  | launchctl unload ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist
+                li
+                  | Then you can drag the CernVM WebAPI from the applications to the trash can.
+          h2
+            | Residual files
+          p
+            | The application keeps cache and other files required for normal operaion in a folder in the user's directory. If you want to fully uninstall the remaining files too, you should remove the following directory:
+          ul
+            li
+              strong Windows
+              | : %appdata%/CernVM/WebAPI
+            li
+              strong Linux
+              | : ~/.cernvm/WebAPI
+            li
+              strong Mac OSX
+              | : ~/Library/Application Support/CernVM/WebAPI
+          p
