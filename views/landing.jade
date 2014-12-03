@@ -72,6 +72,8 @@ html(lang="en")
                   li
                     a(href="#more") More                     
                   li
+                    a(href="#disqus") Forum
+                  li
                     a(href="#faq") FAQ                     
                   li
                     a(href="#contact") Contact Us 
@@ -264,6 +266,15 @@ html(lang="en")
                   #accordion7.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> Yes, just make sure you login with the same account everywhere, so you can aggregate your results. 
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion8")
+                              | <strong>Q:</strong> If I have a question about this challenge, who can I ask?
+                  #accordion8.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> You can get in touch with us using this #[a.btn.btn-skin.btn-scroll(href="#disqus", target="_blank") Disqus Forum]. 
 
 
 
@@ -476,7 +487,15 @@ html(lang="en")
           .col-md-8.col-md-offset-2
             p
               | The CERN 60 Public Computing Challenge is brought to you by the Citizen Cyberlab project and the Citizen Cyberscience Centre. We're pushing the boundaries of citizen science and informal learning on the Web. Want to learn more about us? Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
+
+    section#disqus.home-section.nopadd-bot.color-dark.bg-white.text-center
       .container
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center
+                h2.h-bold.animated.bounceInDown Forum
+                .divider-header
         #disqus_thread
         script(type='text/javascript')
           | /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
