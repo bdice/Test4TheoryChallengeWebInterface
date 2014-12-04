@@ -315,10 +315,24 @@ html(lang="en")
                     .panel-body
                       | <strong>A:</strong> To uninstall the app cernvm-webapi, follow the following procedures for the respective platforms:
                       ul(style="margin-left:15px")
-                        li
-                            strong Windows
-                            | :&nbsp; There is an uninstall
-                            |                 link on the start menu
+                        ul(style="margin-left:15px")
+                          li
+                              strong Windows
+                              | :&nbsp; There is an uninstall
+                              |                 link on the start menu
+                          li
+                            strong Mac OSX
+                            | :
+                            ul(style="margin-left:15px")
+                              li
+                                | start a line-command terminal by opening Finder, opening the folder Utilities and clicking on Terminal, then write the following command and press Return(Enter):
+                                br
+                                |                     launchctl unload
+
+                                |                     ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist
+                              li
+                                | Then you can drag the CernVM WebAPI from the
+                                | applications to the trash can.
                           li
                             strong Linux (Ubuntu)
                             | :&nbsp; sudo apt-get
@@ -327,19 +341,7 @@ html(lang="en")
                             strong Linux (SLC6 Red Hat)
                             | : sudo yum remove
                             |                 cernvm-webapi
-                          li
-                            strong Mac OSX
-                            | :
-                            ul
-                              li
-                                | run this first (in a terminal):
-                                br
-                                |                     launchctl unload
-                               
-                                |                     ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist
-                              li
-                                | Then you can drag the CernVM WebAPI from the
-                                | applications to the trash can.
+
                         br
                         h6 Residual Files
                         | The application keeps cache and other files required for normal operaion in a folder in the user's directory. If you want to fully uninstall the remaining files too, you should remove the following directory:
@@ -357,9 +359,9 @@ html(lang="en")
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion6")
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion66")
                               | <strong>Q3:</strong> Does the software I install respect my privacy? 
-                  #accordion6.panel-collapse.collapse
+                  #accordion66.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> The only data about you that we keep on our server is a unique identifier for your computer, which we use to attribute your contributions, and your login username, but not the password.
 
