@@ -433,9 +433,14 @@ $(function() {
 	 */
 	ChallengeStats.prototype.setEventRate = function(number) {
 		this.gEventRate.refresh(number);
-		$("#live-events").text(' '+number+' ');
+		var num = parseInt(number) * 1000;
 
-		this.eventRate = number;
+		// Convert with comma
+		var htmlValue = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#live-events").text(' '+htmlValue+' ');
+
+		// Update progress bar event rate
+		this.eventRate = num;
 		this.updateLiveProgressBar();
 	}
 
