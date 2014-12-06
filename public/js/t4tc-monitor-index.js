@@ -48,6 +48,21 @@ io.on('update', function(d) {
      	online_users = d[currentAccelerator].online_users;
      }
 
+     var monitor_machines = 0;
+     if(d[currentAccelerator]["monitor_machines"]){
+     	monitor_machines = d[currentAccelerator].monitor_machines;
+     }
+     
+     var monitor_load = 0;
+     if(d[currentAccelerator]["monitor_load"]){
+     	monitor_load = d[currentAccelerator].monitor_load;
+     }
+
+     var monitor_alerts = 0;
+     if(d[currentAccelerator]["monitor_alerts"]){
+     	monitor_alerts = d[currentAccelerator].monitor_alerts;
+     }
+
      // $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
      // $("#totalJobs").html(d[currentAccelerator].jobs_completed);
      // $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
@@ -62,8 +77,16 @@ io.on('update', function(d) {
      	statusScreen.setLabelValue('j_pending', pending[0].split("_")[1]);
      }
      if(online_users.length>0){
-
 	statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
+     }
+     if(monitor_machines.length>0){
+	statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
+     }
+     if(monitor_load.length>0){
+	statusScreen.setLabelValue('i_load', monitor_load[0].split("_")[1]);
+     }
+     if(monitor_alerts.length>0){
+	statusScreen.setLabelValue('i_alerts', monitor_alerts[0].split("_")[1]);
      }
 
 	     
