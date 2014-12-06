@@ -312,9 +312,9 @@ app.get('/vlc_login.callback', function(req, res) {
 	res.render('vlhc-callback', {user : req.user});
 });
 
+//top-10
 
 // User Status
-
 app.get('/user_status', function(req, res){
 
         // Get VM ID from the query
@@ -324,7 +324,7 @@ app.get('/user_status', function(req, res){
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
-	multi.zrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+	multi.zrevrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
 
         var events = 0;
         var completed = 0;
