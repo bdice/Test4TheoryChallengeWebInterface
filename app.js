@@ -100,8 +100,9 @@ setInterval(function(){
 	multi.scard("T4TC_MONITOR/TOTAL/users");
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/events",0,10,'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",0,10,'WITHSCORES']);
-	multi.get("T4TC_MONITOR/TOTAL/pending");
-	multi.get("T4TC_MONITOR/TOTAL/online_users");
+	multi.zrevrange(["T4TC_MONITOR/TOTAL/pending/HIST", 0, 100, 'WITHSCORES']);
+	multi.zrevrange(["T4TC_MONITOR/TOTAL/online_users/HIST", 0, 100, 'WITHSCORES']);
+	//multi.get("T4TC_MONITOR/TOTAL/online_users");
 
 	var resultObject = {};
 	multi.exec(function(err, replies){

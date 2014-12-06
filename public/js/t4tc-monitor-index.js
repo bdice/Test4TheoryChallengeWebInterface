@@ -52,14 +52,20 @@ io.on('update', function(d) {
      // $("#totalJobs").html(d[currentAccelerator].jobs_completed);
      // $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
      // $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
-
+	
+     console.log(d);
      statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
      statusScreen.setLabelValue('j_completed', d[currentAccelerator].jobs_completed );
      statusScreen.setLabelValue('j_failed', jobsFailed );
-     statusScreen.setLabelValue('j_pending', pending);
 
+     if(pending.length>0){ 
+     	statusScreen.setLabelValue('j_pending', pending[0].split("_")[1]);
+     }
+     if(online_users.length>0){
 
-	statusScreen.setLabelValue('v_connected', online_users);
+	statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
+     }
+
 	     
      //$("#data").html(JSON.stringify(d, undefined, 2));
 
