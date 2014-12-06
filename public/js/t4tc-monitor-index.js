@@ -28,7 +28,9 @@ io.emit('ready')
 
 io.on('update', function(d) {
      d = (jQuery.parseJSON(d));
+ 
 
+     currentAccelerator = "TOTAL";
      if(d[currentAccelerator] != undefined) {
      	window[currentAccelerator]["eventsCompleted"] = parseInt(d[currentAccelerator]["events"]);
      }
@@ -78,6 +80,7 @@ io.on('update', function(d) {
      	
 	var pending_hist = []
 	for(var i=0;i>pending.length; i++){
+		console.log(pending[i])
 		pending_hist.push(parseFloat(pending[i].split("_")[1]));	
 	}
 	console.log(pending_hist);
