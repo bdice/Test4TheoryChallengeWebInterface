@@ -182,6 +182,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
 
+// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
+app.all('*', function(req, res, next) {
+       res.header("Access-Control-Allow-Origin", "*");
+       res.header("Access-Control-Allow-Headers", "X-Requested-With");
+       res.header('Access-Control-Allow-Headers', 'Content-Type');
+       next();
+});
+
 // test authentication
 function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
@@ -303,6 +311,7 @@ app.get('/vlc_login.callback', function(req, res) {
 	// Render the account page
 	res.render('vlhc-callback', {user : req.user});
 });
+
 
 // User Status
 
