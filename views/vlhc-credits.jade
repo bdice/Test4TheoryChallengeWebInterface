@@ -8,6 +8,15 @@ html
 		link(rel="stylesheet", href="style/css/challenge.css")
 		script(type="text/javascript", src="//code.jquery.com/jquery-1.11.0.min.js")
 		script(type="text/javascript", src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+		script.
+			var flag=false;;
+			setInterval(function(){
+				console.log("refresh");
+				if(flag){
+				window.location.reload();
+				}
+				flag=true;
+			},  10*1000);
 
 	body
 		.container(id="credits")
@@ -15,5 +24,11 @@ html
 				h1 Welcome #{userName}!
 				p
 					| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
+				p
+					| Events : #{events}
+				p
+					| Completed : #{completed}
+				p
+					| Failed : #{failed}
 				p
 					a(href="vlhc_logout",class="btn btn-default") Disconnect and stop collecting credits
