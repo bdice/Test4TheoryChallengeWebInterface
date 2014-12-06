@@ -420,6 +420,7 @@ $(function() {
 	 */
 	ChallengeStats.prototype.setLabelValue = function(name, number, smallValue) {
 		// Convert to number with thousands separator
+		if (!number) number="--";
 		var htmlValue = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		// Check if we have to add a small value
 		if (smallValue) htmlValue += " <small>" + smallValue + "</small>";
