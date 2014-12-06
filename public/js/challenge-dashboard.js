@@ -301,9 +301,9 @@ $(function() {
 
 		// Chart instances
 		this.charts = {
-			'volunteers': new ChallengeHistoryChart( this.eServiceCharts['volunteers'].get(0).getContext("2d"), this.chartOptions ),
-			'jobs'		: new ChallengeHistoryChart( this.eServiceCharts['jobs'].get(0).getContext("2d"), this.chartOptions ),
-			'infr'		: new ChallengeHistoryChart( this.eServiceCharts['infr'].get(0).getContext("2d"), this.chartOptions ),
+			'volunteers': new Chart( this.eServiceCharts['volunteers'].get(0).getContext("2d") ),
+			'jobs'		: new Chart( this.eServiceCharts['jobs'].get(0).getContext("2d") ),
+			'infr'		: new Chart( this.eServiceCharts['infr'].get(0).getContext("2d") ),
 		};
 		this.chartData = { };
 
