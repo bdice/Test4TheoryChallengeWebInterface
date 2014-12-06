@@ -1203,7 +1203,7 @@ a.btn:focus{
 
 /* -- Live progress bar -- */
 
-div#prog-live {
+div#live-progress {
 	width: 90%;
 	height: 35px;
 	background-color: #EEE;
@@ -1213,7 +1213,7 @@ div#prog-live {
 	margin: 20px 20px 50px;
 }
 
-div#prog-live div.value {
+div#live-progress div.value {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1222,7 +1222,7 @@ div#prog-live div.value {
 	border-radius: 20px;
 }
 
-div#prog-live div.indicator {
+div#live-progress div.indicator {
 	line-height: 15px;
 	position: absolute;
 	border-left: solid 1px #099;
@@ -1231,7 +1231,7 @@ div#prog-live div.indicator {
 	color: #099;
 }
 
-div#prog-live div.indicator small {
+div#live-progress div.indicator small {
 	font-size: 10px;
 }
 

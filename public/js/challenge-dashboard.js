@@ -401,7 +401,7 @@ $(function() {
 	 */
 	ChallengeStats.prototype.setEventRate = function(number) {
 		this.gEventRate.refresh(number);
-		$("#live-events").text(number);
+		$("#live-events").text(' '+number+' ');
 
 		this.eventRate = number;
 		this.updateLiveProgressBar();
