@@ -201,6 +201,8 @@ $(function() {
 
 		// Chart.js configuration
 		this.chartOptions = {
+			///Boolean - If to enable animation
+			animation: false,
 			///Boolean - Whether grid lines are shown across the chart
 			scaleShowGridLines : true,
 			//String - Colour of the grid lines
