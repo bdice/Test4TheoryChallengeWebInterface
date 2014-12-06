@@ -304,6 +304,64 @@ app.get('/vlc_login.callback', function(req, res) {
 	res.render('vlhc-callback', {user : req.user});
 });
 
+// User Status
+
+app.get('/user_status', function(req, res){
+
+        // Get VM ID from the query
+        var vmid = req.query['vmid'];
+
+        var multi = client.multi();
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
+	multi.zrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+
+        var events = 0;
+        var completed = 0;
+        var failed = 0;
+	var rank = -1;
+
+        multi.exec(function(err,replies){
+                //console.log(replies);
+                replies.forEach(function(reply, index){
+                //console.log(reply==undefined)
+                        if(index==0){
+                                if(reply){
+                                events = parseInt(reply)
+                                }
+                        }
+                        if(index==1){
+                                if(reply){
+                                completed = parseInt(reply)
+                                }
+                        }
+                        if(index==2){
+                                if(reply){
+                                failed = parseInt(reply)
+                                }
+                        }
+                        if(index==3){
+                                if(reply){
+                                rank = parseInt(reply)
+                                }
+                        }
+                });
+
+                completed = parseInt(completed) - parseInt(failed);
+                // Render
+                res.json({
+                        vmid : vmid,
+                        completed: completed,
+                        failed: failed,
+                        events: events,
+			rank: rank
+                });
+        })
+
+
+});
+
 // Credits screen
 app.get('/vlhc_credits', function(req, res){
 
