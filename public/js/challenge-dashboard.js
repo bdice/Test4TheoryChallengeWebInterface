@@ -430,6 +430,23 @@ $(function() {
 	}
 
 	/**
+	 * Set plot dataset
+	 */
+	ChallengeStats.prototype.updatePlotDatasets = function(plot, interval, datasets) {
+
+		// Regenerate plot
+		this.regenPlot(
+			plot,
+			make_dataset(
+				Date.now()/1000,
+				interval,
+				datasets
+			)
+		);
+
+	}
+
+	/**
 	 * Update screen status
 	 */
 	ChallengeStats.prototype.update = function() {

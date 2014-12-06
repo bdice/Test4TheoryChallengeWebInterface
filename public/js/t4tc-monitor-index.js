@@ -18,6 +18,14 @@ window.isAcceleratorGridInitialized = false;
 //$("#small_accel_template").html($(data).find("svg")[0].outerHTML); // Initialize the SVG of all the small accelerators
 //});
 
+function create_samples( data ) {
+	// Iterate over data
+	var values = [];
+	for (var i=0; i<data.length; i+=2) {
+		values.push(data[i].split("_")[1]);
+	}
+	return values;
+}
 
 
 data = {};
@@ -99,6 +107,19 @@ io.on('update', function(d) {
 	statusScreen.setLabelValue('i_alerts', monitor_alerts[0].split("_")[1]);
      }
 
+
+    // Update alerts
+    statusScreen.updatePlotDatasets(
+    		"volunteers",
+    		3600,
+			[
+				{
+					'label': 'Connected',
+					'color': '#428bca',
+					'data': create_samples( online_users )
+				}
+    		]
+    	);
 	     
      //$("#data").html(JSON.stringify(d, undefined, 2));
 
