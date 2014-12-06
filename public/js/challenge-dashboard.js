@@ -329,7 +329,7 @@ $(function() {
 			p_value = prog.find('.value'),
 			p_lhc = prog.find('.indicator');
 		p_value.css({
-			'left': (100 * this.eventRate / this.maxEventRate).toFixed(2) + '%'
+			'width': (100 * this.eventRate / this.maxEventRate).toFixed(2) + '%'
 		});
 		p_lhc.css({
 			'left': (100 * this.lhcEventRate / this.maxEventRate).toFixed(2) + '%'
