@@ -115,9 +115,22 @@ html(lang="en")
                     | for a virtual atom smasher.
               p
                 | We're excited to see how many people get involved in the challenge over two weeks, and how much computing we can get done with your help. Can we reach rates of simulated particle collisions that rival the actual rate at which the LHC stores data, and create a virtual atom smasher? That is the CERN 60 Public Computing Challenge.
-              a.btn.btn-skin.btn-scroll(href="#join", target="_blank") 
-                | Join Challenge
-              br
+              p
+                | We are currently producing
+                strong(id="live-events") 0
+                | events per second with
+                strong(id="live-users") 0
+                | people connected
+              #live-progress
+                .value
+                .indicator
+                  | LHC Event Rate
+                  br
+                  small
+                    | 600,000,000/sec
+              p
+                a.btn.btn-skin.btn-scroll(href="#join", target="_blank") 
+                  | Join Challenge
               br
               a.btn.btn-skin.btn-scroll(href="#timeline", target="_blank", style="margin:5px") 
                 | View Timeline

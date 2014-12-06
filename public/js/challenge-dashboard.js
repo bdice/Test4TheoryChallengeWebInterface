@@ -159,6 +159,11 @@ $(function() {
 		// Get root element
 		this.R = rootElement || $(document.body);
 
+		// Local properties
+		this.eventRate = 0;
+		this.lhcEventRate = 600000000;
+		this.maxEventRate = 610000000;
+		
 		//// ==================================== ////
 		//// Global configuration for the project ////
 		//// ==================================== ////
@@ -317,6 +322,22 @@ $(function() {
 	}
 
 	/**
+	 * Update the event rate in the live display
+	 */
+	ChallengeStats.prototype.updateLiveProgressBar = function() {
+		var prog = $('#live-progress'),
+			p_value = prog.find('.value'),
+			p_lhc = prog.find('.indicator');
+		p_value.css({
+			'left': (100 * this.eventRate / this.maxEventRate).toFixed(2) + '%'
+		});
+		p_lhc.css({
+			'left': (100 * this.lhcEventRate / this.maxEventRate).toFixed(2) + '%'
+		});
+	}
+
+
+	/**
 	 * Set status of a colored label
 	 */
 	ChallengeStats.prototype.setGlobalStatus = function(status, text) {
@@ -380,6 +401,10 @@ $(function() {
 	 */
 	ChallengeStats.prototype.setEventRate = function(number) {
 		this.gEventRate.refresh(number);
+		$("#live-events").text(number);
+
+		this.eventRate = number;
+		this.updateLiveProgressBar();
 	}
 
 	/**
@@ -489,7 +514,6 @@ $(function() {
 		);
 
 	}
-
 
 	window.statusScreen = new ChallengeStats();
 

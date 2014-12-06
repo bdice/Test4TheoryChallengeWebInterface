@@ -89,7 +89,8 @@ io.on('update', function(d) {
 	statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
      }
      if(monitor_machines.length>0){
-	statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
+		statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
+		$("#live-users").text(monitor_machines[0].split("_")[1]);
      }
      if(monitor_load.length>0){
 	statusScreen.setLabelValue('i_load', parseFloat(monitor_load[0].split("_")[1])*100 + " %" );

@@ -1201,6 +1201,40 @@ a.btn:focus{
     font-family: 'Roboto', sans-serif;
 }
 
+/* -- Live progress bar -- */
+
+div#prog-live {
+	width: 90%;
+	height: 35px;
+	background-color: #EEE;
+	border-radius: 30px;
+	border: solid 7px #EEE;
+	position: relative;
+	margin: 20px 20px 50px;
+}
+
+div#prog-live div.value {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background-color: #00BFFF;
+	border-radius: 20px;
+}
+
+div#prog-live div.indicator {
+	line-height: 15px;
+	position: absolute;
+	border-left: solid 1px #099;
+	padding: 45px 0 0 8px;
+	top: -12px;
+	color: #099;
+}
+
+div#prog-live div.indicator small {
+	font-size: 10px;
+}
+
 /* -- Image footer -- */
 
 div.image-footer {
