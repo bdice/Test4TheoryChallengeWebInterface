@@ -68,13 +68,19 @@ io.on('update', function(d) {
      // $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
      // $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
 	
-     console.log(d);
+     //console.log(d);
      statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
      statusScreen.setLabelValue('j_completed', d[currentAccelerator].jobs_completed );
      statusScreen.setLabelValue('j_failed', jobsFailed );
 
      if(pending.length>0){ 
      	statusScreen.setLabelValue('j_pending', pending[0].split("_")[1]);
+     	
+	var pending_hist = []
+	for(var i=0;i>pending.length; i++){
+		pending_hist.push(parseFloat(pending[i].split("_")[1]));	
+	}
+	console.log(pending_hist);
      }
      if(online_users.length>0){
 	statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
@@ -83,7 +89,7 @@ io.on('update', function(d) {
 	statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
      }
      if(monitor_load.length>0){
-	statusScreen.setLabelValue('i_load', monitor_load[0].split("_")[1]);
+	statusScreen.setLabelValue('i_load', parseFloat(monitor_load[0].split("_")[1])*100 + " %" );
      }
      if(monitor_alerts.length>0){
 	statusScreen.setLabelValue('i_alerts', monitor_alerts[0].split("_")[1]);
