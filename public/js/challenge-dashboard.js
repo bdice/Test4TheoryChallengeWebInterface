@@ -58,7 +58,16 @@ $(function() {
 		// Zero-pad helper
 		function pad(p) { p=String(p); return ((p.length == 1) ? "0" : "") + p; };
 		// Format hour helper
-		function fh(d) { d=dateFromTimestamp(d); return d.getHours() + "h" };
+		function fh(d) { 
+			d=dateFromTimestamp(d);
+			if (d.getMinutes() == 0) {
+				return d.getHours() + "h" 
+			} else {
+				var m = d.getMinutes().toString();
+				if (m.length == 1) m = "0"+m;
+				return d.getHours() + "h" + m;
+			}
+		};
 		// Format day helper
 		function fd(d) { d=dateFromTimestamp(d); return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getUTCDay()] + " " + pad(d.getDate()); }
 
@@ -145,6 +154,28 @@ $(function() {
 			labels: timeseries_labels(fMaxDataPoints, startAt, interval, 1),
 			datasets: fDatasets
 		};
+	}
+
+
+	/**
+	 * Plot with historical data
+	 */
+	var ChallengeHistoryChart = function(dom) {
+		this.chart = new Chart(dom);
+	}
+
+	/**
+	 * Define a new dataset
+	 */
+	ChallengeHistoryChart.addSet = function(label, color) {
+
+	}
+
+	/**
+	 * Add data for the values
+	 */
+	ChallengeHistoryChart.addData = function(values) {
+
 	}
 
 	/**
@@ -270,9 +301,9 @@ $(function() {
 
 		// Chart instances
 		this.charts = {
-			'volunteers': new Chart( this.eServiceCharts['volunteers'].get(0).getContext("2d") ),
-			'jobs'		: new Chart( this.eServiceCharts['jobs'].get(0).getContext("2d") ),
-			'infr'		: new Chart( this.eServiceCharts['infr'].get(0).getContext("2d") ),
+			'volunteers': new ChallengeHistoryChart( this.eServiceCharts['volunteers'].get(0).getContext("2d"), this.chartOptions ),
+			'jobs'		: new ChallengeHistoryChart( this.eServiceCharts['jobs'].get(0).getContext("2d"), this.chartOptions ),
+			'infr'		: new ChallengeHistoryChart( this.eServiceCharts['infr'].get(0).getContext("2d"), this.chartOptions ),
 		};
 		this.chartData = { };
 
@@ -329,7 +360,7 @@ $(function() {
 			p_value = prog.find('.value'),
 			p_lhc = prog.find('.indicator');
 		p_value.css({
-			'width': (100 * this.eventRate / this.maxEventRate).toFixed(2) + '%'
+			'width': (100 * this.eventRate / this.maxEventRate) + '%'
 		});
 		p_lhc.css({
 			'left': (100 * this.lhcEventRate / this.maxEventRate).toFixed(2) + '%'
