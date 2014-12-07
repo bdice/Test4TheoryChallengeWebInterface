@@ -447,7 +447,7 @@ $(function() {
 	/**
 	 * Regenerate plot
 	 */
-	ChallengeStats.prototype.regenPlot = function(name, dataset) {
+	ChallengeStats.prototype.regenPlot = function(name, dataset, interval) {
 
 		// Config
 		var config = {
@@ -462,7 +462,7 @@ $(function() {
 			},
 			xaxis: {
 				tickDecimals: 0,
-				tickSize: 60 * 60 * 24,
+				tickSize: interval,
 				tickFormatter: function(v) {
 					var d = new Date(v);
 					return d.getHours()+"h"+d.getMinutes();
@@ -470,6 +470,9 @@ $(function() {
 			},
 			grid: {
 				borderWidth: 0
+			},
+			position: {
+				position: 'se'
 			}
 		};
 
@@ -499,7 +502,7 @@ $(function() {
 		}
 
 		// Regenerate plot
-		this.regenPlot(	plot, datasets );
+		this.regenPlot(	plot, datasets, interval );
 
 	}
 
