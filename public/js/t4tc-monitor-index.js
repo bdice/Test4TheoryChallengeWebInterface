@@ -339,7 +339,7 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 
 		virtualTime = startTimestamp + (endTimestamp-startTimestamp)* percentageComplete * 0.01 ;
 
-		window[currentAccelerator].percentageComplete = parseInt(percentageComplete);
+		window[currentAccelerator].percentageComplete = parseFloat(percentageComplete).toFixed(2);
 		setProgressBar(getProgress().toString(), getProgress());
 		
 		for(var i=0;i<window[currentAccelerator].pureDataStore.length;i++){

@@ -330,7 +330,8 @@ $(function() {
 			titleFontColor: '#3c763d',
 			title: "PROGRESS",
 			label: "%",
-			labelMinFontSize: 14
+			labelMinFontSize: 14,
+			decimals: 2
 		}));
 
 		// Perform initial update
