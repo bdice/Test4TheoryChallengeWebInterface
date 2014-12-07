@@ -161,7 +161,7 @@ io.on('update', function(d) {
                                 {
                                         'label': 'Pending',
                                         'color': '#428bca',
-                                        'axis' : 2,
+                                        'yaxis': 2,
                                         'data' : create_samples( pending ),
                                 },
                                 {
