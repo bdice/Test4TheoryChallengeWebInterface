@@ -337,7 +337,7 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 		endTimestamp = (new Date(window[currentAccelerator].endDate).getTime());
 		startTimestamp = (new Date(window[currentAccelerator].startDate).getTime());
 
-		virtualTime = startTimestamp + (endTimestamp-startTimestamp)* percentageComplete ;
+		virtualTime = startTimestamp + (endTimestamp-startTimestamp)* percentageComplete * 0.01 ;
 
 		window[currentAccelerator].percentageComplete = parseInt(percentageComplete);
 		setProgressBar(getProgress().toString(), getProgress());
