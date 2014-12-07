@@ -316,7 +316,8 @@ $(function() {
 			levelColors: [ '#666666' ],
 			formatNumber: true,
 			title: "EVENTS PER SECOND",
-			label: "x1,000"
+			label: "x1,000",
+			labelMinFontSize: 14
 		}));
 
 		// Right-side gauge: Progress
@@ -328,7 +329,8 @@ $(function() {
 			levelColors: [ '#5cb85c' ],
 			titleFontColor: '#3c763d',
 			title: "PROGRESS",
-			label: "%"
+			label: "%",
+			labelMinFontSize: 14
 		}));
 
 		// Perform initial update
