@@ -91,7 +91,7 @@ io.on('update', function(d) {
      statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
      statusScreen.setLabelValue('j_completed', parseInt(d[currentAccelerator].jobs_completed) - parseInt(jobsFailed) );
      statusScreen.setLabelValue('j_failed', jobsFailed );
-     statusScreen.setLabelValue('v_newcomers', d[currentAccelerator].new_users);
+     statusScreen.setLabelValue('v_newcomers', d[currentAccelerator].new_users , " /day");
 
 	//console.log(d)
 

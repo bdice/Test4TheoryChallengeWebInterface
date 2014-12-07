@@ -16,10 +16,10 @@ html
 
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
 						console.log(d);
-						$("#events").html(" Events : "+d.events);
-						$("#completed").html(" Completed : "+d.completed);
-						$("#failed").html(" Failed : "+d.failed);
-						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage);
+						$("#events").html(" Total Events : "+d.events);
+						$("#completed").html(" Completed Jobs : "+d.completed);
+						$("#failed").html(" Failed Jobs : "+d.failed);
+						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage+ " ");
 						$("#diskusage").html(" DISK USAGE : "+d.diskusage);
 						$("#rank").html(" Rank : "+d.rank);
 					});
@@ -37,8 +37,8 @@ html
 		.container(id="credits")
 			div(class="text-center")
 				h1 Welcome #{userName}!
-				p
-					| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
+				//p
+				//	| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
 				p
 					| <pre id="events"> Events : --  </pre>
 				p
@@ -52,4 +52,4 @@ html
 				p
 					| <pre id="rank">  RANK : -- </pre>
 				p
-					a(href="vlhc_logout",class="btn btn-default") Disconnect and stop collecting credits
+					a(href="vlhc_logout",class="btn btn-default") Disconnect and stop tracking progress
