@@ -182,7 +182,7 @@ setInterval(function(){
 		    //app.io.broadcast('update', JSON.stringify(replies));  
 
 	});
-}, 500);
+}, 1000);
 //Redis Code ends
 
 
