@@ -521,9 +521,9 @@ $(function() {
 
 		// Set all color labels to blue/Checking
 		this.setGlobalStatus ("primary", "CHECKING");
-		this.setServiceStatus("volunteers", "primary", "CHECKING");
-		this.setServiceStatus("jobs", "primary", "CHECKING");
-		this.setServiceStatus("infr", "primary", "CHECKING");
+		this.setServiceStatus("volunteers", "success", "LIVE");
+		this.setServiceStatus("jobs", "success", "LIVE");
+		this.setServiceStatus("infr", "success", "LIVE");
 
 		// Set progress to zero
 		this.setProgress(0);
