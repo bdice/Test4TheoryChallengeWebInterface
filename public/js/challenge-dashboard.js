@@ -233,6 +233,8 @@ $(function() {
 
 		// JustGauge.js configuration
 		this.justGaugeOptions = {
+			// No refresh animation
+			refreshAnimationTime: 0,
 			//Boolean - Hide inner shadow
 			hideInnerShadow: true,
 			hideMinMax: true,
@@ -465,7 +467,7 @@ $(function() {
 				tickSize: interval,
 				tickFormatter: function(v) {
 					var d = new Date(v);
-					return d.getHours()+":00";
+					return d.getHours()+"h";
 				}
 			},
 			grid: {
