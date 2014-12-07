@@ -19,8 +19,8 @@ html
 						$("#events").html(" Total Events : "+d.events);
 						$("#completed").html(" Completed Jobs : "+d.completed);
 						$("#failed").html(" Failed Jobs : "+d.failed);
-						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage+ " ");
-						$("#diskusage").html(" DISK USAGE : "+d.diskusage);
+						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage+ " seconds");
+						$("#diskusage").html(" DISK USAGE : "+d.diskusage+ " kB");
 						$("#rank").html(" Rank : "+d.rank);
 					});
 				}
@@ -40,11 +40,11 @@ html
 				//p
 				//	| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
 				p
-					| <pre id="events"> Events : --  </pre>
+					| <pre id="events"> Total Events : --  </pre>
 				p
-					| <pre id="completed"> Completed : --  </pre>
+					| <pre id="completed"> Completed Jobs : --  </pre>
 				p
-					| <pre id="failed"> Failed : -- </pre>
+					| <pre id="failed"> Failed Jobs : -- </pre>
 				p
 					| <pre id="cpuusage">  CPU USAGE : -- </pre>
 				p
