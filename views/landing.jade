@@ -342,20 +342,16 @@ html(lang="en")
                               li
                                 | start a line-command terminal by opening Finder, opening the folder Utilities and clicking on Terminal, then write the following command and press Return(Enter):
                                 br
-                                |                     launchctl unload
-
-                                |                     ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist
+                                | <pre> launchctl unload ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist </pre>
                               li
                                 | Then you can drag the CernVM WebAPI from the
                                 | applications to the trash can.
                           li
                             strong Linux (Ubuntu)
-                            | :&nbsp; sudo apt-get
-                            |                 remove cernvm-webapi
+                            | <pre> sudo apt-get remove cernvm-webapi </pre>
                           li
                             strong Linux (SLC6 Red Hat)
-                            | : sudo yum remove
-                            |                 cernvm-webapi
+                            | <pre> sudo yum remove cernvm-webapi </pre>
 
                         br
                         h6 Residual Files
@@ -379,7 +375,6 @@ html(lang="en")
                   #accordion66.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> The only data about you that we keep on our server is a unique identifier for your computer, which we use to attribute your contributions, and your login username, but not the password.
-
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
@@ -388,6 +383,40 @@ html(lang="en")
                   #accordion7.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> Yes, just make sure you login with the same account everywhere, so you can aggregate your results. 
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion75")
+                              | <strong>Q6:</strong> My VM is in <i>"Guru Meditation"</i>, how can I continue?
+                  #accordion75.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> This means that VirtualBox encountered a critical problem and it paused the Virtual Machine in order for a "Guru" to have a look. The only way to get over this error is to kill the VBoxHeadless process and refresh the challenge website:                      
+                      ul(style="margin-left:15px")
+                        li
+                          strong Windows
+                          ul(style="margin-left:15px")
+                            li
+                              | Start the Windows Task Manager
+                            li
+                              | Locate the <strong>"VBoxHeadless.exe"</strong>  process and click <strong>"End process"</strong>
+                        li
+                          strong Linux
+                          ul(style="margin-left:15px")
+                            li
+                              | Open a terminal
+                            li
+                              | Assuming that you are not running any other Virtual Machine in your computer, type: <pre>killall VBoxHeadless</pre> and hit enter.  
+                        li
+                          strong MacOSX
+                          ul(style="margin-left:15px")
+                            li
+                              | Open the <strong>"Activity Monitor"</strong> application from the Utilities
+                            li
+                              | Locate the <strong>"VBoxHeadless"</strong>  process and double-click to open the details
+                            li
+                              | Click "Quit"
+
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
