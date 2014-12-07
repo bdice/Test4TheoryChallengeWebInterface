@@ -465,8 +465,7 @@ $(function() {
 				tickSize: interval,
 				tickFormatter: function(v) {
 					var d = new Date(v);
-					var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-					return days[d.getDay()] + " " + d.getHours()+"h";
+					return d.getHours()+":00";
 				}
 			},
 			grid: {
