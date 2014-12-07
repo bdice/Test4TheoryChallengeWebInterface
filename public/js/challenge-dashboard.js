@@ -463,7 +463,7 @@ $(function() {
 			this.chartData[name].destroy();
 
 		// Allocate new
-		console.log(dataset);
+		//console.log(dataset);
 		this.chartData[name] = this.charts[name].Line(dataset, this.chartOptions);
 
 	}

@@ -83,15 +83,10 @@ io.on('update', function(d) {
      statusScreen.setLabelValue('j_completed', d[currentAccelerator].jobs_completed );
      statusScreen.setLabelValue('j_failed', jobsFailed );
 
+	//console.log(d)
+
      if(pending.length>0){ 
      	statusScreen.setLabelValue('j_pending', pending[0].split("_")[1]);
-     	
-	var pending_hist = []
-	for(var i=0;i>pending.length; i++){
-		console.log(pending[i])
-		pending_hist.push(parseFloat(pending[i].split("_")[1]));	
-	}
-	console.log(pending_hist);
      }
      if(online_users.length>0){
 		statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
@@ -120,6 +115,29 @@ io.on('update', function(d) {
 				}
     		]
     	);
+
+    statusScreen.updatePlotDatasets(
+                "jobs",
+                3600,
+                        [
+                                {
+                                        'label': 'Pending',
+                                        'color': '#428bca',
+                                        'data': create_samples( pending )
+                                }
+                ]
+        );
+    statusScreen.updatePlotDatasets(
+                "infr",
+                3600,
+                        [
+                                {
+                                        'label': 'System Load',
+                                        'color': '#428bca',
+                                        'data': create_samples( monitor_load )
+                                }
+                ]
+        );
 	     
      //$("#data").html(JSON.stringify(d, undefined, 2));
 
