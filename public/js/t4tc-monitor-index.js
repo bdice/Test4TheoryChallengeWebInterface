@@ -36,10 +36,11 @@ io.emit('ready')
 
 io.on('update', function(d) {
      d = (jQuery.parseJSON(d));
-	
+
      currentAccelerator = "TOTAL";
      if(d[currentAccelerator] != undefined) {
      	window[currentAccelerator]["eventsCompleted"] = parseInt(d[currentAccelerator]["events"]);
+     	window[currentAccelerator]["__percentageComplete"] = parseFloat(d[currentAccelerator]["__percentageComplete"]);
      }
 
      var jobsFailed = 0;
@@ -330,13 +331,15 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 	var endTimestamp;
 	
 	if(window[currentAccelerator].eventsCompleted != undefined){
-		percentageComplete = window[currentAccelerator].eventsCompleted/window[currentAccelerator].totalEvents;
+		//console.log(window[currentAccelerator]);
+		//percentageComplete = window[currentAccelerator].eventsCompleted/window[currentAccelerator].totalEvents;
+		percentageComplete = window[currentAccelerator].__percentageComplete;
 		endTimestamp = (new Date(window[currentAccelerator].endDate).getTime());
 		startTimestamp = (new Date(window[currentAccelerator].startDate).getTime());
 
 		virtualTime = startTimestamp + (endTimestamp-startTimestamp)* percentageComplete ;
 
-		window[currentAccelerator].percentageComplete = parseInt(percentageComplete*100);
+		window[currentAccelerator].percentageComplete = parseInt(percentageComplete);
 		setProgressBar(getProgress().toString(), getProgress());
 		
 		for(var i=0;i<window[currentAccelerator].pureDataStore.length;i++){

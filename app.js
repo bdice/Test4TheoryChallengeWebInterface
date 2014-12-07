@@ -82,6 +82,8 @@ passport.use(BoincStrategy);
 
 var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
+var challengeStart = new Date("December 05, 2014");
+
 setInterval(function(){
 
 	// var acceleratorList = ['CDF', 'STAR', 'UA1', 'DELPHI', 'UA5', 'ALICE', 'TOTEM', 'SLD', 'LHCB', 'ALEPH', 'LHCF', 'ATLAS', 'CMS', 'OPAL', 'D0'];
@@ -93,6 +95,10 @@ setInterval(function(){
 	// 		multi.hgetall("T4TC_MONITOR/"+acceleratorList[i]+"/");
 	// 		multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
 	// }
+
+	var percentageComplete = 12/(((new Date()).getTime() - challengeStart.getTime())/(1000*60*60*24)); 
+
+
 
 	//TOTAL Stats
 	multi.hgetall("T4TC_MONITOR/TOTAL/");
@@ -171,7 +177,7 @@ setInterval(function(){
 
 		    });
 		    //console.log(resultObject);
-
+                    resultObject["TOTAL"]["__percentageComplete"] = percentageComplete;
 		    app.io.broadcast('update', JSON.stringify(resultObject));  
 		    //app.io.broadcast('update', JSON.stringify(replies));  
 
