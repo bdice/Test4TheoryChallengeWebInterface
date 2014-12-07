@@ -61,11 +61,13 @@ io.on('update', function(d) {
      if(d[currentAccelerator]["monitor_machines"]){
      	monitor_machines = d[currentAccelerator].monitor_machines;
      }
-     
+    
+     /** 
      var monitor_load = 0;
      if(d[currentAccelerator]["monitor_load"]){
      	monitor_load = d[currentAccelerator].monitor_load;
      }
+     **/
 
      var monitor_alerts = 0;
      if(d[currentAccelerator]["monitor_alerts"]){
@@ -105,9 +107,11 @@ io.on('update', function(d) {
      if(monitor_machines.length>0){
 		statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
      }
+     /**
      if(monitor_load.length>0){
 	statusScreen.setLabelValue('i_load', parseFloat(monitor_load[0].split("_")[1])*100 + " %" );
      }
+     **/
      if(monitor_alerts.length>0){
 	statusScreen.setLabelValue('i_alerts', monitor_alerts[0].split("_")[1]);
      }
@@ -159,25 +163,14 @@ io.on('update', function(d) {
                                         'data': create_samples( pending )
                                 },
                                 {
-                                        'label': 'Jobs Completed',
+                                        'label': 'Completed',
                                         'color': '#5cb85c',
                                         'data': create_samples( jobs_completed_hist)
                                 },
                                 {
-                                        'label': 'Jobs Failed',
+                                        'label': 'Failed',
                                         'color': '#8a6d3b',
                                         'data': create_samples( jobs_failed_hist)
-                                }
-                ]
-        );
-    statusScreen.updatePlotDatasets(
-                "infr",
-                3600,
-                        [
-                                {
-                                        'label': 'System Load',
-                                        'color': '#428bca',
-                                        'data': create_samples( monitor_load )
                                 }
                 ]
         );
