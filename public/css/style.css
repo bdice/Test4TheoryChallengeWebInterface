@@ -1147,6 +1147,7 @@ a.btn:focus{
 .c-chart {
 	width: 280px;
 	height: 170px;
+	margin: 0 auto;
 }
 
 .c-chart .flot-x-axis .flot-tick-label {
