@@ -137,9 +137,9 @@ setInterval(function(){
 						resultObject["TOTAL"]["totalUsers"] = reply;
 					}
 				}else if(newIndex == 2){
-					resultObject["Events Leaderboard"] = reply;
+					//resultObject["Events Leaderboard"] = reply;
 				}else if(newIndex == 3){
-					resultObject["Jobs Leaderboard"] = reply;
+					//resultObject["Jobs Leaderboard"] = reply;
 				}else if(newIndex == 4){
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["pending"] = reply;
