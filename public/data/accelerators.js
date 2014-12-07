@@ -1,6 +1,6 @@
 var TOTAL = {
 	"headline" : "CERN 60 years",
-	"description" : "Learn about significant events in particle physics through the 60 years of CERN's history, which will be released chronologically as the challenge progresses. Each task your computer processes advances the timeline.",
+	"description" : "Learn about significant events in particle physics through the 60 years of CERN's history, which will be released chronologically as the challenge progresses.",
 	"totalEvents" : 1636000000,//717445350000
 	"startDate" : "1954,3,17",
 	"endDate" : "2012,7,4",
