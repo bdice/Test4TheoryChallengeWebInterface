@@ -473,7 +473,7 @@ $(function() {
 				tickSize: interval,
 				tickFormatter: function(v) {
 					var d = new Date(v);
-					return d.getHours()+" h";
+					return d.getHours()+"h";
 				}
 			},
 			grid: {
