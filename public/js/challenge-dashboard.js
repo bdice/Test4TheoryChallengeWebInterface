@@ -459,9 +459,15 @@ $(function() {
 			points: {
 				show: true
 			},
-			yaxis: {
-				tickDecimals: 0,
-			},
+			yaxes: [
+				{
+					tickDecimals: 0,
+				},
+				{
+					position: "right",
+					tickDecimals: 0,
+				},
+			],
 			xaxis: {
 				tickDecimals: 0,
 				tickSize: interval,

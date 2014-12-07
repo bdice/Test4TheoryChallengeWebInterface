@@ -34,9 +34,15 @@
 				points: {
 					show: true
 				},
-				yaxis: {
-					tickDecimals: 0,
-				},
+				yaxes: [
+					{
+						tickDecimals: 0,
+					},
+					{
+						position: "right",
+						tickDecimals: 0,
+					},
+				],
 				xaxis: {
 					tickDecimals: 0,
 					tickSize: 60 * 60 * 24,
@@ -60,15 +66,16 @@
 				var d= {
 					'color' : color,
 					'data'	: data,
-					'label'	: name
+					'label'	: name,
+					'yaxis' : yaxis
 				};
 				console.log(d);
 				return d;
 			}
 
 			var plot = $.plot(".plot", [
-					make_dataset(10, 10, "#428bca", "Current", 0),
-					make_dataset(10, 200, "#5cb85c", "New", 1),
+					make_dataset(10, 10, "#428bca", "Current", 1),
+					make_dataset(10, 200, "#5cb85c", "New", 2),
 				], options);
 
 
