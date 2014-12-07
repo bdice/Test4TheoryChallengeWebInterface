@@ -340,11 +340,15 @@ app.get('/user_status', function(req, res){
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
 	multi.zrevrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", vmid);
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/diskusage", vmid);
 
         var events = 0;
         var completed = 0;
         var failed = 0;
 	var rank = -1;
+	var cpuusage = 0;
+	var diskusage = 0;
 
         multi.exec(function(err,replies){
                 //console.log(replies);
@@ -370,6 +374,16 @@ app.get('/user_status', function(req, res){
                                 rank = parseInt(reply)
                                 }
                         }
+                        if(index==4){
+                                if(reply){
+                                cpuusage = parseInt(reply)
+                                }
+                        }
+                        if(index==5){
+                                if(reply){
+                                diskusage = parseInt(reply)
+                                }
+                        }
                 });
 
                 completed = parseInt(completed) - parseInt(failed);
@@ -379,7 +393,9 @@ app.get('/user_status', function(req, res){
                         completed: completed,
                         failed: failed,
                         events: events,
-			rank: rank
+			rank: rank,
+			cpuusage: cpuusage,
+			diskusage: diskusage
                 });
         })
 
