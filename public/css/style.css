@@ -1142,9 +1142,9 @@ a.btn:focus{
 	margin: -25px 0 25px;
 }
 
-/* --- Plots --- */
+/* --- Charts --- */
 
-.c-plot {
+.c-chart {
 	width: 280px;
 	height: 128px;
 }
