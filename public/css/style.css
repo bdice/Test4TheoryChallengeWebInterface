@@ -1098,8 +1098,9 @@ a.btn:focus{
 /* --- Gauge --- */
 
 #gauge-events, #gauge-progress {
+	margin: 0 auto;
 	width: 200px;
-	height: 200px;
+	height: 150px;
 }
 
 /* --- Table in Service --- */
@@ -1139,6 +1140,13 @@ a.btn:focus{
 }
 .c-status-subtext {
 	margin: -25px 0 25px;
+}
+
+/* --- Plots --- */
+
+.c-plot {
+	width: 280px;
+	height: 128px;
 }
 
 /* --- Coloring --- */
