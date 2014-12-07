@@ -80,7 +80,6 @@ passport.use(BoincStrategy);
 // Express application initialization
 ////////////////////////////////////////////////
 
-
 var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
 setInterval(function(){
