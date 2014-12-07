@@ -489,7 +489,10 @@ $(function() {
 		// Preate the x/y pairs for each dataset
 		for (var i=0; i<datasets.length; i++) {
 			var samples = datasets[i].data, data=[],
-				time = (new Date()).getTime();
+				time = (new Date()).getTime(); 
+
+			// Make it full multiplicants of interval
+			time -= time % interval;
 
 			// Generate [x,y] pair
 			for (var j=0; j<samples.length; j++) {
