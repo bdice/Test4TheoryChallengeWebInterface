@@ -472,7 +472,7 @@ $(function() {
 				borderWidth: 0
 			},
 			legend: {
-				position: 'se'
+				position: 'sw'
 			}
 		};
 
