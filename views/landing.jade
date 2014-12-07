@@ -174,6 +174,7 @@ html(lang="en")
                   p
                     em What is this, really?
                     br
+                    br
                     small
                       | This is a tiny system service (about 1MB) which provides the interface between the web browser and a Virtual Machine in your computer.
             .col-sm-4
@@ -198,12 +199,12 @@ html(lang="en")
                 .service-desc
                   h5 You are now in control
                   p
-                    | After all this software is installed on your computer, just click “Start” on the interface and join the challenge! Please be patient, it might take a few minutes to see something happening...
+                    | After all this software is installed on your computer, just click “Start” on the WebAPI interface, wait for the software to load and join the challenge! You can press “Stop” at any time. Note that closing the WebAPI interface does not stop the Virtual Machine!
                   p
                     em What can I control?
                     br
                     small
-                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Don’t forget to click Apply!
+                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Remember to click Apply! 
 
     // Section: FAQ
     section#faq.home-section.color-dark.bg-gray
@@ -251,17 +252,8 @@ html(lang="en")
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion4")
-                              | <strong>Q4:</strong> Are there any prizes involved in this challenge? 
-                  #accordion4.panel-collapse.collapse
-                    .panel-body
-                      | <strong>A:</strong> As computers around the world return results, the Timeline on this page will gradually fill out. If a result from your computer comes at just the right time to unlock a historical fact, you'll get a special mention on the timeline. 
-
-                .panel.panel-default
-                  .panel-heading
-                    h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion5")
-                              | <strong>Q5:</strong> Will I get any feedback about how much I have contributed personally to the project?  
+                              | <strong>Q4:</strong> Will I get any feedback about how much I have contributed personally to the project?  
                   #accordion5.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> Once you've got the project running, you'll be able to see your progress on a web page that comes up every time you click Start Computing on this challenge page.
@@ -270,7 +262,7 @@ html(lang="en")
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion8")
-                              | <strong>Q6:</strong> If I have a question about this challenge that is not in this FAQ list, who can I ask?
+                              | <strong>Q5:</strong> If I have a question about this challenge that is not in this FAQ list, who can I ask?
                   #accordion8.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> You can get in touch with us using this #[a.btn.btn-skin.btn-scroll(href="#disqus", target="_blank") Disqus Forum]. Several particle physicists who will use the data you produce will be answering science questions you may have in the forum, and the challenge team is there to answer any technology questions. 
@@ -318,12 +310,22 @@ html(lang="en")
                           strong SeaMonkey 
                           | : 12.10.1+
                             
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion20")
+                              | <strong>Q2:</strong> How can I stop the virtual machine?
+                  #accordion20.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> When the WebAPI interface is open, and the virtual machine is running, you will see a Stop button at the bottom of the webpage. Click it to stop the virtual machine.
+                      br
+                      | If you close the WebAPI interface, the virtual machine keeps running. You can always stop it by opening the WebAPI interface again. To do this, click the Start Computing button on this web page. The WebAPI interface will open. Then press the "Stop" button.
 
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion61")
-                              | <strong>Q2:</strong> How can I uninstall the software?
+                              | <strong>Q3:</strong> How can I uninstall the software?
                   #accordion61.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> To uninstall the app cernvm-webapi, follow the following procedures for the respective platforms:
@@ -373,7 +375,7 @@ html(lang="en")
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion66")
-                              | <strong>Q3:</strong> Does the software I install respect my privacy? 
+                              | <strong>Q4:</strong> Does the software I install respect my privacy? 
                   #accordion66.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> The only data about you that we keep on our server is a unique identifier for your computer, which we use to attribute your contributions, and your login username, but not the password.
@@ -382,7 +384,7 @@ html(lang="en")
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion7")
-                              | <strong>Q4:</strong> Can I install this challenge on several computers, and see their total performance? 
+                              | <strong>Q5:</strong> Can I install this challenge on several computers, and see their total performance? 
                   #accordion7.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> Yes, just make sure you login with the same account everywhere, so you can aggregate your results. 
@@ -390,7 +392,7 @@ html(lang="en")
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion71")
-                              | <strong>Q5:</strong> Where is the usual disclaimer ?
+                              | Disclaimer
                   #accordion71.panel-collapse.collapse
                     .panel-body
                       | Disclaimer  
