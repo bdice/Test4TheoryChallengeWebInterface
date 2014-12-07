@@ -9,14 +9,29 @@ html
 		script(type="text/javascript", src="//code.jquery.com/jquery-1.11.0.min.js")
 		script(type="text/javascript", src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
 		script.
-			var flag=false;;
-			setInterval(function(){
-				console.log("refresh");
-				if(flag){
-				window.location.reload();
+			$(document).ready(function(){
+				var vmid = "#{vmid}";
+
+				function update(){
+
+					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
+						console.log(d);
+						$("#events").html(" Events : "+d.events);
+						$("#completed").html(" Completed : "+d.completed);
+						$("#failed").html(" Failed : "+d.failed);
+						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage);
+						$("#diskusage").html(" DISK USAGE : "+d.diskusage);
+						$("#rank").html(" Rank : "+d.rank);
+					});
 				}
-				flag=true;
-			},  10*1000);
+
+				update();
+				setInterval(function(){
+					console.log("refresh");
+					console.log(vmid);
+					update();
+				},  3*1000);
+			});
 
 	body
 		.container(id="credits")
@@ -25,10 +40,16 @@ html
 				p
 					| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
 				p
-					| Events : #{events}
+					| <pre id="events"> Events : --  </pre>
 				p
-					| Completed : #{completed}
+					| <pre id="completed"> Completed : --  </pre>
 				p
-					| Failed : #{failed}
+					| <pre id="failed"> Failed : -- </pre>
+				p
+					| <pre id="cpuusage">  CPU USAGE : -- </pre>
+				p
+					| <pre id="diskusage"> DISK USAGE : -- </pre>
+				p
+					| <pre id="rank">  RANK : -- </pre>
 				p
 					a(href="vlhc_logout",class="btn btn-default") Disconnect and stop collecting credits
