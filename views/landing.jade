@@ -427,19 +427,6 @@ html(lang="en")
                   .divider-header
         .text-center
           .container
-            .container
-              .row
-                .col-sm-2
-                  #gauge-events.c-gauge
-                .col-sm-8
-                  h3#status-global.h-bold.c-status.c-success IN PROGRESS
-                  .c-tweet.c-status-subtext
-                    a.c-tweet-icon.c-icons.c-icon-4(href='#')
-                    span#tweet-date [00/00/0000 00:00]
-                    span#tweet-text
-                      | This is a sample status message, that should be obtained from the twitter feed of the Test4Theory Virtual Atom Smasher challenge.
-                .col-sm-2
-                  #gauge-progress.c-gauge
             .row.c-service
               #service-volunteers.col-xs-6.col-sm-4.col-md-4
                 div
@@ -471,6 +458,22 @@ html(lang="en")
               #service-jobs.col-xs-6.col-sm-4.col-md-4
                 div
                   .c-service-icon
+                    .c-icons.c-icon-3
+                  .c-service-desc
+                    .marginbot-20
+                      h5 Overview
+                      .divider-header
+                    .row
+                      .col-sm-8.col-sm-offset-2
+                        h6#status-infr.h-bold.c-status.c-warning HIGH LOAD
+                    .container
+                      #gauge-events.c-gauge
+                    .container
+                      #gauge-progress.c-gauge
+
+              #service-infr.col-xs-6.col-sm-4.col-md-4
+                div
+                  .c-service-icon
                     .c-icons.c-icon-2
                   .c-service-desc
                     .marginbot-20
@@ -491,31 +494,7 @@ html(lang="en")
                           th Failed:
                           td.lbl-failed 41
                     canvas#chart-jobs(width='280', height='128')
-              #service-infr.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-3
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Infrastructure
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-infr.h-bold.c-status.c-warning HIGH LOAD
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Online machines:
-                          td.lbl-online
-                            | 14
-                            small /14
-                        tr
-                          th System load:
-                          td.lbl-load 5.41%
-                        tr
-                          th Alerts:
-                          td.lbl-alerts None
-                    canvas#chart-infr(width='280', height='128')
+
 
 
     // Section: more
@@ -704,7 +683,7 @@ html(lang="en")
     script(type="text/javascript", src="js/jquery.base64.min.js")
     script(type="text/javascript", src="js/t4tc-monitor-index.js")
 
-    script(src='js/Chart.min.js')
+    script(src="js/jquery.flot.min.js")
     script(src='js/raphael-min.js')
     script(src='js/justgage.js')
     script(src='js/challenge-dashboard.js')

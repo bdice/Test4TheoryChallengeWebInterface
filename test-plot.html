@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Testing Plot Library</title>
+		<script src="public/js/jquery.min.js"></script>
+		<script src="public/js/jquery.flot.min.js"></script>
+		<script src="public/js/jquery.flot.time.min.js"></script>
+		<style type="text/css">
+	
+		.plot {
+			width: 280px;
+			height: 128px;
+		}
+		.plot .flot-x-axis .flot-tick-label {
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			-moz-transform: rotate(45deg);
+			-o-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+
+		body {
+			font-family: Tahoma, Arial;
+		}
+
+		</style>
+		<script type="text/javascript">
+		$(function() {
+
+			var options = {
+				lines: {
+					show: true
+				},
+				points: {
+					show: true
+				},
+				yaxis: {
+					tickDecimals: 0,
+				},
+				xaxis: {
+					tickDecimals: 0,
+					tickSize: 60 * 60 * 24,
+					tickFormatter: function(v) {
+						var d = new Date(v);
+						return d.getHours()+"h"+d.getMinutes();
+					}
+				},
+				grid: {
+					borderWidth: 0
+				}
+			};
+
+			function make_dataset(points, scale, color, name, yaxis) {
+				var data = [],
+					t = (new Date()).getTime();
+				for (var i=0; i<points; i++) {
+					data.push([t, Math.random() * scale]);
+					t += 60 * 60 * 24;
+				}
+				var d= {
+					'color' : color,
+					'data'	: data,
+					'label'	: name
+				};
+				console.log(d);
+				return d;
+			}
+
+			var plot = $.plot(".plot", [
+					make_dataset(10, 10, "#428bca", "Current", 0),
+					make_dataset(10, 200, "#5cb85c", "New", 1),
+				], options);
+
+
+
+		});
+		</script>
+	</head>
+	<body>
+		<div class="plot">
+		</div>
+	</body>
+</html>

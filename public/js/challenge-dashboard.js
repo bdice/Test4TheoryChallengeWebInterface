@@ -301,14 +301,6 @@ $(function() {
 			}]
 		};
 
-		// Chart instances
-		this.charts = {
-			'volunteers': new Chart( this.eServiceCharts['volunteers'].get(0).getContext("2d") ),
-			'jobs'		: new Chart( this.eServiceCharts['jobs'].get(0).getContext("2d") ),
-			'infr'		: new Chart( this.eServiceCharts['infr'].get(0).getContext("2d") ),
-		};
-		this.chartData = { };
-
 		//// =========================== ////
 		//// Initialize justGauge gauges ////
 		//// =========================== ////
@@ -458,13 +450,32 @@ $(function() {
 	 */
 	ChallengeStats.prototype.regenPlot = function(name, dataset) {
 
-		// Destroy previous plot
-		if (this.chartData[name])
-			this.chartData[name].destroy();
+		// Config
+		var config = {
+			lines: {
+				show: true
+			},
+			points: {
+				show: true
+			},
+			yaxis: {
+				tickDecimals: 0,
+			},
+			xaxis: {
+				tickDecimals: 0,
+				tickSize: 60 * 60 * 24,
+				tickFormatter: function(v) {
+					var d = new Date(v);
+					return d.getHours()+"h"+d.getMinutes();
+				}
+			},
+			grid: {
+				borderWidth: 0
+			}
+		};
 
-		// Allocate new
-		//console.log(dataset);
-		this.chartData[name] = this.charts[name].Line(dataset, this.chartOptions);
+		// Regen flot
+		$.plot(this.eServiceCharts[name], dataset, config);
 
 	}
 
@@ -473,15 +484,23 @@ $(function() {
 	 */
 	ChallengeStats.prototype.updatePlotDatasets = function(plot, interval, datasets) {
 
+		// Preate the x/y pairs for each dataset
+		for (var i=0; i<datasets.length; i++) {
+			var samples = datasets[i].data, data=[],
+				time = (new Date()).getTime();
+
+			// Generate [x,y] pair
+			for (var j=0; j<samples.length; j++) {
+				data.unshift([time, samples[j]]);
+				time -= interval;
+			}
+
+			// Emplace to data
+			datasets[i].data = data;
+		}
+
 		// Regenerate plot
-		this.regenPlot(
-			plot,
-			make_dataset(
-				Date.now()/1000,
-				interval,
-				datasets
-			)
-		);
+		this.regenPlot(	plot, datasets );
 
 	}
 
@@ -514,6 +533,7 @@ $(function() {
 		this.setLogMessage( Date.now(), "This is a test" );
 
 		// Add some random datasets
+		/*
 		this.regenPlot("volunteers",
 			make_dataset(
 				Date.now()/1000,
@@ -568,6 +588,7 @@ $(function() {
 				]
 			)
 		);
+		*/
 
 	}
 
