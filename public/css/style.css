@@ -1146,7 +1146,15 @@ a.btn:focus{
 
 .c-chart {
 	width: 280px;
-	height: 128px;
+	height: 170px;
+}
+
+.c-chart .flot-x-axis .flot-tick-label {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 /* --- Coloring --- */
