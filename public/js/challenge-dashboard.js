@@ -478,12 +478,18 @@ $(function() {
 			},
 			grid: {
 				borderWidth: 0
-			},
-			legend: {
-				position: 'sw'
 			}
 		};
 
+		if(name=="volunteers"){
+			config.legend = {
+				container: $("#chart-volunteers-legend")
+			}
+		}else if(name=="jobs"){
+			config.legend = {
+				container: $("#chart-jobs-legend")
+			}		
+		}
 		// Regen flot
 		$.plot(this.eServiceCharts[name], dataset, config);
 
