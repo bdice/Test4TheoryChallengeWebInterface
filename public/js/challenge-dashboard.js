@@ -465,13 +465,14 @@ $(function() {
 				tickSize: interval,
 				tickFormatter: function(v) {
 					var d = new Date(v);
-					return d.getHours()+"h"+d.getMinutes();
+					var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+					return days[d.getDay()] + " " + d.getHours()+"h";
 				}
 			},
 			grid: {
 				borderWidth: 0
 			},
-			position: {
+			legend: {
 				position: 'se'
 			}
 		};
@@ -484,7 +485,10 @@ $(function() {
 	/**
 	 * Set plot dataset
 	 */
-	ChallengeStats.prototype.updatePlotDatasets = function(plot, interval, datasets) {
+	ChallengeStats.prototype.updatePlotDatasets = function(plot, dataInterval, datasets) {
+
+		// Interval is in ms
+		var interval = dataInterval * 1000;
 
 		// Preate the x/y pairs for each dataset
 		for (var i=0; i<datasets.length; i++) {
