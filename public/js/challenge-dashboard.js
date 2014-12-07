@@ -492,7 +492,7 @@ $(function() {
 				time = (new Date()).getTime(); 
 
 			// Make it full multiplicants of interval
-			time -= time % interval;
+			time = Math.round(time / interval) * interval;
 
 			// Generate [x,y] pair
 			for (var j=0; j<samples.length; j++) {
