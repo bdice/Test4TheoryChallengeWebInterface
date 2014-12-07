@@ -1097,9 +1097,9 @@ a.btn:focus{
 
 /* --- Gauge --- */
 
-#gauge-events {
-	width: 130px;
-	height: 100px;
+#gauge-events, #gauge-progress {
+	width: 200px;
+	height: 200px;
 }
 
 /* --- Table in Service --- */

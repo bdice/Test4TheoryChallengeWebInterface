@@ -312,7 +312,6 @@ $(function() {
 			min: 0,
 			max: 10000,
 			levelColors: [ '#666666' ],
-			gaugeWidthScale: 0.5,
 			formatNumber: true,
 			title: "EVENTS PER SECOND",
 			label: "x1,000"
