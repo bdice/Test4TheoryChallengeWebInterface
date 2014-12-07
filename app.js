@@ -105,6 +105,9 @@ setInterval(function(){
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-machines/HIST", 0, 100, 'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-load/HIST", 0, 100, 'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-alerts/HIST", 0, 100, 'WITHSCORES']);
+	multi.zrevrange(["T4TC_MONITOR/TOTAL/jobs_completed/HIST", 0, 100, 'WITHSCORES']);
+	multi.zrevrange(["T4TC_MONITOR/TOTAL/jobs_failed/HIST", 0, 100, 'WITHSCORES']);
+	multi.keys("T4TC_MONITOR/TOTAL/NEW_USERS/*")
 	//multi.get("T4TC_MONITOR/TOTAL/online_users");
 
 	var resultObject = {};
@@ -151,6 +154,18 @@ setInterval(function(){
 				}else if(newIndex == 8) {
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["monitor_alerts"] = reply;
+					}	
+				}else if(newIndex == 9) {
+					if(resultObject["TOTAL"]){
+						resultObject["TOTAL"]["jobs_completed_hist"] = reply;
+					}	
+				}else if(newIndex == 10) {
+					if(resultObject["TOTAL"]){
+						resultObject["TOTAL"]["jobs_failed_hist"] = reply;
+					}	
+				}else if(newIndex == 11) {
+					if(resultObject["TOTAL"]){
+						resultObject["TOTAL"]["new_users"] = reply.length;
 					}	
 				}
 			}

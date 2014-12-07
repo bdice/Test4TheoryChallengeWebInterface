@@ -36,8 +36,7 @@ io.emit('ready')
 
 io.on('update', function(d) {
      d = (jQuery.parseJSON(d));
- 
-
+	
      currentAccelerator = "TOTAL";
      if(d[currentAccelerator] != undefined) {
      	window[currentAccelerator]["eventsCompleted"] = parseInt(d[currentAccelerator]["events"]);
@@ -73,6 +72,16 @@ io.on('update', function(d) {
      	monitor_alerts = d[currentAccelerator].monitor_alerts;
      }
 
+     var jobs_completed_hist = 0;
+     if(d[currentAccelerator]["jobs_completed_hist"]){
+     	jobs_completed_hist = d[currentAccelerator].jobs_completed_hist;
+     }
+
+     var jobs_failed_hist = 0;
+     if(d[currentAccelerator]["jobs_failed_hist"]){
+     	jobs_failed_hist = d[currentAccelerator].jobs_failed_hist;
+     }
+
      // $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
      // $("#totalJobs").html(d[currentAccelerator].jobs_completed);
      // $("#jobsReceived").html(d[currentAccelerator].jobs_completed - jobsFailed)
@@ -80,13 +89,14 @@ io.on('update', function(d) {
 	
      //console.log(d);
      statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
-     statusScreen.setLabelValue('j_completed', d[currentAccelerator].jobs_completed );
+     statusScreen.setLabelValue('j_completed', parseInt(d[currentAccelerator].jobs_completed) - parseInt(jobsFailed) );
      statusScreen.setLabelValue('j_failed', jobsFailed );
+     statusScreen.setLabelValue('v_newcomers', d[currentAccelerator].new_users);
 
 	//console.log(d)
 
      if(pending.length>0){ 
-     	statusScreen.setLabelValue('j_pending', pending[0].split("_")[1]);
+     	statusScreen.setLabelValue('j_pending', d[currentAccelerator].pending_instant);
      }
      if(online_users.length>0){
 		statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
@@ -116,6 +126,29 @@ io.on('update', function(d) {
     		]
     	);
 
+	//console.log(jobs_completed_hist);
+
+	//Prune the data sets to match with the rest
+	var plength = pending.length;
+	var jclength = jobs_completed_hist.length;
+	var jflength = jobs_failed_hist.length;
+	var min = Math.min(plength, jclength, jflength);
+	var pmin = plength - min;
+	while(pmin>0){
+		pending.pop(pending.length-1);
+		pmin -= 1;
+	}
+	var jcmin = jclength - min;
+	while(jcmin>0){
+		jobs_completed_hist.pop(jobs_completed_hist.length-1);
+		jcmin -= 1;
+	}
+	var jfmin = jflength - min;
+	while(jfmin>0){
+		jobs_failed_hist.pop(jobs_failed_hist.length-1);
+		jfmin -= 1;
+	}
+
     statusScreen.updatePlotDatasets(
                 "jobs",
                 3600,
@@ -124,6 +157,16 @@ io.on('update', function(d) {
                                         'label': 'Pending',
                                         'color': '#428bca',
                                         'data': create_samples( pending )
+                                },
+                                {
+                                        'label': 'Jobs Completed',
+                                        'color': '#5cb85c',
+                                        'data': create_samples( jobs_completed_hist)
+                                },
+                                {
+                                        'label': 'Jobs Failed',
+                                        'color': '#8a6d3b',
+                                        'data': create_samples( jobs_failed_hist)
                                 }
                 ]
         );
