@@ -480,8 +480,21 @@ $(function() {
 				}
 			},
 			grid: {
-				borderWidth: 0
-			}
+				borderWidth: 0,
+				//hoverable: true
+			},
+			/**
+			tooltip: true,
+			tooltipOpts: {
+			   content: function(label, xval, yval, flotItem){
+			       return "<b>"+yval+"</b>";
+			   },
+			   shifts: {
+			     x: -30,
+			     y: -50
+			   }
+		       }
+			**/
 		};
 
 		if(name=="volunteers"){
