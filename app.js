@@ -345,10 +345,10 @@ app.get('/vlc_login.callback', function(req, res) {
 		//Get the data about the fromVMID user
 		var multi = client.multi():
 		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID); //0
-        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID); //1
-        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID); //2
-        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", fromVMID); //3
-        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/diskusage", fromVMID); //4
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID); //1
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID); //2
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", fromVMID); //3
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/diskusage", fromVMID); //4
 
 
         var new_events = 0;
@@ -377,6 +377,9 @@ app.get('/vlc_login.callback', function(req, res) {
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID);
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", fromVMID);
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/diskusage", fromVMID);
+
+        		//Store this merge in our records
+        		update_multi.hset("T4TC_MONITOR/TOTAL/SCORE_MERGE", fromVMID+"__"+toVMID+"__"+(new Date().getTime()).toString(), (new Date().getTime()).toString()) ; // Add a hash with from_to_timestamp as key and timestamp as value
 
         		update_multi.exec(function(err, replies){
         			if(!err){
