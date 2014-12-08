@@ -150,25 +150,33 @@ setInterval(function(){
 						resultObject["TOTAL"]["online_users"] = reply;
 					}	
 				}else if(newIndex == 6) {
+					/**
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["monitor_machines"] = reply;
-					}	
+					}
+					**/	
 				}else if(newIndex == 7) {
+					/**
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["monitor_load"] = reply;
-					}	
+					}
+					**/	
 				}else if(newIndex == 8) {
+					/**
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["monitor_alerts"] = reply;
-					}	
+					}
+					**/	
 				}else if(newIndex == 9) {
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["jobs_completed_hist"] = reply;
 					}	
 				}else if(newIndex == 10) {
+					/**
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["jobs_failed_hist"] = reply;
-					}	
+					}
+					**/	
 				}else if(newIndex == 11) {
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["new_users"] = reply.length;
