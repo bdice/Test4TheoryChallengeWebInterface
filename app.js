@@ -384,6 +384,8 @@ app.get('/vlc_login.callback', function(req, res) {
         		update_multi.exec(function(err, replies){
         			if(!err){
         				//TODO: Insert Callback for Operation Successful
+        				// Append 'imported' to the user profile
+        				req.user['imported'] = true;
         			}else{
         				//TODO: Insert Callback for import failed
         			}
