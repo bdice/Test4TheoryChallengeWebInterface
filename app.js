@@ -342,6 +342,56 @@ app.get('/vlc_login.callback', function(req, res) {
 
 		// TODO: Import credits
 
+		//Get the data about the fromVMID user
+		var multi = client.multi():
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID); //0
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID); //1
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID); //2
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", fromVMID); //3
+        multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/diskusage", fromVMID); //4
+
+
+        var new_events = 0;
+        var new_jobs_completed = 0;
+        var new_jobs_failed = 0;
+        var new_cpuusage = 0;
+        var new_diskusage = 0;
+
+        multi.exec(function(err, replies){
+        	if(!err){
+        		new_events = parseInt(replies[0]);
+        		new_jobs_completed = parseInt(replies[1]);
+        		new_jobs_failed = parseInt(replies[2]);
+        		new_cpuusage = parseInt(replies[3]);
+        		new_diskusage = parseInt(replies[4]);
+
+        		var update_multi = client.multi();
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/events", toVMID, new_events);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", toVMID, new_jobs_completed);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", toVMID, new_jobs_failed);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", toVMID, new_cpuusage);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/diskusage", toVMID, new_diskusage);
+
+        		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID);
+        		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID);
+        		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID);
+        		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", fromVMID);
+        		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/diskusage", fromVMID);
+
+        		update_multi.exec(function(err, replies){
+        			if(!err){
+        				//TODO: Insert Callback for Operation Successful
+        			}else{
+        				//TODO: Insert Callback for import failed
+        			}
+        		})
+
+        	}else{
+        		//TODO :: Write callback for import failed !!
+        	}
+        })
+
+
 	}
 	// Render the account page
 	res.render('vlhc-callback', {user : req.user});
