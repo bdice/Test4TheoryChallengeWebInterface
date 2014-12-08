@@ -58,32 +58,34 @@ io.on('update', function(d) {
      	online_users = d[currentAccelerator].online_users;
      }
 
+     /** 
      var monitor_machines = 0;
      if(d[currentAccelerator]["monitor_machines"]){
      	monitor_machines = d[currentAccelerator].monitor_machines;
      }
     
-     /** 
      var monitor_load = 0;
      if(d[currentAccelerator]["monitor_load"]){
      	monitor_load = d[currentAccelerator].monitor_load;
      }
-     **/
 
      var monitor_alerts = 0;
      if(d[currentAccelerator]["monitor_alerts"]){
      	monitor_alerts = d[currentAccelerator].monitor_alerts;
      }
+     **/
 
      var jobs_completed_hist = 0;
      if(d[currentAccelerator]["jobs_completed_hist"]){
      	jobs_completed_hist = d[currentAccelerator].jobs_completed_hist;
      }
-
+     
+     /**
      var jobs_failed_hist = 0;
      if(d[currentAccelerator]["jobs_failed_hist"]){
      	jobs_failed_hist = d[currentAccelerator].jobs_failed_hist;
      }
+     **/
 
      // $("#numberOfVolunteers").html(d[currentAccelerator].totalUsers);
      // $("#totalJobs").html(d[currentAccelerator].jobs_completed);
@@ -93,7 +95,7 @@ io.on('update', function(d) {
      //console.log(d);
      statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/10000);
      statusScreen.setLabelValue('j_completed', parseInt(d[currentAccelerator].jobs_completed) - parseInt(jobsFailed) );
-     statusScreen.setLabelValue('j_failed', jobsFailed );
+     //statusScreen.setLabelValue('j_failed', jobsFailed );
      statusScreen.setLabelValue('v_newcomers', d[currentAccelerator].new_users , " /day");
 
 	//console.log(d)
@@ -105,17 +107,18 @@ io.on('update', function(d) {
 		statusScreen.setLabelValue('v_connected', online_users[0].split("_")[1]);
 		$("#live-users").text(' '+online_users[0].split("_")[1]+' ');
      }
+	
+     /**
      if(monitor_machines.length>0){
 		statusScreen.setLabelValue('i_online', monitor_machines[0].split("_")[1]);
      }
-     /**
      if(monitor_load.length>0){
 	statusScreen.setLabelValue('i_load', parseFloat(monitor_load[0].split("_")[1])*100 + " %" );
      }
-     **/
      if(monitor_alerts.length>0){
 	statusScreen.setLabelValue('i_alerts', monitor_alerts[0].split("_")[1]);
      }
+     **/
 
 
     // Update alerts
@@ -136,8 +139,7 @@ io.on('update', function(d) {
 	//Prune the data sets to match with the rest
 	var plength = pending.length;
 	var jclength = jobs_completed_hist.length;
-	var jflength = jobs_failed_hist.length;
-	var min = Math.min(plength, jclength, jflength);
+	var min = Math.min(plength, jclength);
 	var pmin = plength - min;
 	while(pmin>0){
 		pending.pop(pending.length-1);
@@ -147,11 +149,6 @@ io.on('update', function(d) {
 	while(jcmin>0){
 		jobs_completed_hist.pop(jobs_completed_hist.length-1);
 		jcmin -= 1;
-	}
-	var jfmin = jflength - min;
-	while(jfmin>0){
-		jobs_failed_hist.pop(jobs_failed_hist.length-1);
-		jfmin -= 1;
 	}
 
     statusScreen.updatePlotDatasets(
@@ -171,81 +168,6 @@ io.on('update', function(d) {
                 ]
         );
 	     
-     //$("#data").html(JSON.stringify(d, undefined, 2));
-
- //    function random(count, range) {
-	// 	var ans = [];
-	// 	for (var i=0; i<count; i++)
-	// 		ans.push(parseInt(Math.random() * range));
-	// 	return ans;
-	// }
-     
-	// var make_dataset = function(startAt, interval, data) {
-
-	// 	// Prepare the datasets field
-	// 	var fDatasets = [],
-	// 		fMaxDataPoints = 0;
-	// 	for (var i=0; i<data.length; i++) {
-
-	// 		// Update maximum number of data points
-	// 		if (fMaxDataPoints == 0) {
-	// 			fMaxDataPoints = data[i].data.length;
-	// 		} else {
-	// 			if (fMaxDataPoints != data[i].data.length) {
-	// 				console.error("A dataset has invalid sample count");
-	// 				return;
-	// 			}
-	// 		}
-
-	// 		// Extract datapoint color
-	// 		var col_r = parseInt(data[i].color.substr(1,2),16),
-	// 			col_g = parseInt(data[i].color.substr(3,2),16),
-	// 			col_b = parseInt(data[i].color.substr(5,2),16);
-
-	// 		// Return dataset configuration
-	// 		fDatasets.push({
-	// 			label: data[i].label,
-	// 			fillColor: "rgba("+col_r+","+col_g+","+col_b+",0.2)",
-	// 			strokeColor: "rgba("+col_r+","+col_g+","+col_b+",1)",
-	// 			pointColor: "rgba("+col_r+","+col_g+","+col_b+",1)",
-	// 			pointStrokeColor: "#fff",
-	// 			pointHighlightFill: "#fff",
-	// 			pointHighlightStroke: "rgba("+col_r+","+col_g+","+col_b+",1)",
-	// 			data: data[i].data
-	// 		});
-
-	// 	}
-
-	// 	// Return compatible dataset
-	// 	return {
-	// 		labels: timeseries_labels(fMaxDataPoints, startAt, interval, 1),
-	// 		datasets: fDatasets
-	// 	};
-	// }
-	
- //    statusScreen.regenPlot("jobs",
-	// 		make_dataset(
-	// 			Date.now()/1000,
-	// 			3600,
-	// 			[
-	// 				{
-	// 					'label': 'Random',
-	// 					'color': '#428bca',
-	// 					'data': random(10, 1000)
-	// 				},
-	// 				{
-	// 					'label': 'Left',
-	// 					'color': '#999999',
-	// 					'data': random(10, 1000)
-	// 				},
-	// 				{
-	// 					'label': 'Error',
-	// 					'color': '#f0ad4e',
-	// 					'data': random(10, 1000)
-	// 				}
-	// 			]
-	// 		)
-	// 	);
 });
 
 
@@ -280,9 +202,6 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 	if(!currentRecord.is_locked && global_is_locked[i]){
 			//Get the respective Marker ID for the headline
 			var markerId = window[currentAccelerator].INDEX_TO_MARKER_ID_MAPPING[i];
-
-				//console.log("Unlocking....");
-				//console.log(currentRecord.headline);
 
 				//Update the Marker Text
 				$("#"+markerId).find(".flag .flag-content h3").html(  currentRecord.headline  );
