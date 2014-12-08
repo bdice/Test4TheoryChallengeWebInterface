@@ -325,7 +325,7 @@ app.get('/vlhc_logout', function(req, res) {
 // oppener window and then closes it
 app.get('/vlc_login.callback', function(req, res) {
 	// If we have anonymous ID information, import it
-	if (req.session.anonvmid) {
+	if (req.session.anonvmid && req.user) {
 		var fromVMID = req.session.anonvmid,
 			toVMID = "";
 
