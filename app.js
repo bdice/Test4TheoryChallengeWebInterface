@@ -544,13 +544,13 @@ app.get('/new', function(req, res){
 
 //  Serve static files
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
-app.listen(443) //HTTPS
-console.log("Serving on port 443")
+app.listen(4430) //HTTPS
+console.log("Serving on port 4430")
 
 // HTTP -> HTTPS redirect
 // Redirect from http port 80 to https
 http.createServer(function (req, res) {
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
-}).listen(80);
+}).listen(8000);
 
