@@ -303,6 +303,14 @@ app.get('/vlhc_login', function(req, res){
 		// Logout if prompted to log-in
 		req.logout();
 	}
+	// Save the anonymous ID if specified and it's a random one (r-XXXXXX)
+	var anonvmid = req.query['anonvmid'];
+	if (anonvmid && (anonvmid[0] == "r")) {
+		req.session.anonvmid = anonvmid;
+	} else {
+		req.session.anonvmid = null;
+	}
+
 	// Render the account page
 	res.render('vlhc-login', {pageTitle : 'Account', user : req.user});
 })
@@ -316,6 +324,25 @@ app.get('/vlhc_logout', function(req, res) {
 // Login callback that just forwards the json information to the
 // oppener window and then closes it
 app.get('/vlc_login.callback', function(req, res) {
+	// If we have anonymous ID information, import it
+	if (req.session.anonvmid) {
+		var fromVMID = req.session.anonvmid,
+			toVMID = "";
+
+		// Prepend provider ID
+		if (req.user['provider'] == "facebook") {
+			toVMID = "f-"+req.user.id;
+		} else if (req.user['provider'] == "google") {
+			toVMID = "g-"+req.user.id;
+		} else if (req.user['provider'] == "twitter") {
+			toVMID = "t-"+req.user.id;
+		} else if (req.user['provider'] == "boinc") {
+			toVMID = "b-"+req.user.id;
+		}
+
+		// TODO: Import credits
+
+	}
 	// Render the account page
 	res.render('vlhc-callback', {user : req.user});
 });
@@ -332,7 +359,7 @@ app.get('/user_status', function(req, res){
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
-	multi.zrevrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+		multi.zrevrank("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", vmid);
         multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/diskusage", vmid);
 

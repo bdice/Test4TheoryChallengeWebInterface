@@ -64,11 +64,12 @@ function boinc_login(arg_email, arg_password, callback) {
 					} else if (data['am_get_info_reply'] == undefined) {
 						callback(false, "Could not get user accunt information");
 					} else {
-						var rec = data['am_get_info_reply'];
+						var rec = data['am_get_info_reply'],
+							name = unescape(rec['name'][0].replace("+","%20"));
 						callback({
 							'id': rec['id'][0],
-							'name': rec['name'][0],
-							'displayName': rec['name'][0],
+							'name':name,
+							'displayName': name,
 							'country': rec['country'][0],
 							'weak_auth': rec['weak_auth'][0],
 							'cpid': rec['cpid'][0],
