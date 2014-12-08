@@ -366,11 +366,11 @@ app.get('/vlc_login.callback', function(req, res) {
         		new_diskusage = parseInt(replies[4]);
 
         		var update_multi = client.multi();
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/events",  new_events, toVMID,);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",  new_jobs_completed, toVMID,);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed",  new_jobs_failed, toVMID,);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/cpuusage",  new_cpuusage, toVMID,);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/diskusage",  new_diskusage, toVMID,);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/events",  new_events, toVMID);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",  new_jobs_completed, toVMID);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed",  new_jobs_failed, toVMID);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/cpuusage",  new_cpuusage, toVMID);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/diskusage",  new_diskusage, toVMID);
 
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID);
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID);
