@@ -1,4 +1,3 @@
-
 // Global includes
 var http = require('http')
 var https = require('https')
@@ -90,105 +89,85 @@ setInterval(function(){
 	// var acceleratorList = ['CDF', 'STAR', 'UA1', 'DELPHI', 'UA5', 'ALICE', 'TOTEM', 'SLD', 'LHCB', 'ALEPH', 'LHCF', 'ATLAS', 'CMS', 'OPAL', 'D0'];
 	var acceleratorList = [];
 	var multi = client.multi();
-	
+
 	// //All accelerator field Params
 	// for(var i=0;i<acceleratorList.length;i++){
 	// 		multi.hgetall("T4TC_MONITOR/"+acceleratorList[i]+"/");
 	// 		multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
 	// }
 
-	var percentageComplete = 100 * ((((new Date()).getTime() - challengeStart.getTime())/(1000*60*60*24))/12.0); 
+	var percentageComplete = 100 * ((((new Date()).getTime() - challengeStart.getTime())/(1000*60*60*24))/12.0);
 
 
 
 	//TOTAL Stats
 	multi.hgetall("T4TC_MONITOR/TOTAL/");
-	multi.scard("T4TC_MONITOR/TOTAL/users");
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/events",0,10,'WITHSCORES']);
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",0,10,'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/pending/HIST", 0, 100, 'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/online_users/HIST", 0, 100, 'WITHSCORES']);
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-machines/HIST", 0, 100, 'WITHSCORES']);
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-load/HIST", 0, 100, 'WITHSCORES']);
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/monitor-alerts/HIST", 0, 100, 'WITHSCORES']);
 	multi.zrevrange(["T4TC_MONITOR/TOTAL/jobs_completed/HIST", 0, 100, 'WITHSCORES']);
-	multi.zrevrange(["T4TC_MONITOR/TOTAL/jobs_failed/HIST", 0, 100, 'WITHSCORES']);
 	multi.keys("T4TC_MONITOR/TOTAL/NEW_USERS/*")
-	//multi.get("T4TC_MONITOR/TOTAL/online_users");
 
 	var resultObject = {};
 	multi.exec(function(err, replies){
 		    replies.forEach(function (reply, index) {
 
 
-			if(index<acceleratorList.length*2){
-				if(index%2==0){
-					resultObject[acceleratorList[index/2]] = reply;
-				}else {
-					if(resultObject[acceleratorList[index/2]]){
-						resultObject[acceleratorList[(index-1)/2]]["totalUsers"] = reply
-					}
-				}
-			}else{
-				var newIndex = index - acceleratorList.length*2;
+				var newIndex = index;
 				if(newIndex == 0){
-					resultObject["TOTAL"] = reply;	
+					//Unset few unused params
+					delete reply["monitor-machines_instant"]
+					delete reply["monitor-load_instant"]
+					delete reply["monitor-alerts_instant"]
+					delete reply["totalUsers"]
+
+					resultObject["TOTAL"] = reply;
 				}else if(newIndex == 1){
 					if(resultObject["TOTAL"]){
-						resultObject["TOTAL"]["totalUsers"] = reply;
-					}
-				}else if(newIndex == 2){
-					//resultObject["Events Leaderboard"] = reply;
-				}else if(newIndex == 3){
-					//resultObject["Jobs Leaderboard"] = reply;
-				}else if(newIndex == 4){
-					if(resultObject["TOTAL"]){
+						//Decrease size of hist data by removing the entropy
+						for(var i=0;i<reply.length; i++){
+							if(i%2==0){
+								reply[i] = "1_"+reply[i].split("_")[1];
+							}else{
+								reply[i] = false;
+							}
+						}
 						resultObject["TOTAL"]["pending"] = reply;
 					}
-				}else if(newIndex == 5) {
+				}else if(newIndex == 2) {
 					if(resultObject["TOTAL"]){
+						//Decrease size of hist data by removing the entropy
+						for(var i=0;i<reply.length; i++){
+							if(i%2==0){
+								reply[i] = "1_"+reply[i].split("_")[1];
+							}else{
+								reply[i] = false;
+							}
+						}
 						resultObject["TOTAL"]["online_users"] = reply;
-					}	
-				}else if(newIndex == 6) {
-					/**
-					if(resultObject["TOTAL"]){
-						resultObject["TOTAL"]["monitor_machines"] = reply;
 					}
-					**/	
-				}else if(newIndex == 7) {
-					/**
+				}else if(newIndex == 3) {
 					if(resultObject["TOTAL"]){
-						resultObject["TOTAL"]["monitor_load"] = reply;
-					}
-					**/	
-				}else if(newIndex == 8) {
-					/**
-					if(resultObject["TOTAL"]){
-						resultObject["TOTAL"]["monitor_alerts"] = reply;
-					}
-					**/	
-				}else if(newIndex == 9) {
-					if(resultObject["TOTAL"]){
+						//Decrease size of hist data by removing the entropy
+						for(var i=0;i<reply.length; i++){
+							if(i%2==0){
+								reply[i] = "1_"+reply[i].split("_")[1];
+							}else{
+								reply[i] = false; //remove the timestamp with least effort as we are not using it in the client side
+							}
+						}
 						resultObject["TOTAL"]["jobs_completed_hist"] = reply;
-					}	
-				}else if(newIndex == 10) {
-					/**
-					if(resultObject["TOTAL"]){
-						resultObject["TOTAL"]["jobs_failed_hist"] = reply;
 					}
-					**/	
-				}else if(newIndex == 11) {
+				}else if(newIndex == 4) {
 					if(resultObject["TOTAL"]){
 						resultObject["TOTAL"]["new_users"] = reply.length;
-					}	
+					}
 				}
-			}
 
 		    });
 		    //console.log(resultObject);
-                    resultObject["TOTAL"]["__percentageComplete"] = percentageComplete;
-		    app.io.broadcast('update', JSON.stringify(resultObject));  
-		    //app.io.broadcast('update', JSON.stringify(replies));  
+                    resultObject["TOTAL"]["__percentageComplete"] = parseFloat(percentageComplete).toFixed(2);
+		    app.io.broadcast('update', JSON.stringify(resultObject));
+		    //app.io.broadcast('update', JSON.stringify(replies));
 
 	});
 }, 1000);
@@ -334,7 +313,7 @@ app.get('/vlhc_logout', function(req, res) {
 	res.redirect('/challenge/vlc_login.callback')
 });
 
-// Login callback that just forwards the json information to the 
+// Login callback that just forwards the json information to the
 // oppener window and then closes it
 app.get('/vlc_login.callback', function(req, res) {
 	// Render the account page
@@ -427,11 +406,11 @@ app.get('/vlhc_credits', function(req, res){
 	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
 	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
 	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
-	
+
 	var events = 0;
 	var completed = 0;
 	var failed = 0;
-	
+
 	multi.exec(function(err,replies){
 		//console.log(replies);
 		replies.forEach(function(reply, index){
@@ -492,6 +471,4 @@ http.createServer(function (req, res) {
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
-
-
 
