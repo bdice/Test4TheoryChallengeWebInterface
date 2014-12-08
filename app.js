@@ -343,7 +343,7 @@ app.get('/vlc_login.callback', function(req, res) {
 		// TODO: Import credits
 
 		//Get the data about the fromVMID user
-		var multi = client.multi():
+		var multi = client.multi();
 		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID); //0
 		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID); //1
 		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", fromVMID); //2
