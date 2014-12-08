@@ -167,11 +167,6 @@ io.on('update', function(d) {
                                         'label': 'Completed',
                                         'color': '#5cb85c',
                                         'data' : create_samples( jobs_completed_hist)
-                                },
-                                {
-                                        'label': 'Failed',
-                                        'color': '#8a6d3b',
-                                        'data' : create_samples( jobs_failed_hist)
                                 }
                 ]
         );
