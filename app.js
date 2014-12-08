@@ -96,7 +96,7 @@ setInterval(function(){
 	// 		multi.scard("T4TC_MONITOR/"+acceleratorList[i]+"/users");
 	// }
 
-	var percentageComplete = 12/(((new Date()).getTime() - challengeStart.getTime())/(1000*60*60*24)); 
+	var percentageComplete = 100 * ((((new Date()).getTime() - challengeStart.getTime())/(1000*60*60*24))/12.0); 
 
 
 

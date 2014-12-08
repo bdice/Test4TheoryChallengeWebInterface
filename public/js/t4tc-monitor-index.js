@@ -352,7 +352,7 @@ for(var i =0 ;i < window[currentAccelerator].pureDataStore.length; i++){
 	}
 		
 	
-},300);
+},1000);
 
 
 
