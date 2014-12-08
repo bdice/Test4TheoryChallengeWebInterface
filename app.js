@@ -83,6 +83,7 @@ passport.use(BoincStrategy);
 var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
 
 var challengeStart = new Date("December 05, 2014");
+//var challengeStart = new Date("2014-12-08 10:00:00+0100") //Actual Challenge Start
 
 setInterval(function(){
 
