@@ -81,6 +81,9 @@ passport.use(BoincStrategy);
 ////////////////////////////////////////////////
 
 var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
+client.on("error", function (err) {
+	console.log("REDIS Error: " + err);
+});
 
 //var challengeStart = new Date("December 05, 2014");
 var challengeStart = new Date("2014-12-08 10:00:00+0100") //Actual Challenge Start
@@ -205,6 +208,47 @@ function ensureAuthenticated(req, res, next) {
 	res.redirect('/')
 }
 
+// Get user VMID using by his/her profile
+function getVMID( user ) {
+	// Prepend provider ID
+	if (user['provider'] == "facebook") {
+		return "f-"+user['id'];
+	} else if (user['provider'] == "google") {
+		return "g-"+user['id'];
+	} else if (user['provider'] == "twitter") {
+		return "t-"+user['id'];
+	} else if (user['provider'] == "boinc") {
+		return "b-"+user['id'];
+	} else {
+		// Unknown provider
+		return "u-"+user['id'];
+	}
+}
+
+// Keep user record
+function keepUserDetails( user ) {
+	// If user is invalid exit
+	if (!user) return;
+	// Keep the user record under his/her VMID
+	var vmid = getVMID( user );
+	client.hset("T4TC_MONITOR/USERINFO", vmid, JSON.stringify(user));
+}
+
+// Get user record by his/her VMID
+function getUserDetails( vmid, callback ) {
+
+	// Get the user record
+	client.hget("T4TC_MONITOR/USERINFO", vmid, function(err, reply) {
+		if (reply == null) {
+			callback(null);
+		} else {
+			var data = JSON.parse(reply);
+			callback(data);
+		}
+	});
+
+}
+
 // Authentication URLs
 // --------------------
 
@@ -220,6 +264,7 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback',
 	passport.authenticate('facebook', { failureRedirect: '/login' }),
 	function(req, res) {
+		keepUserDetails(req.user);
 		res.redirect('/challenge/vlc_login.callback');
 	});
 
@@ -230,6 +275,7 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: '/login' , scope : "profile" }),
 	function(req, res) {
+		keepUserDetails(req.user);
 		res.redirect('/challenge/vlc_login.callback');
 	});
 
@@ -240,6 +286,7 @@ app.get('/auth/twitter',
 app.get('/auth/twitter/callback',
 	passport.authenticate('twitter', { failureRedirect: '/login' }),
 	function(req, res) {
+		keepUserDetails(req.user);
 		res.redirect('/challenge/vlc_login.callback');
 	});
 
@@ -255,6 +302,7 @@ app.post('/auth/boinc', function(req, res, next) {
 			} else {
 				req.logIn(user, function(err) {
 					if (err) return res.render('login-boinc', {errorMessage: err});
+					keepUserDetails(user);
 					return res.redirect('/challenge/vlc_login.callback');
 				});
 			}
@@ -328,18 +376,7 @@ app.get('/vlc_login.callback', function(req, res) {
 	// If we have anonymous ID information, import it
 	if (req.session.anonvmid && req.user) {
 		var fromVMID = req.session.anonvmid,
-			toVMID = "";
-
-		// Prepend provider ID
-		if (req.user['provider'] == "facebook") {
-			toVMID = "f-"+req.user.id;
-		} else if (req.user['provider'] == "google") {
-			toVMID = "g-"+req.user.id;
-		} else if (req.user['provider'] == "twitter") {
-			toVMID = "t-"+req.user.id;
-		} else if (req.user['provider'] == "boinc") {
-			toVMID = "b-"+req.user.id;
-		}
+			toVMID = getVMID(req.user);
 
 		// TODO: Import credits
 
@@ -367,11 +404,11 @@ app.get('/vlc_login.callback', function(req, res) {
         		new_diskusage = parseInt(replies[4]);
 
         		var update_multi = client.multi();
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/events",  new_events, toVMID);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed",  new_jobs_completed, toVMID);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed",  new_jobs_failed, toVMID);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/cpuusage",  new_cpuusage, toVMID);
-        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/diskusage",  new_diskusage, toVMID);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/events", toVMID, new_events);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", toVMID, new_jobs_completed);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", toVMID, new_jobs_failed);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/cpuusage", toVMID, new_cpuusage);
+        		update_multi.zincrby("T4TC_MONITOR/TOTAL/PER_USER/diskusage", toVMID, new_diskusage);
 
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/events", fromVMID);
         		update_multi.zrem("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", fromVMID);
@@ -482,50 +519,66 @@ app.get('/user_status', function(req, res){
 app.get('/vlhc_credits', function(req, res){
 
 	// Get VM ID from the query
-	var vmid = req.query['vmid'],
-		user = req.query['user'];
+	var vmid = req.query['vmid'];
 
-	var multi = client.multi();
-	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
-	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
-	multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
+	// Get user details
+	getUserDetails(vmid, function(user) {
 
-	var events = 0;
-	var completed = 0;
-	var failed = 0;
-
-	multi.exec(function(err,replies){
-		//console.log(replies);
-		replies.forEach(function(reply, index){
-		//console.log(reply==undefined)
-			if(index==0){
-				if(reply){
-				events = parseInt(reply)
-				}
+		// If the user record is not kept in the database, use the fallback mechanism
+		if (!user) {
+			// Get username from URL
+			var userName = req.query['user'];
+			user = {
+				'provider': 'none',
+				'displayName': userName
 			}
-			if(index==1){
-				if(reply){
-				completed = parseInt(reply)
-				}
-			}
-			if(index==2){
-				if(reply){
-				failed = parseInt(reply)
-				}
-			}
-		});
+		}
 
-		completed = parseInt(completed) - parseInt(failed);
-		// Render
-		res.render('vlhc-credits', {
-			vmid : vmid,
-			userName : user,
-			completed: completed,
-			failed: failed,
-			events: events
-		});
-	})
+		// Prepare multi trasaction to REDIS
+		var multi = client.multi();
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/events", vmid);
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_completed", vmid);
+		multi.zscore("T4TC_MONITOR/TOTAL/PER_USER/jobs_failed", vmid);
 
+		var events = 0;
+		var completed = 0;
+		var failed = 0;
+
+		multi.exec(function(err,replies){
+			//console.log(replies);
+			replies.forEach(function(reply, index){
+			//console.log(reply==undefined)
+				if(index==0){
+					if(reply){
+					events = parseInt(reply)
+					}
+				}
+				if(index==1){
+					if(reply){
+					completed = parseInt(reply)
+					}
+				}
+				if(index==2){
+					if(reply){
+					failed = parseInt(reply)
+					}
+				}
+			});
+
+			completed = parseInt(completed) - parseInt(failed);
+
+			// Render
+			res.render('vlhc-credits', {
+				vmid : vmid,
+				user : user,
+				userName : user['displayName'],
+				completed: completed,
+				failed: failed,
+				events: events
+			});
+		})
+
+	});
 
 })
 // Backup URLs
@@ -545,7 +598,7 @@ app.get('/new', function(req, res){
 
 //  Serve static files
 app.use(express.static(__dirname + '/public')); //Serve direct files from the public directory (To be transferred to a proper static-file server later)
-app.listen(8080) //HTTPS
+app.listen(8080) //HTTP
 console.log("Serving on port 8080")
 
 /*
