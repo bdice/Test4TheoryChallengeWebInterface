@@ -12,7 +12,7 @@ body {
 
 div.rank-panel {
 	position: absolute;
-	left: 50%; top: 50%;
+	left: 50%; top: 45%;
 	width: 610px;
 	height: 360px;
 	-webkit-transform: translate(-305px, -180px);
@@ -106,4 +106,11 @@ div.rank-panel div.whiteback {
 div.rank-panel div.details {
 	margin-top: 20px;
 	width: 100%;
+}
+
+div.rank-control {
+	background: rgba(255,255,255,0.5);
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	padding: 5px;
 }

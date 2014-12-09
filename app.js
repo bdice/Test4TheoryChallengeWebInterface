@@ -263,6 +263,20 @@ function getUserPicture( user ) {
 	return "style/img/award.png"; // Default is anonymous
 }
 
+// Include a user in the mailing list
+function includeInMailingList( user, email ) {
+	// If user is invalid exit
+	if (!user) return;
+	// Keep the user record under his/her VMID
+	var vmid = getVMID( user );
+	client.hset("T4TC_MONITOR/MAILING_LIST", vmid, JSON.stringify(user));
+}
+
+// Exclude user from the mailing list
+function excludeFromMailingList( user ) {
+
+}
+
 // Authentication URLs
 // --------------------
 
@@ -533,7 +547,8 @@ app.get('/user_status', function(req, res){
 app.get('/vlhc_credits', function(req, res){
 
 	// Get VM ID from the query
-	var vmid = req.query['vmid'];
+	var vmid = req.query['vmid'],
+		show_control = (req.query['control'] == 1);
 
 	// Get user details
 	getUserDetails(vmid, function(user) {
@@ -593,6 +608,7 @@ app.get('/vlhc_credits', function(req, res){
 				userName : nameFirstLine + "<br />" + nameSecondLine,
 				completed: completed,
 				failed: failed,
+				control: show_control,
 				events: events
 			});
 		})
