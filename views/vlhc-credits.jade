@@ -119,10 +119,5 @@ html
 								div.smaller.subtext.text-center
 									| of disk space
 		if (control)
-			div.rank-control
+			div.rank-control.text-center
 				a.btn.btn-default(href='vlhc_logout') Disconnect and stop tracking progress
-				div.pull-right
-					form.form-inline(role='form', action='vlhc_subscribe')
-						div.form-group
-							input.form-control(name='email', type='email', placeholder='Enter your e-mail...')
-							button.btn.btn-primary(type='submit') Keep me posted on updates
