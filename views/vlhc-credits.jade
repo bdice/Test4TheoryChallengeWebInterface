@@ -21,7 +21,7 @@ html
 
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
 
-						$("#t-rank").text("# "+numberWithCommas(parseInt(d.rank)+1));
+						$("#t-rank").text(" # "+numberWithCommas(parseInt(d.rank)+1));
 						$("#t-events").text(""+numberWithCommas(d.events));
 						$("#t-completed").text(""+numberWithCommas(d.completed));
 						$("#t-failed").text(""+numberWithCommas(d.failed));
