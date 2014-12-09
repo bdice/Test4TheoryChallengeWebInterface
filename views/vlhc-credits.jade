@@ -18,7 +18,7 @@ html
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
 
 						$("#t-rank").text(""+(parseInt(d.rank)+1));
-						$("#t-events").text(""+d.events);
+						$("#t-events").text("# "+d.events);
 						$("#t-completed").text(""+d.completed);
 						$("#t-failed").text(""+d.failed);
 
@@ -52,15 +52,15 @@ html
 								var diskGb = diskMb / 1024;
 								if (diskGb > 1024) {
 									var diskTb = diskGb / 1024;
-									strDiskSize = diskTb + " Tb";
+									strDiskSize = diskTb.toFixed(2) + " Tb";
 								} else {
-									strDiskSize = diskGb + " Gb";
+									strDiskSize = diskGb.toFixed(2) + " Gb";
 								}
 							} else {
-								strDiskSize = diskMb + " Mb";
+								strDiskSize = diskMb.toFixed(2) + " Mb";
 							}
 						} else {
-							strDiskSize = diskKb + " Kb";
+							strDiskSize = diskKb.toFixed(2) + " Kb";
 						}
 						$("#t-diskusage").text(strDiskSize);
 
