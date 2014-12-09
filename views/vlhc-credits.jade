@@ -13,14 +13,18 @@ html
 			$(document).ready(function(){
 				var vmid = "#{vmid}";
 
+				function numberWithCommas(x) {
+					return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+
 				function update(){
 
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
 
-						$("#t-rank").text(""+(parseInt(d.rank)+1));
-						$("#t-events").text("# "+d.events);
-						$("#t-completed").text(""+d.completed);
-						$("#t-failed").text(""+d.failed);
+						$("#t-rank").text(""+numberWithCommas(parseInt(d.rank)+1));
+						$("#t-events").text("# "+numberWithCommas(d.events));
+						$("#t-completed").text(""+numberWithCommas(d.completed));
+						$("#t-failed").text(""+numberWithCommas(d.failed));
 
 						// Calculate CPU time
 						var strCPUTime = "",
