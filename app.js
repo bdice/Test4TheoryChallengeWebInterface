@@ -254,11 +254,11 @@ function getUserPicture( user ) {
 	if (user['provider'] == "facebook") {
 		return '//graph.facebook.com/'+user['id']+'/picture';
 	} else if (user['provider'] == "google") {
-		return data['_json']['picture'];
+		return user['_json']['picture'];
 	} else if (user['provider'] == "twitter") {
-		return data['photos'][0]['value'];
+		return user['photos'][0]['value'];
 	} else if (user['provider'] == "boinc") {
-		return 'http://lhcathome2.cern.ch/vLHCathome/user_profile/images/'+data['id']+'.jpg';
+		return 'http://lhcathome2.cern.ch/vLHCathome/user_profile/images/'+user['id']+'.jpg';
 	}
 	return "style/img/award.png"; // Default is anonymous
 }
