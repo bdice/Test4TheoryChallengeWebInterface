@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title= pageTitle
+		title=CERN 60 Challenge - #{userName} progress
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
@@ -122,6 +122,5 @@ html
 									| of disk space
 		if (control)
 			div.rank-control
-				a.btn.btn-default(href='vlhc_logout') Disconnect and stop tracking progress
-				div.pull-right
-					div.addthis_sharing_toolbox(data-url="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=#{vmid}",data-title="My contribution to the CERN 60 Challenge")
+				div.addthis_sharing_toolbox(data-url="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=#{vmid}",data-title="My contribution to the CERN 60 Challenge")
+				a.btn.btn-default.pull-right(href='vlhc_logout') Disconnect and stop tracking progress
