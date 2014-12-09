@@ -22,10 +22,17 @@ html
 
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
 
-						$("#t-rank").text(" # "+numberWithCommas(parseInt(d.rank)+1));
 						$("#t-events").text(""+numberWithCommas(d.events));
 						$("#t-completed").text(""+numberWithCommas(d.completed));
 						$("#t-failed").text(""+numberWithCommas(d.failed));
+
+						// Rank
+						var rank = parseInt(d.rank);
+						if (rank <= 0) {
+							$("#t-rank").text(" soon");
+						} else {
+							$("#t-rank").text(" # "+numberWithCommas(rank));
+						}
 
 						// Calculate CPU time
 						var strCPUTime = "",
