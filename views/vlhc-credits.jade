@@ -31,7 +31,7 @@ html
 						if (rank <= 0) {
 							$("#t-rank").text(" soon");
 						} else {
-							$("#t-rank").text(" # "+numberWithCommas(rank));
+							$("#t-rank").text(" # "+numberWithCommas(rank+1));
 						}
 
 						// Calculate CPU time
@@ -103,8 +103,12 @@ html
 						h2.name
 							| !{userName}
 					div.col-xs-6
-						div.text
-							| Participated in the <strong>CERN 60 Challenge</strong> an has so far contributed:
+						if (control)
+							div.text
+								| Participated in the <strong>CERN 60 Challenge</strong> an has so far contributed:
+						else
+							div.text
+								| Participated in the <a href="https://test4theory.cern.ch/challenge/">CERN 60 Challenge</a> an has so far contributed:
 						h2#t-events.text-center
 							| ---
 						div.subtext.text-center
