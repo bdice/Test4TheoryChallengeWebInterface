@@ -249,6 +249,20 @@ function getUserDetails( vmid, callback ) {
 
 }
 
+// Locate user banner
+function getUserPicture( user ) {
+	if (user['provider'] == "facebook") {
+		return '//graph.facebook.com/'+user['id']+'/picture';
+	} else if (user['provider'] == "google") {
+		return data['_json']['picture'];
+	} else if (user['provider'] == "twitter") {
+		return data['photos'][0]['value'];
+	} else if (user['provider'] == "boinc") {
+		return 'http://lhcathome2.cern.ch/vLHCathome/user_profile/images/'+data['id']+'.jpg';
+	}
+	return "style/img/award.png"; // Default is anonymous
+}
+
 // Authentication URLs
 // --------------------
 
@@ -567,11 +581,16 @@ app.get('/vlhc_credits', function(req, res){
 
 			completed = parseInt(completed) - parseInt(failed);
 
+			// Split username in two lines
+			var nameFirstLine = user['displayName'].split(" ")[0],
+				nameSecondLine = user['displayName'].substr(nameFirstLine.length+1);
+
 			// Render
 			res.render('vlhc-credits', {
 				vmid : vmid,
 				user : user,
-				userName : user['displayName'],
+				picture: getUserPicture( user ),
+				userName : nameFirstLine + "<br />" + nameSecondLine,
 				completed: completed,
 				failed: failed,
 				events: events

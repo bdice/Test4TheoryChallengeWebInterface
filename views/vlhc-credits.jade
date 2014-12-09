@@ -6,6 +6,7 @@ html
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
 		link(rel="stylesheet", href="style/css/challenge.css")
+		link(rel="stylesheet", href="css/credits.css")
 		script(type="text/javascript", src="//code.jquery.com/jquery-1.11.0.min.js")
 		script(type="text/javascript", src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
 		script.
@@ -15,13 +16,54 @@ html
 				function update(){
 
 					$.get("/challenge/user_status?vmid=#{vmid}", function(d){
-						console.log(d);
-						$("#events").html(" Total Events : "+d.events);
-						$("#completed").html(" Completed Jobs : "+d.completed);
-						$("#failed").html(" Failed Jobs : "+d.failed);
-						$("#cpuusage").html(" CPU USAGE : "+d.cpuusage+ " seconds");
-						$("#diskusage").html(" DISK USAGE : "+d.diskusage+ " kB");
-						$("#rank").html(" Rank : "+(parseInt(d.rank)+1));
+
+						$("#t-rank").text(""+(parseInt(d.rank)+1));
+						$("#t-events").text(""+d.events);
+						$("#t-completed").text(""+d.completed);
+						$("#t-failed").text(""+d.failed);
+
+						// Calculate CPU time
+						var strCPUTime = "",
+							cpuSec = parseInt(d.cpuusage);
+						if (cpuSec > 60) {
+							var cpuMin = cpuSec / 60;
+							if (cpuMin > 60) {
+								var cpuHour = cpuMin / 24;
+								if (cpuHour > 24) {
+									var cpuDays = cpuHour/24;
+									strCPUTime = cpuDays.toFixed(1) + " d";
+								} else {
+									strCPUTime = cpuHour.toFixed(1) + " h";
+								}
+							} else {
+								strCPUTime = cpuMin.toFixed(1) + " min";
+							}
+						} else {
+							strCPUTime = cpuSec + " sec";
+						}
+						$("#t-cpuusage").text(strCPUTime);
+
+						// Calcupate Disk Size
+						var strDiskSize = "",
+							diskKb = parseInt(d.diskusage);
+						if (diskKb > 1024) {
+							var diskMb = diskKb / 1024;
+							if (diskMb > 1024) {
+								var diskGb = diskMb / 1024;
+								if (diskGb > 1024) {
+									var diskTb = diskGb / 1024;
+									strDiskSize = diskTb + " Tb";
+								} else {
+									strDiskSize = diskGb + " Gb";
+								}
+							} else {
+								strDiskSize = diskMb + " Mb";
+							}
+						} else {
+							strDiskSize = diskKb + " Kb";
+						}
+						$("#t-diskusage").text(strDiskSize);
+
 					});
 				}
 
@@ -34,22 +76,43 @@ html
 			});
 
 	body
-		.container(id="credits")
-			div(class="text-center")
-				h1 Welcome #{userName}!
-				//p
-				//	| You are now logged-in with VM ID #{vmid}! Here you will soon see your <em>Challenge</em> credits!
-				p
-					| <pre id="events"> Total Events : --  </pre>
-				p
-					| <pre id="completed"> Completed Jobs : --  </pre>
-				p
-					| <pre id="failed"> Failed Jobs : -- </pre>
-				p
-					| <pre id="cpuusage">  CPU USAGE : -- </pre>
-				p
-					| <pre id="diskusage"> DISK USAGE : -- </pre>
-				p
-					| <pre id="rank">  RANK : -- </pre>
-				p
-					a(href="vlhc_logout",class="btn btn-default") Disconnect and stop tracking progress
+		div#credits.rank-panel
+			div.inner
+				div.row
+					div.col-xs-6.text-center
+						h2
+							| Rank
+							span#t-rank.highlight # --
+						div.banner
+							div.banner-image
+							div.banner-leaves(style="background-image: url( #{picture} )")
+						h2.name
+							| #{userName}
+					div.col-xs-6
+						div.text
+							| Participated in the
+							strong CERN 60 Challenge
+							| an has so far contributed:
+						h2#t-events.text-center
+							| ---
+						div.subtext.text-center
+							| virtual collisions
+						h2#t-completed.text-center
+							| ---
+						div.subtext.text-center
+							| completed tasks
+						h2#t-failed.smaller.text-center
+							| ---
+						div.smaller.subtext.text-center
+							| tasks with errors
+						div.details.row
+							div.whiteback.col-xs-6
+								h2#t-cpuusage.smaller.text-center
+									| 3,000,000 h
+								div.smaller.subtext.text-center
+									| of CPU Time
+							div.whiteback.col-xs-6
+								h2#t-diskusage.smaller.text-center
+									| ---
+								div.smaller.subtext.text-center
+									| of disk space

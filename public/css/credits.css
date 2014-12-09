@@ -1,0 +1,109 @@
+
+html {
+	height: 100%;
+}
+
+body {
+	background: url(public/images/status-backdrop.jpg) no-repeat center center;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+}
+
+div.rank-panel {
+	position: absolute;
+	left: 50%; top: 50%;
+	width: 610px;
+	height: 360px;
+	-webkit-transform: translate(-305px, -180px);
+	-moz-transform: translate(-305px, -180px);
+	-ms-transform: translate(-305px, -180px);
+	-o-transform: translate(-305px, -180px);
+	transform: translate(-305px, -180px);
+
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#f6f6f6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#f6f6f6 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	border-radius: 8px;
+
+	padding-left: 5px;
+	padding-top: 5px;
+
+}
+
+div.rank-panel div.inner {
+	width: 600px;
+	height: 350px;
+	background-image: url(public/images/status-cert-back.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: contain;
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	border-radius: 8px;
+	border: solid 8px #27ae60;
+
+}
+
+div.rank-panel h2 {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+div.rank-panel h1.name {
+	margin-top: 0px;
+}
+
+div.rank-panel div.banner {
+	margin: 20px auto 0px !important;
+}
+
+div.rank-panel span.highlight {
+	color: #c0392b;
+}
+
+div.rank-panel div.text {
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #666;
+	font-size: 18px;
+	margin: 5px 0;
+}
+div.rank-panel div.subtext {
+	font-family: 'Roboto Condensed', sans-serif;
+	color: #808080;
+	font-size: 18px;			
+}
+
+div.rank-panel h2.smaller {
+	font-size: 18px;
+}
+div.rank-panel div.smaller {
+	font-size: 16px;
+}
+
+div.rank-panel div.whiteback {
+	background-color: rgba(255,255,255,0.5);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+div.rank-panel div.details {
+	margin-top: 20px;
+	width: 100%;
+}
