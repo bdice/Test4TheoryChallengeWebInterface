@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	background: url(public/images/status-backdrop.jpg) no-repeat center center;
+	background: url(../images/status-backdrop.jpg) no-repeat center center;
 	background-size: cover;
 	height: 100%;
 	width: 100%;
@@ -44,7 +44,7 @@ div.rank-panel {
 div.rank-panel div.inner {
 	width: 600px;
 	height: 350px;
-	background-image: url(public/images/status-cert-back.jpg);
+	background-image: url(../images/status-cert-back.jpg);
 	background-repeat: no-repeat;
 	background-position: right bottom;
 	background-size: contain;
