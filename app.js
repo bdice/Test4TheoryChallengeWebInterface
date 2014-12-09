@@ -597,8 +597,11 @@ app.get('/vlhc_credits', function(req, res){
 			completed = parseInt(completed) - parseInt(failed);
 
 			// Split username in two lines
-			var nameFirstLine = user['displayName'].split(" ")[0],
+			var nameFirstLine="Anonymous", nameSecondLine="";
+			if (user['displayName']) {
+				nameFirstLine = user['displayName'].split(" ")[0];
 				nameSecondLine = user['displayName'].substr(nameFirstLine.length+1);
+			}
 
 			// Render
 			res.render('vlhc-credits', {
