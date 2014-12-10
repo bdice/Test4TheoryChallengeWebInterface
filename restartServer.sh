@@ -2,4 +2,6 @@
 
 
 killall node
-nohup node app.js&
+(
+	node app.js 2>server.err >server.out
+)&
