@@ -41,12 +41,7 @@ html
 							var cpuMin = cpuSec / 60;
 							if (cpuMin > 60) {
 								var cpuHour = cpuMin / 60;
-								if (cpuHour > 60) {
-									var cpuDays = cpuHour/24;
-									strCPUTime = cpuDays.toFixed(1) + " d";
-								} else {
-									strCPUTime = cpuHour.toFixed(1) + " h";
-								}
+								strCPUTime = cpuHour.toFixed(1) + " h";
 							} else {
 								strCPUTime = cpuMin.toFixed(1) + " min";
 							}
@@ -116,15 +111,15 @@ html
 						h2#t-completed.text-center
 							| ---
 						div.subtext.text-center
-							| completed tasks
+							| completed jobs
 						h2#t-failed.smaller.text-center
 							| ---
 						div.smaller.subtext.text-center
-							| tasks with errors
+							| jobs with errors
 						div.details.row
 							div.whiteback.col-xs-6
 								h2#t-cpuusage.smaller.text-center
-									| 3,000,000 h
+									| ---
 								div.smaller.subtext.text-center
 									| of CPU Time
 							div.whiteback.col-xs-6
