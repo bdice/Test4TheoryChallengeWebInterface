@@ -40,8 +40,8 @@ html
 						if (cpuSec > 60) {
 							var cpuMin = cpuSec / 60;
 							if (cpuMin > 60) {
-								var cpuHour = cpuMin / 24;
-								if (cpuHour > 24) {
+								var cpuHour = cpuMin / 60;
+								if (cpuHour > 60) {
 									var cpuDays = cpuHour/24;
 									strCPUTime = cpuDays.toFixed(1) + " d";
 								} else {
