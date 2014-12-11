@@ -1263,6 +1263,15 @@ div.image-footer {
     background-color: #333366;
 }
 
+/* -- The warning panel -- */
+div.warning-panel {
+	margin: 40px 0 0;
+	padding: 10px;
+	background: rgba(255,102,0,0.8);
+	color: #fff;
+	border-radius: 10px;
+}
+
 #LOGOS span {
 	margin-right:10px;
 }

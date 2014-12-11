@@ -632,4 +632,21 @@ $(function() {
 
 	window.statusScreen = new ChallengeStats();
 
+	// Update error broadcasts on the main UI
+	var update_errors = function() {
+		function() {
+			$.get("http://test4theory.cern.ch/broadcast.json", function(d) {
+				if (d.message) {
+					$("#warning-panel").text(d.message);
+					$("#warning-panel").show();
+				} else {
+					$("#warning-panel").hide();
+				}
+			}, "data");
+
+		}
+	};
+	setTimeout(update_errors, 30000);
+	update_errors();
+
 });
