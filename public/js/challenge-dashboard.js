@@ -192,8 +192,7 @@ $(function() {
 
 		// Local properties
 		this.eventRate = 0;
-		this.lhcEventRate = 10000000;
-		this.maxEventRate = 15000000;
+		this.maxEventRate = 150000;
 		
 		//// ==================================== ////
 		//// Global configuration for the project ////
@@ -356,13 +355,21 @@ $(function() {
 	ChallengeStats.prototype.updateLiveProgressBar = function() {
 		var prog = $('#live-progress'),
 			p_value = prog.find('.value'),
-			p_lhc = prog.find('.indicator');
-		p_value.css({
-			'width': (100 * this.eventRate / this.maxEventRate) + '%'
-		});
-		p_lhc.css({
-			'left': (100 * this.lhcEventRate / this.maxEventRate).toFixed(2) + '%'
-		});
+			p_ind1 = prog.find('.indicator.first'),
+			p_ind2 = prog.find('.indicator.second'),
+			p_ind3 = prog.find('.indicator.third');
+
+		var v = this.eventRate;
+		if (v > this.maxEventRate) v = this.maxEventRate;
+		p_value.css({ 'width': (100 * v / this.maxEventRate) + '%' });
+
+		var v1 = 100000;
+		p_ind1.css({ 'left': (100 * v1 / this.maxEventRate).toFixed(2) + '%' });
+		var v2 = 150000;
+		p_ind2.css({ 'left': (100 * v2 / this.maxEventRate).toFixed(2) + '%' });
+		var v3 = 0;
+		p_ind3.css({ 'left': (100 * v3 / this.maxEventRate).toFixed(2) + '%' });
+
 	}
 
 
