@@ -311,7 +311,7 @@ $(function() {
 			parentNode: this.eGaugeEventRate.get(0),
 			value: 0,
 			min: 0,
-			max: 10000,
+			max: this.maxEventRate / 1000,
 			levelColors: [ '#666666' ],
 			formatNumber: true,
 			title: "EVENTS PER SECOND",
