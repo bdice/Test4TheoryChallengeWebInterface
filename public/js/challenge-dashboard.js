@@ -192,7 +192,7 @@ $(function() {
 
 		// Local properties
 		this.eventRate = 0;
-		this.maxEventRate = 60000;
+		this.maxEventRate = 100000;
 		
 		//// ==================================== ////
 		//// Global configuration for the project ////
@@ -363,9 +363,9 @@ $(function() {
 		if (v > this.maxEventRate) v = this.maxEventRate;
 		p_value.css({ 'width': (100 * v / this.maxEventRate) + '%' });
 
-		var v1 = 30000;
+		var v1 = 3000;
 		p_ind1.css({ 'left': (100 * v1 / this.maxEventRate).toFixed(2) + '%' });
-		var v2 = 150000;
+		var v2 = 10000;
 		p_ind2.css({ 'left': (100 * v2 / this.maxEventRate).toFixed(2) + '%' });
 		var v3 = 0;
 		p_ind3.css({ 'left': (100 * v3 / this.maxEventRate).toFixed(2) + '%' });
