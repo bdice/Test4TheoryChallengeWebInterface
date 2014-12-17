@@ -365,7 +365,7 @@ $(function() {
 
 		var v1 = 3000;
 		p_ind1.css({ 'left': (100 * v1 / this.maxEventRate).toFixed(2) + '%' });
-		var v2 = 10000;
+		var v2 = 100000;
 		p_ind2.css({ 'left': (100 * v2 / this.maxEventRate).toFixed(2) + '%' });
 		var v3 = 0;
 		p_ind3.css({ 'left': (100 * v3 / this.maxEventRate).toFixed(2) + '%' });
