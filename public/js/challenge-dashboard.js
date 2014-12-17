@@ -192,7 +192,7 @@ $(function() {
 
 		// Local properties
 		this.eventRate = 0;
-		this.maxEventRate = 150000;
+		this.maxEventRate = 1500000;
 		
 		//// ==================================== ////
 		//// Global configuration for the project ////
