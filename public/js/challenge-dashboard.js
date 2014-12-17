@@ -311,11 +311,11 @@ $(function() {
 			parentNode: this.eGaugeEventRate.get(0),
 			value: 0,
 			min: 0,
-			max: this.maxEventRate / 100,
+			max: this.maxEventRate ,
 			levelColors: [ '#666666' ],
 			formatNumber: true,
 			title: "EVENTS PER SECOND",
-			label: "x100",
+			label: "",
 			labelMinFontSize: 14
 		}));
 
