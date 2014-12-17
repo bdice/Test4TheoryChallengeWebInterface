@@ -363,7 +363,7 @@ $(function() {
 		if (v > this.maxEventRate) v = this.maxEventRate;
 		p_value.css({ 'width': (100 * v / this.maxEventRate) + '%' });
 
-		var v1 = 100000;
+		var v1 = 30000;
 		p_ind1.css({ 'left': (100 * v1 / this.maxEventRate).toFixed(2) + '%' });
 		var v2 = 150000;
 		p_ind2.css({ 'left': (100 * v2 / this.maxEventRate).toFixed(2) + '%' });
