@@ -93,7 +93,7 @@ io.on('update', function(d) {
      // $("#virtualCollissionsPerSeconds").html(parseInt(d[currentAccelerator].event_rate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "))
 	
      //console.log(d);
-     statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/1000);
+     statusScreen.setEventRate(parseInt(d[currentAccelerator].event_rate)/100);
      statusScreen.setLabelValue('j_completed', parseInt(d[currentAccelerator].jobs_completed) - parseInt(jobsFailed) );
      //statusScreen.setLabelValue('j_failed', jobsFailed );
      statusScreen.setLabelValue('v_newcomers', d[currentAccelerator].new_users , " /day");

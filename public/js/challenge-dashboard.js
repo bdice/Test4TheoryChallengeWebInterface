@@ -192,7 +192,7 @@ $(function() {
 
 		// Local properties
 		this.eventRate = 0;
-		this.maxEventRate = 1500000;
+		this.maxEventRate = 60000;
 		
 		//// ==================================== ////
 		//// Global configuration for the project ////
@@ -311,11 +311,11 @@ $(function() {
 			parentNode: this.eGaugeEventRate.get(0),
 			value: 0,
 			min: 0,
-			max: this.maxEventRate / 1000,
+			max: this.maxEventRate / 100,
 			levelColors: [ '#666666' ],
 			formatNumber: true,
 			title: "EVENTS PER SECOND",
-			label: "x1,000",
+			label: "x100",
 			labelMinFontSize: 14
 		}));
 
