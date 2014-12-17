@@ -438,7 +438,7 @@ $(function() {
 	 */
 	ChallengeStats.prototype.setEventRate = function(number) {
 		this.gEventRate.refresh(number);
-		var num = parseInt(number) * 100;
+		var num = parseInt(number) ;
 
 		// Convert with comma
 		var htmlValue = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
