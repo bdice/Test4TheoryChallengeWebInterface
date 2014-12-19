@@ -41,6 +41,9 @@ io.on('update', function(d) {
      if(d[currentAccelerator] != undefined) {
      	window[currentAccelerator]["eventsCompleted"] = parseInt(d[currentAccelerator]["events"]);
      	window[currentAccelerator]["__percentageComplete"] = parseFloat(d[currentAccelerator]["__percentageComplete"]);
+     	if(window[currentAccelerator]["__percentageComplete"]>100){
+     		window[currentAccelerator]["__percentageComplete"]=100;
+     	}
      }
 
      var jobsFailed = 0;
