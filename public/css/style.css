@@ -1300,3 +1300,7 @@ width: 100%;
 	display: block;
 	
 }
+
+#tagcloud a{
+	margin-left:2px;
+}
