@@ -1,0 +1,1163 @@
+// Authors : S.P. Mohanty<sp.mohanty@cern.ch> , Ioannis Charampidis<Ioannis.Charalampidis@cern.ch>
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
+    title CERN 60 Public Computing Challenge
+    // css
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(href="font-awesome/css/font-awesome.min.css", rel="stylesheet", type="text/css")
+    link(href="css/nivo-lightbox.css", rel="stylesheet")
+    link(href="css/nivo-lightbox-theme/default/default.css", rel="stylesheet", type="text/css")
+    link(href="css/animations.css", rel="stylesheet")
+    link(href="css/style.css", rel="stylesheet")
+    link(href="color/default.css", rel="stylesheet")
+    link(rel='shortcut icon', href='favicons/favicon.ico', type='image/x-icon')
+    link(rel='icon', href='favicons/favicon.ico', type='image/x-icon')
+  body#page-top(data-spy="scroll", data-target=".navbar-custom")
+
+    noscript
+      iframe(src='//www.googletagmanager.com/ns.html?id=GTM-5JPWNS', height='0', width='0', style='display: none; visibility: hidden;')
+    script
+      | (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      | new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      | j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      | '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      | })(window,document,'script','dataLayer','GTM-5JPWNS');
+
+    section#intro.hero
+      .container
+        .row
+          .col-md-12.text-right.navicon
+            a#nav-toggle.nav_slide_button(href="#")
+              span
+        .row
+          .col-md-8.col-md-offset-2.text-center.inner
+            .animatedParent.c-glow-black
+              h1.animated.fadeInDown CERN 60
+              p.animated.fadeInUp Public Computing Challenge
+              div.completed
+        .row
+          .col-md-6.col-md-offset-3.text-center
+            a.learn-more-btn.btn-scroll(href="#about", style="margin-left:10px") Learn more
+
+        .row
+          .col-md-8.col-md-offset-2.text-center
+            .div#warning-panel.warning-panel(style="display:none")
+
+    // Navigation
+    #navigation
+      nav.navbar.navbar-custom(role="navigation")
+        .container
+          .row
+            .col-md-2
+              .site-logo
+                a.brand(href="#")
+                  img(src="img/logo.png", height="50px")
+            .col-md-10
+              // Brand and toggle get grouped for better mobile display
+              .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target="#menu")
+                  i.fa.fa-bars
+              // Collect the nav links, forms, and other content for toggling
+              #menu.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li.active
+                    a(href="#intro") Home
+                  li
+                    a(href="#about") About
+                  li
+                    a(href="#volunteers") Volunteers
+                  li
+                    a(href="#team") Team
+                  li
+                    a(href="#more") More                     
+                  li
+                    a(href="#disqus") Forum
+                  li
+                    a(href="#faq") FAQ                     
+                  li
+                    a(href="#contact") Contact Us 
+
+              // /.Navbar-collapse
+        // /.container
+    // /Navigation
+
+    // Section: about
+    section#about.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold About the Challenge
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p
+                h5
+                  font(color="#00BFFF")
+                    | Challenge Accomplished!
+              p
+                | The CERN 60 Public Computing Challenge was a 12-day event that ran in December 2014, as part of CERN’s 60th anniversary celebrations. We invited volunteers around the world to help us compute simulations of particle collisions in the Large Hadron Collider (LHC) and other particle accelerators that have been active during the 60 years of CERN's history.
+              p
+                |  Thanks to your efforts, we’ve been able to simulate over <strong>19 billion</strong> particle collisions, more than half of all the data we need for the game. And thanks to the many of you who provided detailed feedback in the forum, we’ve also been able to fix quite a few bugs with the software, making it easier to install and run. Some of you went all out to help, providing hundreds of hours of processing power. As of 10am CET Saturday 20 December, the official end of the challenge, we’ve made a top 10 ranking and a “ volunteer cloud” that celebrates everyone who logged in. Whatever your ranking, we are really grateful for all your help. 
+              p
+                h5
+                  font(color="#00BFFF")
+                    | What you accomplished
+              p 
+                | Although the challenge is officially over, if you want to keep your virtual machine connected, we’ll keep sending out jobs, and your progress and ranking will continue to be updated. The data you produce will still go towards the database for the game. If you want to remove the virtual machine at this point, follow the instructions in the FAQ section below. In the coming days and weeks, we are going to analyse the challenge results, to understand what worked and what needs to be improved, and will share our insights on the Citizen Cyberlab website.
+              p
+                | We plan to make a similar challenge next year, based on the lessons learned this time. So we would sincerely welcome your feedback on the challenge. In particular, we’d like to hear what you feel you have learned from participating in this challenge: about science, about technology or about anything else. Also, please let us know what you would like to have learned more about. Email your feedback to info@citizencyberlab.com. Thanks!
+              br
+              a.btn.btn-skin.btn-scroll(href="#volunteers", target="_blank", style="margin:5px") 
+                | The volunteers
+              a.btn.btn-skin.btn-scroll(href="#team", target="_blank", style="margin:5px") 
+                | Meet the team
+              a.btn.btn-skin.btn-scroll(href="#more", target="_blank", style="margin:5px") 
+                | More Projects
+
+    // Section: Volunteers
+    section#volunteers.home-section.color-dark.bg-gray
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Volunteers
+                .divider-header
+
+      .text-center
+        .container
+          .row
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/award-1.png")
+                .service-desc
+                  h5 The Pioneers
+                  p
+                    | <strong>Top 10</strong> volunteers with more than than 1,000 jobs submitted!
+                  .awardlist
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-107121331440114387481&cert=0",target="_blank",rel="7034") Harm ten Napel
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10203543574326715&cert=1",target="_blank",rel="5931") George McGlauflin
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10204442017962408&cert=2",target="_blank",rel="3684") Sylvain Decarpentrie
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-100432987177403188387&cert=3",target="_blank",rel="3015") Crystal Pellet
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-1640869622807413&cert=4",target="_blank",rel="2793") Jacques Guyot
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=t-296219277&cert=5",target="_blank",rel="2788") Keiken
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-101896218252813570042&cert=6",target="_blank",rel="2146") LHC Byloved
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-320577698147948&cert=7",target="_blank",rel="1791") Axfactor Axfactor
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-110963432212750323869&cert=9",target="_blank",rel="1594") Gabriel-Andrew Pollo Guilbert
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-110111643718444781835&cert=10",target="_blank",rel="1593") raymond murray
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/award-2.png")
+                .service-desc
+                  h5 The Millionaires
+                  p
+                    | <strong>Top 10 volunteers</strong> who contributed more than 1,000,000 events!
+                  .awardlist
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-756444674434480&cert=11",target="_blank",rel="1532") Boris Pecnik
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-114301823817077038327&cert=12",target="_blank",rel="1443") Ioannis Charalampidis
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10100456961158542&cert=13",target="_blank",rel="1194") Logan Isch
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-496971077111732&cert=15",target="_blank",rel="1038") Dennis Sydekum
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-103721364715364249784&cert=16",target="_blank",rel="1025") Mark Miller
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10205611132620984&cert=17",target="_blank",rel="1008") Frank Jacobsen
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-102320231908684243168&cert=18",target="_blank",rel="996") Claude Phipps
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-102009396006119864030&cert=19",target="_blank",rel="993") Eric Smith
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-336859316500155&cert=21",target="_blank",rel="964") Marcel Schreier
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-116197108687326364288&cert=22",target="_blank",rel="901") Marios Fanourakis
+
+            .col-sm-4
+              .service-box
+                .service-icon
+                  span
+                    img(src="icons/award-3.png")
+                .service-desc
+                  h5 Late Entry
+                  p
+                    | <strong>Last 10 volunteers</strong> who joined the last moment yet managed to submit 10 jobs on time!
+                  .awardlist
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-103181037289603879885&cert=484",target="_blank",rel="11") Harry Bruce
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-101270132761910338901&cert=485",target="_blank",rel="11") Wesa Perttola
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-844499298903693&cert=486",target="_blank",rel="11") Nicholas Chatzaras
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10152625126833406&cert=487",target="_blank",rel="11") Konstantina E. Koliopoulou
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=g-110699874727050023435&cert=492",target="_blank",rel="10") Marco Gagliano
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-770662079650452&cert=493",target="_blank",rel="10") Maria Papa
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10205814285858184&cert=494",target="_blank",rel="10") Peter Plattner
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10205550456588940&cert=495",target="_blank",rel="10") Mateo González Arrigorriaga
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10203820775216194&cert=496",target="_blank",rel="10") Simone Pecora
+                    a(href="https://test4theory.cern.ch/challenge/vlhc_credits?vmid=f-10153419904392926&cert=497",target="_blank",rel="10") Gabriel Bramley
+
+      .container
+        p
+      .container.marginbot-40
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Hall of Fame
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.text-center
+            p Here is a name cloud of all the volunteers who signed in and contributed at least one job. Thanks to you, and the hundreds of anonymous volunteers, too! 
+            p
+            #tagcloud
+              a(href="#",rel="216") Patrick Werber
+              a(href="#",rel="93") Hendrik Richter
+              a(href="#",rel="43") Michael Claes
+              a(href="#",rel="213") Indy Gilstrøm
+              a(href="#",rel="26") Jaime Farill
+              a(href="#",rel="86") Mike Hamilton
+              a(href="#",rel="240") Kirsten Henningsen
+              a(href="#",rel="6") John Darlington
+              a(href="#",rel="74") Zelda elias
+              a(href="#",rel="68") John W Hallam
+              a(href="#",rel="4") Albert Booth
+              a(href="#",rel="5") Evert adsgafg
+              a(href="#",rel="512") Ryder Bluhm
+              a(href="#",rel="14") Harrison Totty
+              a(href="#",rel="1") Nicolò Gottardello
+              a(href="#",rel="57") Neil Moodley
+              a(href="#",rel="1") Sean Davis
+              a(href="#",rel="78") James Mitchell
+              a(href="#",rel="1") Alex Nico-Katz
+              a(href="#",rel="574") Wade Gillingham
+              a(href="#",rel="67") nekdo z jam
+              a(href="#",rel="16") Ian Dimock
+              a(href="#",rel="5") Michelle Greenlee
+              a(href="#",rel="42") Lex Imperatoris
+              a(href="#",rel="1") Billy Vierra
+              a(href="#",rel="336") Marc Lutzen
+              a(href="#",rel="289") Ben Plunkett
+              a(href="#",rel="27") Chris Van Damme
+              a(href="#",rel="8") Justin Pekular
+              a(href="#",rel="1") Jason Lorsung
+              a(href="#",rel="117") Joshua Lee
+              a(href="#",rel="1") AXfactOR AXfactOR
+              a(href="#",rel="5") Giovanni Siragusa
+              a(href="#",rel="2") Carson Talbot
+              a(href="#",rel="88") Jack Crast
+              a(href="#",rel="3") Andy Omnomnom
+              a(href="#",rel="572") Radek Marek
+              a(href="#",rel="118") upinsmoke1973
+              a(href="#",rel="31") Maelstrom
+              a(href="#",rel="82") Scott McDermott
+              a(href="#",rel="15") Ryan Ford
+              a(href="#",rel="3") Naomi Cathcart
+              a(href="#",rel="37") Brian Bond
+              a(href="#",rel="45") Geoffrey Yeung
+              a(href="#",rel="97") Dan Vernier
+              a(href="#",rel="9") Tomas Barsulis
+              a(href="#",rel="34") Puffer Blapkinz
+              a(href="#",rel="116") Ian
+              a(href="#",rel="79") Peter Braun
+              a(href="#",rel="50") RJ Hill
+              a(href="#",rel="162") Bertil Spolander
+              a(href="#",rel="18") Cody Wang
+              a(href="#",rel="8") Carl Michael Stojanovic
+              a(href="#",rel="5") duG Varrette
+              a(href="#",rel="140") Arturo Saura
+              a(href="#",rel="24") Ben Segal
+              a(href="#",rel="20") Eralp Ersoy
+              a(href="#",rel="6") Alex Copero
+              a(href="#",rel="54") Tim Weinert
+              a(href="#",rel="50") Jan Füsting
+              a(href="#",rel="767") thomas noé
+              a(href="#",rel="14") Leo Wright
+              a(href="#",rel="395") Joe Tursi
+              a(href="#",rel="16") david9000
+              a(href="#",rel="3") Borja González Herrero
+              a(href="#",rel="110") Benjamin Bertrand
+              a(href="#",rel="137") Pieter Orlando
+              a(href="#",rel="668") Andrew Smith
+              a(href="#",rel="2") John Jones
+              a(href="#",rel="45") Rouslan Korneychuk
+              a(href="#",rel="33") Jasper Homann
+              a(href="#",rel="26") Matthew Snow
+              a(href="#",rel="296") Sylvain Fournier
+              a(href="#",rel="42") Malevolence On A Stick
+              a(href="#",rel="278") Andrea Manzi
+              a(href="#",rel="84") Elemental Brain
+              a(href="#",rel="53") Adam Paugh
+              a(href="#",rel="8") Ninette Kelly
+              a(href="#",rel="7") Cameron Phillips
+              a(href="#",rel="269") Erick Erickson
+              a(href="#",rel="19") Emma Finnie
+              a(href="#",rel="44") stathilaos
+              a(href="#",rel="87") Jeremy McLaughlin
+              a(href="#",rel="290") Adam Bidema
+              a(href="#",rel="245") Ex Cooll
+              a(href="#",rel="404") Francois Grey
+              a(href="#",rel="13") Clara Á. Luna
+              a(href="#",rel="332") Jim 'Artless' Merrill
+              a(href="#",rel="85") Mikey Babb
+              a(href="#",rel="110") Chris Ingalls
+              a(href="#",rel="3") Daniel Gomes
+              a(href="#",rel="6") Andreas Jonasson
+              a(href="#",rel="1") Henrik Engebretsen
+              a(href="#",rel="399") Adrian Ellingsgaard
+              a(href="#",rel="32") Jonathan Chan
+              a(href="#",rel="39") Aika Code
+              a(href="#",rel="53") Arthur Molnar
+              a(href="#",rel="4") Clemens Der-ganze Degasper
+              a(href="#",rel="101") Michael Lausten
+              a(href="#",rel="3") Tim Swast
+              a(href="#",rel="7") Denis Anhgarin
+              a(href="#",rel="14") Phil Webb
+              a(href="#",rel="5") Greg Lockett
+              a(href="#",rel="4") Dubois Alexandre
+              a(href="#",rel="27") Rohan Kundu
+              a(href="#",rel="19") Kostas Rakitzis
+              a(href="#",rel="84") Ayush Jha
+              a(href="#",rel="1") José Rafael Trêpo
+
+              a(href="#",rel="8") Camille Bennett
+              a(href="#",rel="578") Jonathan Lo
+              a(href="#",rel="29") Fraser (zeroXten)
+              a(href="#",rel="9") Amkazan Amkazan
+              a(href="#",rel="3") Jan-niclas Graumann
+              a(href="#",rel="4") Not Erison Veshi
+              a(href="#",rel="309") Matthew Gregg
+              a(href="#",rel="32") Simone Grandieri
+              a(href="#",rel="2") James Snyder
+              a(href="#",rel="157") Citizen Joe
+              a(href="#",rel="528") Andrew Poe
+              a(href="#",rel="29") Felix Wustrack
+              a(href="#",rel="265") Ivan Koeff
+              a(href="#",rel="16") Daniel Reynolds
+              a(href="#",rel="2") Jacob Wolf
+              a(href="#",rel="138") Nel-gez Andreas
+              a(href="#",rel="3") Roy van Oldenbeek
+              a(href="#",rel="15") caymus11 lol
+              a(href="#",rel="84") Robby Wilson
+              a(href="#",rel="186") Johan Torselius
+              a(href="#",rel="15") Alexandr Samsonov
+              a(href="#",rel="515") Steve Kuntz
+              a(href="#",rel="27") Mike Bentley
+              a(href="#",rel="22") Daniel Lindmark
+              a(href="#",rel="7") mininukewarrior
+              a(href="#",rel="38") Ivan Bisol
+              a(href="#",rel="212") Frederik Vander Biest
+              a(href="#",rel="14") Thomas Kristensen
+              a(href="#",rel="2") Marco Nardes
+              a(href="#",rel="13") Craig Pekar
+              a(href="#",rel="250") Mike Wilkinson
+              a(href="#",rel="3") John Smith
+              a(href="#",rel="515") Bernie Telalovic
+              a(href="#",rel="17") Kilazur Dargnaith
+              a(href="#",rel="159") Laurence Woolford
+              a(href="#",rel="53") Guillaume Toussaint
+              a(href="#",rel="76") Adam Wheeler
+              a(href="#",rel="34") Jade Woods
+              a(href="#",rel="6") Nicolas Segal
+              a(href="#",rel="28") Anders Hvidberg Frandsen
+              a(href="#",rel="21") James Alexander Gardner
+              a(href="#",rel="328") Efi Psomopoulou
+              a(href="#",rel="113") Kalle Bexhorn
+              a(href="#",rel="257") Joseph Flagler
+              a(href="#",rel="516") Ben Vaughn
+              a(href="#",rel="4") Anton Stengaard
+              a(href="#",rel="53") Jakob Rigsby
+              a(href="#",rel="24") Eric Plummer
+              a(href="#",rel="36") Josh Robbins
+              a(href="#",rel="55") Ryan Moodey
+              a(href="#",rel="7") Kristof Ballet
+              a(href="#",rel="63") Jack Eden
+              a(href="#",rel="62") 
+              a(href="#",rel="336") Patricia Engel
+              a(href="#",rel="2") Connor H.
+              a(href="#",rel="1") R Bartram
+              a(href="#",rel="436") Dan Shaw
+              a(href="#",rel="9") Bob Lomax
+              a(href="#",rel="349") Shougo Matsuda
+              a(href="#",rel="4") Sania Heba
+              a(href="#",rel="12") Christian Maier
+              a(href="#",rel="782") Bob Peake
+              a(href="#",rel="12") Alejandro Isaza
+              a(href="#",rel="13") Thomas Mannheim
+              a(href="#",rel="2") Thomas Staudinger
+              a(href="#",rel="27") Chalet Falquet
+              a(href="#",rel="59") Hayden Gaffel
+              a(href="#",rel="7") Carl Stuenkel
+              a(href="#",rel="537") Stephen Tanner
+              a(href="#",rel="73") Matevz Cerv
+              a(href="#",rel="104") Nikolay Bochkarev
+              a(href="#",rel="3") mads kristensen
+              a(href="#",rel="5") Connor Fritz
+              a(href="#",rel="426") francis
+              a(href="#",rel="26") Marco Vit
+              a(href="#",rel="121") hiuh bunbv
+              a(href="#",rel="52") Joshua Karim (Samintell)
+              a(href="#",rel="15") Konstantinos Stefanidis
+              a(href="#",rel="520") David Emmel
+              a(href="#",rel="558") P M
+              a(href="#",rel="9") Giuseppe Fabiano
+              a(href="#",rel="41") AVDA Vigevano
+              a(href="#",rel="113") Brian Fuchs
+              a(href="#",rel="51") Stephen Buss
+              a(href="#",rel="254") Peter Pakatyilla
+              a(href="#",rel="212") Andrew Nederhoff
+              a(href="#",rel="41") James Connelly
+              a(href="#",rel="41") Simon THOBY
+              a(href="#",rel="502") rbpeake
+              a(href="#",rel="472") Ryan Craig
+              a(href="#",rel="209") Seargent Awesome
+              a(href="#",rel="83") Jim Spriggs
+              a(href="#",rel="12") Abel Németh
+              a(href="#",rel="173") Sebastian Feerup
+              a(href="#",rel="312") Joseph Hoffmanns
+              a(href="#",rel="11") Milen Dimitrov
+              a(href="#",rel="4") mikey mcdonald
+              a(href="#",rel="77") Guido Manni
+              a(href="#",rel="47") Anthony Prijatna
+              a(href="#",rel="52") Crytek Troll
+              a(href="#",rel="56") Mavaddat Javid
+              a(href="#",rel="164") Ole Thorkild Heiberg Madsen
+              a(href="#",rel="29") Jamie Horncastle
+              a(href="#",rel="33") Dominique Menten
+              a(href="#",rel="265") Quique Barthe
+              a(href="#",rel="20") AbselutlyNobody
+              a(href="#",rel="468") Daniele Romano
+              a(href="#",rel="40") Manuel Maldonado
+              a(href="#",rel="46") Edward Bicknell
+              a(href="#",rel="78") Craig Jones
+              a(href="#",rel="18") Maximilian Nowak
+              a(href="#",rel="30") Loris Bezzetto
+              a(href="#",rel="2") Guido Volpi
+              a(href="#",rel="2") Nick Mahaffey
+              a(href="#",rel="319") Bjorn Eriksson
+              a(href="#",rel="7") Nathan-Myrph Barber
+              a(href="#",rel="2") CMLolCraft Olsen
+              a(href="#",rel="123") AR Malin
+              a(href="#",rel="64") Crystal Pellet
+              a(href="#",rel="3") Dmitriy Agafonov
+              a(href="#",rel="538") Tibor Bohos
+              a(href="#",rel="13") Elizabeth Case
+              a(href="#",rel="64") Josh Kirby
+              a(href="#",rel="866") Joost Egelie
+              a(href="#",rel="9") Nick Kellner
+              a(href="#",rel="7") Jack Rudrum
+              a(href="#",rel="12") Ramiro Martínez
+              a(href="#",rel="3") Jonah Amundsen
+              a(href="#",rel="119") Jani Virtanen
+              a(href="#",rel="2") Andrejs Melihovs
+              a(href="#",rel="26") António Costa
+              a(href="#",rel="432") Jonathan Last
+              a(href="#",rel="13") Ethan Chao
+              a(href="#",rel="57") Andrew Sanchez
+              a(href="#",rel="28") Andrew Bennett
+              a(href="#",rel="19") Béni Victorious Victor Broohm
+              a(href="#",rel="1") Ilia yefimov
+              a(href="#",rel="42") Tristan Kidder
+              a(href="#",rel="122") Kevin Kaw
+              a(href="#",rel="12") Giacomo Zagonel
+              a(href="#",rel="136") David Stansby
+              a(href="#",rel="8") Jon Stavvy
+              a(href="#",rel="117") ton4o5
+              a(href="#",rel="304") Jimmy G
+              a(href="#",rel="12") Dan Zorny
+              a(href="#",rel="577") jeremy barron
+              a(href="#",rel="5") Erik Wilhelm Bjønnes
+              a(href="#",rel="34") José Agnelo
+              a(href="#",rel="96") Scott Kilzer
+              a(href="#",rel="1") max blum
+              a(href="#",rel="102") Fran Poodry
+              a(href="#",rel="498") Florian Kenklies
+              a(href="#",rel="2") ASIMItheHERO
+              a(href="#",rel="31") Udo Korn
+              a(href="#",rel="4") Andrea Petracco
+              a(href="#",rel="302") Jeff S
+              a(href="#",rel="513") Trevor Hurlbut
+              a(href="#",rel="1") Vlad Osnach
+              a(href="#",rel="196") Jason Papapanagiotakis
+              a(href="#",rel="16") Haden Wasserbaech
+              a(href="#",rel="324") Anthony Strause
+              a(href="#",rel="35") ryan killoch
+              a(href="#",rel="48") Colin Dumitru
+              a(href="#",rel="17") Oleksiy Sheketera
+              a(href="#",rel="1") Allan Tran
+              a(href="#",rel="61") Zhang Jian Nan
+              a(href="#",rel="230") Tim Bell
+              a(href="#",rel="108") Emma Jane Fearn
+              a(href="#",rel="21") Nick Pod
+              a(href="#",rel="157") 
+              a(href="#",rel="52") Pierce Spragg
+              a(href="#",rel="21") Xander Leverett
+              a(href="#",rel="1") André Richard
+              a(href="#",rel="32") theo le lay
+              a(href="#",rel="180") jonathan Haynes
+              a(href="#",rel="177") Chirag Patel
+              a(href="#",rel="97") Dylan Kirkpatrick
+              a(href="#",rel="232") Nadim Conti
+              a(href="#",rel="11") Zac Sipes
+              a(href="#",rel="50") Hayley Young
+              a(href="#",rel="132") Mikael Axelsson
+              a(href="#",rel="46") Jacob Hauge
+              a(href="#",rel="524") Anthony Trupiano
+              a(href="#",rel="8") Jon Bjarne Moe-gumø
+              a(href="#",rel="3") Seyhan Çelik
+              a(href="#",rel="31") David Kidd
+              a(href="#",rel="77") Jacob Pozderac
+              a(href="#",rel="1") Jim Spriggs
+              a(href="#",rel="88") Kostas Chartom
+              a(href="#",rel="43") Andrea Pinnisi
+              a(href="#",rel="14") Andreas Kotes
+              a(href="#",rel="220") Ebon Mourn
+              a(href="#",rel="1") Anton Alekseychuk
+              a(href="#",rel="58") BzBe
+              a(href="#",rel="9") Trevor Van Eeuwen
+              a(href="#",rel="218") LethalMutinyLP
+              a(href="#",rel="3") Nate Van Klompenberg
+              a(href="#",rel="229") Tyler Lawson
+              a(href="#",rel="505") Webmaster HCM
+              a(href="#",rel="541") Rui Apóstolo
+              a(href="#",rel="100") Colin Pack
+              a(href="#",rel="113") Matthew B
+              a(href="#",rel="105") Roland Wirbals
+              a(href="#",rel="15") pben
+              a(href="#",rel="7") Leon Eck
+              a(href="#",rel="431") Lantz Lyon
+              a(href="#",rel="490") Andrew McWhirter
+              a(href="#",rel="2") Alperen Evrin
+              a(href="#",rel="75") David Turnbull
+              a(href="#",rel="362") Danny 'Giles' Raybould
+              a(href="#",rel="1") Derk Humblet
+              a(href="#",rel="52") David Zhang
+              a(href="#",rel="514") Garrett Minks
+              a(href="#",rel="62") Sekine Shinichi
+              a(href="#",rel="13") Vince van den Kolk
+              a(href="#",rel="26") Yuri Bond
+              a(href="#",rel="133") Adrian Heng
+              a(href="#",rel="350") Alexey Vasiliev
+              a(href="#",rel="165") Vladislav Mikov
+              a(href="#",rel="18") Mike Callinan
+              a(href="#",rel="472") Bob Addiss
+              a(href="#",rel="1") Kieran
+              a(href="#",rel="15") Mikhail Grebelnik
+              a(href="#",rel="38") William Clayden
+              a(href="#",rel="12") Dennis Kallimanis
+              a(href="#",rel="1") Daniel Lagocki
+              a(href="#",rel="7") Sipos Barna
+              a(href="#",rel="64") Edward Hepher
+              a(href="#",rel="47") Stephanie Bates
+              a(href="#",rel="49") Bruno Costa
+              a(href="#",rel="57") Conner C.
+              a(href="#",rel="17") Alexandr Toorchyn
+              a(href="#",rel="24") Lars Kellberg
+              a(href="#",rel="5") Lennert Geebelen
+              a(href="#",rel="288") Andrew Karaffa
+              a(href="#",rel="208") Dale Hayes
+              a(href="#",rel="1") Sander Visser
+              a(href="#",rel="134") Carsten Brachem
+              a(href="#",rel="27") Domingos Dias
+              a(href="#",rel="61") Jorge Luis Marizan
+              a(href="#",rel="1") Bastian Venz
+              a(href="#",rel="1") Matthew Carpenter
+              a(href="#",rel="12") Brendan O'Donnell
+              a(href="#",rel="6") Serhii Shysheliuk
+              a(href="#",rel="122") Philipp Willud
+              a(href="#",rel="62") Jamie Warren
+              a(href="#",rel="46") Dave Jones
+              a(href="#",rel="39") Cristopher Arturo Chuñe Sosa
+              a(href="#",rel="43") Chris Grunthaner
+              a(href="#",rel="188") Harrison West
+              a(href="#",rel="209") Rob Velthuis
+              a(href="#",rel="1") Battlecast Urgot
+              a(href="#",rel="54") Liam Harders
+              a(href="#",rel="87") Pedro Kepczynski Stuginski
+              a(href="#",rel="81") Ben Jackson
+              a(href="#",rel="1") Rom Sa
+              a(href="#",rel="133") Mariusz Grzechnik
+              a(href="#",rel="744") Kiriakos Kalpakidis
+              a(href="#",rel="12") Adam Tarrant
+              a(href="#",rel="101") Raziel Tzu
+              a(href="#",rel="1") Otto Vainio
+              a(href="#",rel="19") Kay Van Wynendaele
+              a(href="#",rel="70") Kenny Han
+              a(href="#",rel="1") Trifectorce y
+              a(href="#",rel="3") Dávid Császár
+              a(href="#",rel="95") Bob Stienen
+              a(href="#",rel="48") Calvin Do
+              a(href="#",rel="224") Joseph Hayes
+              a(href="#",rel="5") Stefan Hasselgren
+              a(href="#",rel="5") Bob
+              a(href="#",rel="356") Andreas Grehn
+              a(href="#",rel="165") Hugo Simonsson (Hugsim)
+              a(href="#",rel="63") Markus Plautz
+              a(href="#",rel="34") Jessery Bengston
+              a(href="#",rel="172") Mitsuma Ohtani
+              a(href="#",rel="110") Howard Walter
+              a(href="#",rel="20") Nick Gaynor
+              a(href="#",rel="170") Tim Bell
+              a(href="#",rel="135") Mathias Rose
+              a(href="#",rel="53") Luis Daniel
+              a(href="#",rel="37") Olli Openminded
+              a(href="#",rel="221") Andrés G. Delannoy
+              a(href="#",rel="62") Random
+              a(href="#",rel="92") Ben Hopkins
+              a(href="#",rel="7") Olaf
+              a(href="#",rel="156") Osvaldo C. Alfaro
+              a(href="#",rel="1") Ricardo Ralha
+              a(href="#",rel="15") Michael Kwan
+              a(href="#",rel="5") Deverin Shaille
+              a(href="#",rel="2") jimmo jimmoski
+              a(href="#",rel="204") Tord Runnman
+              a(href="#",rel="20") Peter Rehm
+              a(href="#",rel="1") Martin Stumpf
+              a(href="#",rel="85") German Silva
+              a(href="#",rel="135") Sam Normington
+              a(href="#",rel="278") Lieven Paulissen
+              a(href="#",rel="6") Jason Forest
+              a(href="#",rel="5") Maxime Fleury
+              a(href="#",rel="5") Robert Waldron
+              a(href="#",rel="4") Scott Luu
+              a(href="#",rel="479") William Wright (Scott)
+              a(href="#",rel="22") George Giles
+              a(href="#",rel="55") Brad Morris
+              a(href="#",rel="12") Mitchell Brown
+              a(href="#",rel="246") Brandon Bryant (shapeshifter5)
+              a(href="#",rel="204") Tom Bentsen
+              a(href="#",rel="321") Jason Flegal
+              a(href="#",rel="105") Olli Klettern
+              a(href="#",rel="167") David Kahn
+              a(href="#",rel="18") Jared Kasl
+              a(href="#",rel="27") Nathan Thomson
+
+    // Section: Meet the Team
+    section#team.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Meet the Team
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p Here are the people behind the scenes who made this challenge possible!
+        .row
+          .col-lg-5.col-lg-offset-1
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-ioannis.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading Ioannis Charalampidis
+                p Ioannis is based at CERN and developed much of the VM technology underlying the challenge. He is developing the particle physics game that motivates the simulations done in the challenge.
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-mohanty.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading S.P. Mohanty
+                p Mohanty was an intern at CERN over the summer who developed the challenge website, and continued to work on this in his spare time while studying at IIT Hyderabad.
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-ben.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading Ben Segal
+                p The dev team was guided by Ben Segal of CERN, who has masterminded the development of much of the technology needed for the challenge over several years.             
+          .col-lg-5
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-francois.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading Francois Grey
+                p Francois is in the University of Geneva. He is our occasional taskmaster, to keep the team on schedule
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-peter.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading Peter Skands
+                p Peter Skands at Monash University is the particle physicist who conceived of the challenge, and ensures the physics output is useful.
+            .media
+              a(href="javascript:;").pull-left
+                img(src="images/team-jose.jpg",alt="Ioannis").media-object.img-rounded
+              .media-body
+                h4.media-heading Jose Luis Fernandez-Marquez
+                p Jose is in the University of Geneva has helped install the analytics that helped us monitor the challenge.          
+
+    // Section: FAQ
+    section#faq.home-section.color-dark.bg-gray
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Frequently Asked Questions
+                .divider-header
+
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-left
+              #accordion.panel-group
+                h4
+                  | About the challenge
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordionOne")
+                              | <strong>Q1:</strong> To take part in the challenge do I need to have my computer switched on all the time?
+                  #accordionOne.panel-collapse.collapse
+                    .panel-body
+                            | <strong>A:</strong> No! In fact, to avoid wasting energy, you should only participate while you are doing other stuff on your computer. For example trying out some of the other #[a.btn-scroll(href="#more") CERN-related public participation projects]. 
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion2")
+                              | <strong>Q2:</strong> How much effort is involved for me to be part of the challenge? 
+                  #accordion2.panel-collapse.collapse
+                    .panel-body
+                            | <strong>A:</strong> None! The virtual machine in your computer takes care of everything and sends us results periodically. It restarts automatically every time you restart your computer. 
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion3")
+                              | <strong>Q3:</strong> Why is this just a 12-day challenge? What happens afterwards?
+                  #accordion3.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> We're building up a database of results that will help people play a game about particle physics, to be launched next year. Twelve days will produce enough data. If you want to be the first to know once the game is launched, #[a.btn-scroll(href="#contact") drop us a line].
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion5")
+                              | <strong>Q4:</strong> Will I get any feedback about how much I have contributed personally to the project?  
+                  #accordion5.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> Once you've got the project running, you'll be able to see your progress on a web page that comes up every time you click Start Computing on this challenge page.
+ 
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion8")
+                              | <strong>Q5:</strong> If I have a question about this challenge that is not in this FAQ list, who can I ask?
+                  #accordion8.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> You can get in touch with us using this #[a.btn.btn-skin.btn-scroll(href="#disqus", target="_blank") Disqus Forum]. Several particle physicists who will use the data you produce will be answering science questions you may have in the forum, and the challenge team is there to answer any technology questions. 
+
+                br
+                h4
+                  | About the software
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion6")
+                              | <strong>Q1:</strong> What operating systems and browsers does this challenge run on?  
+                  #accordion6.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> The current prototype supports the following platforms :
+                      ul(style="margin-left:20px")
+                        li
+                          strong MacOSX
+                          | : 10.8 and later               
+                        li
+                          strong Windows
+                          | : XP SP3+ including Win7 and Win8
+                        li
+                          strong Linux
+                          | : Ubuntu 13.0+ and SLC6 (Red
+                          |                 Hat)
+                       | Browsers supported are :
+                      ul(style="margin-left:20px")
+                        li
+                          strong Internet Explorer
+                          | : 10+
+                        li
+                          strong Firefox
+                          | : 11+
+                        li
+                          strong Chrome
+                          | : 14+
+                        li
+                          strong Safari
+                          | : 6+
+                        li
+                          strong Opera
+                          | : 12.1+
+                        li
+                          strong SeaMonkey 
+                          | : 12.10.1+
+                            
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion20")
+                              | <strong>Q2:</strong> How can I stop the virtual machine?
+                  #accordion20.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> When the WebAPI interface is open, and the virtual machine is running, you will see a Stop button at the bottom of the webpage. Click it to stop the virtual machine.
+                      br
+                      | If you close the WebAPI interface, the virtual machine keeps running. You can always stop it by opening the WebAPI interface again. To do this, click the Start Computing button on this web page. The WebAPI interface will open. Then press the "Stop" button.
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion75")
+                              | <strong>Q3:</strong> My virtual machine doesn't respond. What should I do?
+                  #accordion75.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> If the VM will not stop, even after doing the steps mentioned in Q2, it's probably because it is in a state called Guru Mediation. This means that VirtualBox encountered a critical problem and it paused the Virtual Machine in order for a "Guru" to have a look. The only way to get over this error is to kill the VBoxHeadless process and refresh the challenge website:                      
+                      ul(style="margin-left:15px")
+                        li
+                          strong Windows
+                          ul(style="margin-left:15px")
+                            li
+                              | Start the Windows Task Manager
+                            li
+                              | Locate the <strong>"VBoxHeadless.exe"</strong>  process and click <strong>"End process"</strong>
+                        li
+                          strong Linux
+                          ul(style="margin-left:15px")
+                            li
+                              | Open a terminal
+                            li
+                              | Assuming that you are not running any other Virtual Machine in your computer, type: <pre>killall VBoxHeadless</pre> and hit enter.  
+                        li
+                          strong MacOSX
+                          ul(style="margin-left:15px")
+                            li
+                              | Close the challenge and WebAPI websites
+                            li
+                              | Open the <strong>"Activity Monitor"</strong> application from the Utilities
+                            li
+                              | Locate the <strong>"VBoxHeadless"</strong>  process and double-click to open the details. If it does'nt quit, click "Force Quit".
+                            li
+                              | Now open the challenge website and click Start Computing. The VM should start running again.
+
+                      strong
+                        | IF IT STILL DOESN’T WORK
+                      br
+                      | In all the above cases, If you are still encountering errors, destroy your Virtual Machine using the trash icon at the bottom of the configuration panel and then refresh the interface. To open this panel, click on the gear symbol at the bottom of the the WebAPI interface.                      
+                      | If the VM still doesn’t work after removing it and restarting, then remove it again, restart your computer, and try again. In certain rare cases, you may need to restart your computer a second time. If none of the above works for you, contact us through the forum or via #[a(href="mailto:info@citizencyberlab.com") info@citizencyberlab.com] with details of what is going wrong.
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion61")
+                              | <strong>Q4:</strong> How can I uninstall the software?
+                  #accordion61.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> To uninstall the app cernvm-webapi, follow the following procedures for the respective platforms:
+                      ul(style="margin-left:15px")
+                        ul(style="margin-left:15px")
+                          li
+                              strong Windows
+                              | :&nbsp; There is an uninstall
+                              |                 link on the start menu
+                          li
+                            strong Mac OSX
+                            | :
+                            ul(style="margin-left:15px")
+                              li
+                                | start a line-command terminal by opening Finder, opening the folder Utilities and clicking on Terminal, then write the following command and press Return(Enter):
+                                br
+                                | <pre> launchctl unload ~/Library/LaunchAgents/cern.cernvm.webapi.service.plist </pre>
+                              li
+                                | Then you can drag the CernVM WebAPI from the
+                                | applications to the trash can.
+                          li
+                            strong Linux (Ubuntu)
+                            | <pre> sudo apt-get remove cernvm-webapi </pre>
+                          li
+                            strong Linux (SLC6 Red Hat)
+                            | <pre> sudo yum remove cernvm-webapi </pre>
+
+                        br
+                        h6 Residual Files
+                        | The application keeps cache and other files required for normal operaion in a folder in the user's directory. If you want to fully uninstall the remaining files too, you should remove the following directory:
+                        ul(style="margin-left:15px")
+                          li
+                            strong Windows
+                            | : %appdata%/CernVM/WebAPI
+                          li
+                            strong Linux
+                            | : ~/.cernvm/WebAPI
+                          li
+                            strong MacOSX
+                            | : ~/Library/Application Support/CernVM/WebAPI
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion665")
+                              | <strong>Q5:</strong> This website seems to consume a lot of CPU power. Is that normal? 
+                  #accordion665.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> This is a known issue. The libraries we are using to animate the timeline on this website use a lot of CPU power, especially on Firefox. A simple solution is to close this window when you don't need it. 
+                      
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion66")
+                              | <strong>Q6:</strong> Does the software I install respect my privacy? 
+                  #accordion66.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> The only data about you that we keep on our server is a unique identifier for your computer, which we use to attribute your contributions, and your login username, but not the password.
+                      p
+                      p
+                        | We are using Google Analytics on the Computing Challenge and Web API pages, in order to gather detailed statistics about the website's traffic and the system's behavior.  This information allows us to evaluate our technology, and continue improving it. In particular, we are curious to discover where people may get stuck with the instructions, and what other projects they may click through to, from this site. 
+                      p
+                        | This data is being gathered for research purposes in the Citizen Cyberlab project, where we’re trying to understand what people learn about science from participating in such initiatives, and how we might improve the learning experience in future. According to the Google Analytics terms of service, we do not track, collect or upload any data that personally identifies an individual (such as name or email). 
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion7")
+                              | <strong>Q7:</strong> Can I install this challenge on several computers, and see their total performance? 
+                  #accordion7.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> Yes, just make sure you login with the same account everywhere, so you can aggregate your results. 
+
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion71")
+                              | Disclaimer
+                  #accordion71.panel-collapse.collapse
+                    .panel-body
+                      | Disclaimer  
+                      ul(style="margin-left:15px")
+                        li
+                          | This website is provided for information purposes only. The EU project Citizen Cyberlab makes every effort to ensure that the information is accurate and up-to-date.
+                        li 
+                          | Volunteer computing is an established approach with a long track-record of millions of users. The software you are downloading has been used on a wide range of computers by thousands of volunteers in the past. However, neither Citizen Cyberlab nor CERN makes any warranties as to the quality of the software, nor its suitability for any particular purpose, nor are Citizen Cyberlab and CERN liable for any damages whatsoever arising out of, or in connection with, the use of the site, or the downloaded software. 
+                        li
+                          | You agree to use this site and associated software only for lawful purposes, and in a manner that does not infringe the rights of, or restrict or inhibit the use and enjoyment of this site by, any third party. Every effort will be made to ensure a continuous service of this site and the associated software, but neither Citizen Cyberlab nor cannot guarantee that the service will be uninterrupted or error-free.
+
+
+    // Section: more
+    section#more.home-section.color-dark.bg-gray
+        .container.marginbot-50
+            .row
+              .col-lg-8.col-lg-offset-2
+                div
+                  .section-heading.text-center
+                    h2.h-bold More Activities
+                    .divider-header
+          .text-center
+            .container
+              .row.animatedParent
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/icon-antimatter-01.png")
+                      .service-desc
+                        h5 Analyze Antimatter
+                        .divider-header
+                        p
+                          | Contribute to analyzing antimatter data produced at CERN..
+                        a.btn.btn-skin(href='http://crowdcrafting.org/app/antimatteralpha/', target="_blank") Learn more
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/icon-clicker-01.png")
+                      .service-desc
+                        h5 Particle Clicker
+                        .divider-header
+                        p
+                          | Try out Particle Clickers, a game made by students at CERN.
+                        a.btn.btn-skin(href='http://particle-clicker.web.cern.ch/particle-clicker/', target="_blank") Learn more
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/icon-microscope.png")
+                      .service-desc
+                        h5 Hunt the Higgs
+                        .divider-header
+                        p
+                          | Help classify tracks from the ATLAS detector.
+                        a.btn.btn-skin(href='http://www.higgshunters.org/', target="_blank") Learn more
+
+
+              .row.animatedParent
+                br
+              .row.animatedParent
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/icon-recognize-this-01.png")
+                      .service-desc
+                        h5 Recognize This?
+                        .divider-header
+                        p
+                          | Test your knowledge of historical physics hardware at CERN.
+                        a.btn.btn-skin(href='http://crowdcrafting.org/app/cernphotos/', target="_blank") Learn more      
+
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/icon-test4theory-01.png")
+                      .service-desc
+                        h5 Keep on Computing
+                        .divider-header
+                        p
+                          | Join the LHC@home project for volunteer computing at CERN.
+                        a.btn.btn-skin(href='http://lhcathome.web.cern.ch/', target="_blank") Learn more
+
+                //.col-xs-6.col-sm-4.col-md-4
+                //  .animated.pulse
+                //    .service-box
+                //      .service-icon
+                //        span
+                //          img(src="icons/icon-subscribe-01.png")
+                //      .service-desc
+                //        h5 Stay Tuned
+                //        .divider-header
+                //        p
+                //          | Be the first to know when our new particle physics game launches.
+                //        a.btn.btn-skin.btn-scroll(href='#contact') Subscribe
+                .col-xs-6.col-sm-4.col-md-4
+                  .animated.pulse
+                    .service-box
+                      .service-icon
+                        span
+                          img(src="icons/smash.png")
+                      .service-desc
+                        h5 Crash Quarks
+                        .divider-header
+                        p
+                          | Remix your own game about particle physics.
+                        a.btn.btn-skin.btn-scroll(href='http://redwire.io/#/game/ebdaca75fce9b846/play', target="_blank") Learn More
+                                         
+
+    section#contact.home-section.nopadd-bot.color-dark.bg-white.text-center
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center
+                h2.h-bold.animated.bounceInDown Stay in touch
+                .divider-header
+      .container
+        .row.marginbot-80
+          .col-md-8.col-md-offset-2
+            p
+              | The CERN 60 Public Computing Challenge is brought to you by the #[a(href="http://citizencyberlab.eu/", target="_blank") Citizen Cyberlab] project and the #[a(href="http://www.citizencyberscience.net/", target="_blank") Citizen Cyberscience Centre]. We're pushing the boundaries of citizen science and informal learning on the Web. Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
+              br
+              | Want to be first to know when the Atom Smasher game is ready? Sign up for the #[a(href="http://citizencyberlab.us6.list-manage.com/subscribe?u=70e006ebf4c36dc870e82f388&id=22f92b8188") Citizen Cyberlab newsletter].
+              br
+              | Have a question about the science behind this? Ask an expert in #[a.btn-scroll(href="#disqus")  our forum]  below.
+
+    section#disqus.home-section.nopadd-bot.color-dark.bg-white.text-center
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center
+                h2.h-bold.animated.bounceInDown Forum
+                .divider-header
+        #disqus_thread
+        script(type='text/javascript')
+          | var disqus_shortname = 'cern60computingchallenge';
+          | var disqus_identifier = 'test4theory.cern.ch/challenge';
+          | var disqus_url = 'https://test4theory.cern.ch/challenge/';
+          | (function() {
+          | var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          | dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          | (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          | })();
+        noscript
+          | Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+
+      #LOGOS.container
+        span
+          img(src="images/partners/citizen_cyberlab.jpg")
+        span
+          img(src="images/partners/fp7.jpg")
+        span
+          img(src="images/partners/eu.jpg")
+        span
+          img(src="images/partners/cern.jpg")
+        span
+          img(src="images/partners/ccyberscience.png")
+
+      p &nbsp;
+      p &nbsp;
+
+    //#map(style="height:300px")
+    //footer
+    div(class="image-footer")
+
+    //- footer
+    //-   .container
+    //-     .row
+    //-       .col-md-6
+    //-         ul.footer-menu
+    //-           li
+    //-             a(href="#") Home
+    //-           li
+    //-             a(href="#") Press release
+
+
+
+    // Core JavaScript Files
+    script(src="js/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    //script(type="text/javascript", src="//maps.googleapis.com/maps/api/js?key=AIzaSyCP4TbEsEUGhIO9ZCyMKnTuzJPhlzR9twE&sensor=false")
+    script(src="js/jquery.sticky.js")
+    script(src="js/jquery.easing.min.js")
+    script(src="js/jquery.scrollTo.js")
+    script(src="js/jquery.appear.js")
+    script(src="js/jquery.tagcloud.js")
+    script(src="js/stellar.js")
+    script(src="js/nivo-lightbox.min.js")
+    script(src="js/custom.js")
+    script(src="js/my-custom.js")
+    script(src="js/css3-animate-it.js")
+
+    //script(type="text/javascript", src="socket.io/socket.io.js")
+    //script(type="text/javascript", src="js/storyjs-embed.js")
+    //script(type="text/javascript", src="js/timeline-min.js")
+
+    //script(type="text/javascript", src="data/accelerators.js")
+    //script(type="text/javascript", src="js/jquery.base64.min.js")
+    //script(type="text/javascript", src="js/t4tc-monitor-index.js")
+
+    //script(src="js/jquery.flot.min.js")
+    //script(src="js/jquery.flot.tooltip.js")
+    //script(src='js/raphael-min.js')
+    //script(src='js/justgage.js')
+    //script(src='js/challenge-dashboard.js')
+    script(type="text/javascript")
+      | $(document).ready(function(){
+      |   $("#tagcloud a").tagcloud({
+      |          size: {
+      |            start: 14,
+      |            end: 24, 
+      |            unit: 'pt'
+      |          }, 
+      |          color: {
+      |            start: "#DDD",
+      |            end: "#000"
+      |          }
+      |   });
+      | });
+
+    style(type="text/css", src="css/timeline.css")

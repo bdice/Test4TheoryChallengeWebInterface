@@ -1285,3 +1285,18 @@ margin-bottom: 0px;
 .indicator.second {
 width: 100%;
 }
+
+/* Completed! */
+.completed {
+	background: url(../img/completed.png) no-repeat center center;
+	width: 354px;
+	height: 171px;
+	margin: -87px auto -54px;
+	position: relative;
+	z-index: 1000;
+}
+
+.awardlist a {
+	display: block;
+	
+}

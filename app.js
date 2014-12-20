@@ -357,6 +357,9 @@ app.get('/login', function(req, res){
 app.get('/', function(req, res) {
     res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
+app.get('/completed', function(req, res) {
+    res.render('landing-completed', {pageTitle:'Test 4 Theory | Home', user : req.user })
+})
 
 app.get('/t4t-hints.html', function(req, res) {
     res.render('doc-hints', { user : req.user })
