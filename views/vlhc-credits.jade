@@ -31,7 +31,7 @@ html
 						if ((rank <= 0) && (d.completed == 0)) {
 							$("#t-rank").text(" soon");
 						} else {
-							if (rank <= 0) rank=1;
+							if (rank <= 0) rank=0;
 							$("#t-rank").text(" # "+numberWithCommas(rank+1));
 						}
 
