@@ -80,6 +80,12 @@ passport.use(BoincStrategy);
 // Setup Application
 ////////////////////////////////////////////////
 
+// Connect to REDIS
+var client = redis.createClient(6379,'t4tc-mcplots-db.cern.ch');
+client.on("error", function (err) {
+	console.log("REDIS Error: " + err);
+});
+
 //Redering Engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
