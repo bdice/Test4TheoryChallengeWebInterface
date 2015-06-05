@@ -258,10 +258,13 @@ app.get('/login', function(req, res){
 // --------------------
 
 // Landing page
+app.get('/', function(req, res) {
+    res.render('landing-run-2', {pageTitle:'Test 4 Theory | Home', user : req.user })
+})
 app.get('/past', function(req, res) {
     res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
-app.get('/', function(req, res) {
+app.get('/past-completed', function(req, res) {
     res.render('landing-completed', {pageTitle:'Test 4 Theory | Home', user : req.user })
 })
 
@@ -554,3 +557,4 @@ http.createServer(function (req, res) {
     res.end();
 }).listen(8000);
 */
+
