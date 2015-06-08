@@ -5,6 +5,7 @@ var fs = require('fs')
 var path = require('path');
 var express = require('express.io')
 var redis = require("redis");
+var crypto = require('crypto');
 
 // Tuning
 http.globalAgent.maxSockets = 100000
@@ -114,19 +115,24 @@ function ensureAuthenticated(req, res, next) {
 
 // Get user VMID using by his/her profile
 function getVMID( user ) {
+
 	// Prepend provider ID
+	var uuid = "u-"+user['id'];
 	if (user['provider'] == "facebook") {
-		return "f-"+user['id'];
+		uuid = "f-"+user['id'];
 	} else if (user['provider'] == "google") {
-		return "g-"+user['id'];
+		uuid = "g-"+user['id'];
 	} else if (user['provider'] == "twitter") {
-		return "t-"+user['id'];
+		uuid = "t-"+user['id'];
 	} else if (user['provider'] == "boinc") {
-		return "b-"+user['id'];
-	} else {
-		// Unknown provider
-		return "u-"+user['id'];
+		uuid = "b-"+user['id'];
 	}
+
+	// Hash password
+	var sha256 = crypto.createHash('sha256');
+	sha256.update(uuid);
+	return sha256.digest('hex');
+
 }
 
 // Keep user record
