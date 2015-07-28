@@ -298,10 +298,10 @@ html(lang="en")
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion3")
-                              | <strong>Q3:</strong> Why is this just a 12-day challenge? What happens afterwards?
+                              | <strong>Q3:</strong> How do I identify myself for the Challenge?
                   #accordion3.panel-collapse.collapse
                     .panel-body
-                      | <strong>A:</strong> We're building up a database of results that will help people play a game about particle physics, to be launched next year. Twelve days will produce enough data. If you want to be the first to know once the game is launched, #[a.btn-scroll(href="#contact") drop us a line].
+                      | <strong>A:</strong> You can run anonymously if you like and your contributions will still be used and appreciated. But you may identify yourself with one or more of your social media ID's including: Facebook, Google+, Twitter or Live. To do this use the green button "Log-in and keep track of your progress" at any time. (In addition you can also identify yourself with your BOINC ID if you run the Test4Theory BOINC project).
 
                 .panel.panel-default
                   .panel-heading
@@ -310,7 +310,7 @@ html(lang="en")
                               | <strong>Q4:</strong> Will I get any feedback about how much I have contributed personally to the project?  
                   #accordion5.panel-collapse.collapse
                     .panel-body
-                      | <strong>A:</strong> Once you've got the project running, you'll be able to see your progress on a web page that comes up every time you click Start Computing on this challenge page.
+                      | <strong>A:</strong> If you are logged-in (see Q3 above), by clicking on "Progress details" all your contributions are displayed by CreditPiggy, your personal Piggy-bank.
  
                 .panel.panel-default
                   .panel-heading
@@ -415,11 +415,71 @@ html(lang="en")
                       br
                       | In all the above cases, If you are still encountering errors, destroy your Virtual Machine using the trash icon at the bottom of the configuration panel and then refresh the interface. To open this panel, click on the gear symbol at the bottom of the the WebAPI interface.                      
                       | If the VM still doesn’t work after removing it and restarting, then remove it again, restart your computer, and try again. In certain rare cases, you may need to restart your computer a second time. If none of the above works for you, contact us through the forum or via #[a(href="mailto:info@citizencyberlab.com") info@citizencyberlab.com] with details of what is going wrong.
+
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion611")
+                              | <strong>Q4:</strong> I keep getting asked to install the cernvm-webapi app but it's already installed.
+                  #accordion611.panel-collapse.collapse
+                    .panel-body
+                      | <strong>A:</strong> You need to force a restart of the running process cernvm-webapi as follows :
+                      ul(style="margin-left:15px")
+                        ul(style="margin-left:15px")
+                          li
+                            strong Windows
+                            | :
+                            ul(style="margin-left:15px")
+                              li
+                                | Start the Windows Task Manager
+                              li
+                                | Locate the <strong>"cernvm-webapi.exe"</strong> process and click <strong>"End process"</strong>
+                              li
+                                | Open the run prompt <i>(WinKey + R)</i>, paste the following and hit enter : 
+                                br
+                                | <pre> ”C:\Program Files (x86)\CERN\CernVMWebAPI\cernvm-webapi.exe" service </pre>
+
+                          li
+                            strong Linux
+                            | :
+                            ul(style="margin-left:15px")
+                              li
+                                | Open a terminal
+                              li
+                                | Type the following command and hit enter
+                                br
+                                | <pre> killall cernvm-webapi  </pre>
+                              li
+                                | Type the following command and hit enter
+                                br
+                                | <pre> cernvm-webapi &  </pre>
+
+                          li
+                            strong Max OSX
+                            | :
+                            ul(style="margin-left:15px")
+                              li
+                                | Open a terminal
+                              li
+                                | Type the following command and hit enter
+                                br
+                                | <pre> killall cernvm-webapi  </pre>
+                              li
+                                | The process will restart automatically… alternatively : 
+                                br
+                                ul(style="margin-left:30px")
+                                  li
+                                    | Open the <strong>"Activity Monitor"</strong> application from the Utilities
+                                  li
+                                    | Locate the <strong>"cernvm-webapi"</strong> process, double-click to open the details, and click <strong>“Quit”</strong>. If it doesn’t quit, click <strong>“Force Quit”</strong>
+
+
+
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
                             a(data-toggle="collapse", data-parent="#accordion", href="#accordion61")
-                              | <strong>Q4:</strong> How can I uninstall the software?
+                              | <strong>Q5:</strong> How can I uninstall the software?
                   #accordion61.panel-collapse.collapse
                     .panel-body
                       | <strong>A:</strong> To uninstall the app cernvm-webapi, follow the following procedures for the respective platforms:
@@ -460,16 +520,6 @@ html(lang="en")
                           li
                             strong MacOSX
                             | : ~/Library/Application Support/CernVM/WebAPI
-
-                .panel.panel-default
-                  .panel-heading
-                    h4.panel-title
-                            a(data-toggle="collapse", data-parent="#accordion", href="#accordion665")
-                              | <strong>Q5:</strong> This website seems to consume a lot of CPU power. Is that normal? 
-                  #accordion665.panel-collapse.collapse
-                    .panel-body
-                      | <strong>A:</strong> This is a known issue. The libraries we are using to animate the timeline on this website use a lot of CPU power, especially on Firefox. A simple solution is to close this window when you don't need it. 
-                      
 
                 .panel.panel-default
                   .panel-heading
