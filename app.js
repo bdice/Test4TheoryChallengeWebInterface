@@ -1,11 +1,13 @@
 // Global includes
-var http = require('http')
-var https = require('https')
-var fs = require('fs')
-var path = require('path');
+var http    = require('http')
+var https   = require('https')
+var fs      = require('fs')
+var path    = require('path');
 var express = require('express.io')
-var redis = require("redis");
-var crypto = require('crypto');
+var redis   = require('redis');
+var crypto  = require('crypto');
+
+var siteName = "Gigabit Challenge";
 
 // Tuning
 http.globalAgent.maxSockets = 100000
@@ -256,7 +258,7 @@ app.get('/login', function(req, res){
 	if(req.isAuthenticated()){
 		res.redirect('/')
 	}else {
-		res.render('login',{pageTitle:'Test 4 Theory | Login'})
+		res.render('login',{pageTitle: siteName +' | Login'})
 	}
 });
 
@@ -264,11 +266,8 @@ app.get('/login', function(req, res){
 // --------------------
 
 // Landing page
-app.get('/past', function(req, res) {
-    res.render('landing', {pageTitle:'Test 4 Theory | Home', user : req.user })
-})
 app.get('/', function(req, res) {
-    res.render('landing-completed', {pageTitle:'Test 4 Theory | Home', user : req.user })
+    res.render('landing', {pageTitle: siteName +' | Home', user : req.user })
 })
 
 app.get('/t4t-hints.html', function(req, res) {
@@ -536,11 +535,11 @@ app.get('/vlhc_credits', function(req, res){
 // --------------------
 
 app.get('/grid-status', function(req, res){
-	res.render('grid-status', {pageTitle : 'Test 4 Theory | Grid Status', user : req.user});
+	res.render('grid-status', {pageTitle : siteName +' | Grid Status', user : req.user});
 })
 
 app.get('/new', function(req, res){
-	res.render('index', {pageTitle : 'Test 4 Theory', user : req.user});
+	res.render('index', {pageTitle : siteName, user : req.user});
 })
 
 ////////////////////////////////////////////////

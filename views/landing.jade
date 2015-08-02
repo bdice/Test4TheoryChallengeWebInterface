@@ -1,4 +1,4 @@
-// Authors : S.P. Mohanty<sp.mohanty@cern.ch> , Ioannis Charampidis<Ioannis.Charalampidis@cern.ch>
+// Authors : S.P. Mohanty<sp.mohanty@cern.ch> , Ioannis Charampidis<Ioannis.Charalampidis@cern.ch> , Bradley Dice<bdice@bradleydice.com>
 doctype html
 html(lang="en")
   head
@@ -6,7 +6,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="description", content="")
     meta(name="author", content="")
-    title CERN 60 Public Computing Challenge
+    title KC + CERN: Gigabit Challenge
     // css
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
     link(href="font-awesome/css/font-awesome.min.css", rel="stylesheet", type="text/css")
@@ -37,11 +37,10 @@ html(lang="en")
         .row
           .col-md-8.col-md-offset-2.text-center.inner
             .animatedParent.c-glow-black
-              h1.animated.fadeInDown CERN 60
-              p.animated.fadeInUp Public Computing Challenge
+              h1.animated.fadeInDown Kansas City + CERN:
+              p.animated.fadeInUp Gigabit Computing Challenge
         .row
           .col-md-6.col-md-offset-3.text-center
-            a.start-computing-btn.btn-scroll(href="#join") Join Now 
             a.learn-more-btn.btn-scroll(href="#about", style="margin-left:10px") Learn more
 
         .row
@@ -72,9 +71,7 @@ html(lang="en")
                   li
                     a(href="#join") Join
                   li
-                    a(href="#timeline") Timeline
-                  li
-                    a(href="#status") Status
+                    a(href="#team") Team
                   li
                     a(href="#more") More                     
                   li
@@ -102,51 +99,17 @@ html(lang="en")
           .col-lg-8.col-lg-offset-2.animatedParent
             .text-center
               p
-                h5
-                  font(color="#00BFFF")
-                    | Twelve days
+                h5.main-color-text
+                  | Fiber + Fundamental Research + You
               p
-                | The CERN 60 Public Computing Challenge is a 12-day event, where we invite volunteers around the world to help us compute simulations of particle collisions in the Large Hadron Collider (LHC) and other particle accelerators that have been active around the world during the 60 years of CERN's history. 
+                | The <strong>KC + CERN Gigabit Computing Challenge</strong> is a 30-day event, where we invite Google Fiber users to help us analyze and simulate particle collisions from the Large Hadron Collider (LHC), the world's largest particle accelerator. Kansas City was the first place in the U.S. to get <a href="//fiber.google.com">Google Fiber</a>, a gigabit (1,000 megabits per second!) internet connection to the home. CERN, the European Organization for Nuclear Research, is a world leader in volunteer computing, using donated processor power from tens of thousands of everyday computers to contribute to advances in our understanding of the universe and particle physics. With new advances in connectivity through gigabit fiber, it is now possible for volunteers to perform computations that were previously impossible! If you are a Google Fiber user, we invite you to join us in this challenge and test the cumulative computational power of the Kansas City community with the massive data of the Large Hadron Collider!
               p
-                h5
-                  font(color="#00BFFF")
-                    | testing technology
-              p 
-                | The challenge will allow us to do two things: one is to create a large database of results for a new Atom Smasher game which is due to be launched in 2015, as part of the #[a(href="http://citizencyberlab.eu/", target="_blank") Citizen Cyberlab] project. The other is to test a new browser-based approach to volunteer computing, which will be used in the game.
-              p
-                h5
-                  font(color="#00BFFF")
-                    | for a virtual atom smasher.
-              p
-                | We're excited to see how many people get involved in the challenge over two weeks, and how much computing we can get done with your help. Can we reach rates of simulated particle collisions that rival the actual rate at which the LHC stores data, and create a virtual atom smasher? That is the CERN 60 Public Computing Challenge.
-              p
-                | We are currently producing
-                strong(id="live-events") 0
-                | events per second with
-                strong(id="live-users") 0
-                | people connected
-              #live-progress
-                .value
-                .indicator.first
-                  p(style="text-align:left") 
-                    | 3000/s
-                    br
-                    small
-                      | Events after ATLAS L2 Trigger
-                .indicator.second
-                  p(style="text-align:left")                 
-                    | 100,000/s
-                    br
-                    small
-                      | Events after ATLAS L1 Trigger                    
-              p
-                a.btn.btn-skin.btn-scroll(href="#join", target="_blank") 
-                  | Join Challenge
+                | <a href="http://lhcathome.web.cern.ch/about/what-volunteer-computing">Learn more about CERN's efforts in volunteer computing.</a>
               br
-              a.btn.btn-skin.btn-scroll(href="#timeline", target="_blank", style="margin:5px") 
-                | View Timeline
-              a.btn.btn-skin.btn-scroll(href="#status", target="_blank", style="margin:5px") 
-                | See Status
+              a.btn.btn-skin.btn-scroll(href="#join", target="_blank", style="margin:5px") 
+                | Join the Challenge
+              a.btn.btn-skin.btn-scroll(href="#team", target="_blank", style="margin:5px") 
+                | Meet the team
               a.btn.btn-skin.btn-scroll(href="#more", target="_blank", style="margin:5px") 
                 | More Projects
 
@@ -163,7 +126,7 @@ html(lang="en")
         .row
           .col-lg-8.col-lg-offset-2.animatedParent
             .text-center
-              p Click the following button and be part of the CERN 60 Public Computing Challenge
+              p Click the following button and be part of the Gigabit Computing Challenge
               p.marginbot-20
                 a.start-computing-btn(href="http://test4theory.cern.ch/vlhc", target="_blank") Start Computing
               p &nbsp;
@@ -215,7 +178,72 @@ html(lang="en")
                     em What can I control?
                     br
                     small
-                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Remember to click Apply! 
+                      | You can define how much CPU and RAM you allocate to the project, by clicking on the gear icon next to the start button. Remember to click Apply!
+
+    // Section: Meet the Team
+    section#team.home-section.color-dark.bg-white
+      .container.marginbot-50
+        .row
+          .col-lg-8.col-lg-offset-2
+            .animatedParent
+              .section-heading.text-center.animated.bounceInDown
+                h2.h-bold Meet the Team
+                .divider-header
+      .container
+        .row
+          .col-lg-8.col-lg-offset-2.animatedParent
+            .text-center
+              p Here are the people behind the scenes who made this challenge possible!
+        .row
+          .col-lg-10.col-lg-offset-1
+            .row
+              .col-lg-6
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-ioannis.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading Ioannis Charalampidis
+                    p Ioannis is based at CERN and developed much of the VM technology underlying the challenge. He is developing the particle physics game that motivates the simulations done in the challenge.
+              .col-lg-6                          
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-francois.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading Francois Grey
+                    p Francois is in the University of Geneva. He is our occasional taskmaster, to keep the team on schedule
+
+            .row  
+              .col-lg-6      
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-mohanty.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading S.P. Mohanty
+                    p Mohanty is based at IIIT Hyderabad, Hyderabad, India and he developed the challenge website for the challenge.            
+              .col-lg-6                  
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-peter.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading Peter Skands
+                    p Peter Skands at Monash University is the particle physicist who conceived of the challenge, and ensures the physics output is useful.
+
+            .row 
+              .col-lg-6                       
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-ben.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading Ben Segal
+                    p The dev team was guided by Ben Segal of CERN, who has masterminded the development of much of the technology needed for the challenge over several years.             
+
+              .col-lg-6                          
+                .media
+                  a(href="#team").pull-left
+                    img(src="images/team-jose.jpg",alt="Ioannis").media-object.img-rounded
+                  .media-body
+                    h4.media-heading Jose Luis Fernandez-Marquez
+                    p Jose is in the University of Geneva has helped install the analytics that helped us monitor the challenge.          
 
     // Section: FAQ
     section#faq.home-section.color-dark.bg-gray
@@ -469,104 +497,6 @@ html(lang="en")
                           | You agree to use this site and associated software only for lawful purposes, and in a manner that does not infringe the rights of, or restrict or inhibit the use and enjoyment of this site by, any third party. Every effort will be made to ensure a continuous service of this site and the associated software, but neither Citizen Cyberlab nor cannot guarantee that the service will be uninterrupted or error-free.
 
 
-    // Section: timelines
-    section#timeline.home-section.color-dark.bg-white
-      .container
-        .row
-          .col-lg-8.col-lg-offset-2
-            div
-              .section-heading.text-center
-                h2.h-bold Timeline
-                .divider-header
-      div(id="timeline-embed", style="height:500px;")
-
-    // Section: Status
-    section#status.home-section.color-dark.bg-white
-      .container.marginbot-10
-          .row
-            .col-lg-8.col-lg-offset-2
-              .animatedParent
-                .section-heading.text-center
-                  h2.h-bold.animated.bounceInDown Challenge status
-                  .divider-header
-        .text-center
-          .container
-            .row.c-service
-              #service-volunteers.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-1
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Volunteers
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-volunteers.h-bold.c-status.c-success RAMPING UP
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Users connected:
-                          td.lbl-connected --
-                        tr
-                          th Newcomers:
-                          td.lbl-newcomers
-                            | --
-                            small /h
-                        //tr
-                        //  th Achievements:
-                        //  td.lbl-achievements
-                        //    | --
-                        //    small /124
-                    div#chart-volunteers.c-chart
-                    div(style="float:right")
-                      div#chart-volunteers-legend
-              #service-infr.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-3
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Overview
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-infr.h-bold.c-status.c-warning HIGH LOAD
-                    .row
-                      .col-xs-12
-                        #gauge-events.c-gauge
-                    .row
-                      .col-xs-12
-                        #gauge-progress.c-gauge
-
-              #service-jobs.col-xs-6.col-sm-4.col-md-4
-                div
-                  .c-service-icon
-                    .c-icons.c-icon-2
-                  .c-service-desc
-                    .marginbot-20
-                      h5 Computing Tasks
-                      .divider-header
-                    .row
-                      .col-sm-8.col-sm-offset-2
-                        h6#status-jobs.h-bold.c-status.c-warning STALE
-                    table.table.table-condensed
-                      tbody
-                        tr
-                          th Pending:
-                          td.lbl-pending --
-                        tr
-                          th Completed:
-                          td.lbl-completed --
-                        //tr
-                        //  th Failed:
-                        //  td.lbl-failed --
-                    div#chart-jobs.c-chart
-                    div(style="float:right")
-                      div#chart-jobs-legend
-
-
-
     // Section: more
     section#more.home-section.color-dark.bg-gray
         .container.marginbot-50
@@ -686,7 +616,7 @@ html(lang="en")
         .row.marginbot-80
           .col-md-8.col-md-offset-2
             p
-              | The CERN 60 Public Computing Challenge is brought to you by the #[a(href="http://citizencyberlab.eu/", target="_blank") Citizen Cyberlab] project and the #[a(href="http://www.citizencyberscience.net/", target="_blank") Citizen Cyberscience Centre]. We're pushing the boundaries of citizen science and informal learning on the Web. Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
+              | The Gigabit Computing Challenge is brought to you by the #[a(href="http://citizencyberlab.eu/", target="_blank") Citizen Cyberlab] project and the #[a(href="http://www.citizencyberscience.net/", target="_blank") Citizen Cyberscience Centre]. We're pushing the boundaries of citizen science and informal learning on the Web. Follow us on #[a(href="https://www.facebook.com/CyberSciCentre" target="_blank" ) Facebook] and #[a(href="https://twitter.com/CitizenCyberlab" target="_blank") Twitter]. 
               br
               | Want to be first to know when the Atom Smasher game is ready? Sign up for the #[a(href="http://citizencyberlab.us6.list-manage.com/subscribe?u=70e006ebf4c36dc870e82f388&id=22f92b8188") Citizen Cyberlab newsletter].
               br
@@ -752,24 +682,39 @@ html(lang="en")
     script(src="js/jquery.easing.min.js")
     script(src="js/jquery.scrollTo.js")
     script(src="js/jquery.appear.js")
+    script(src="js/jquery.tagcloud.js")
     script(src="js/stellar.js")
     script(src="js/nivo-lightbox.min.js")
     script(src="js/custom.js")
     script(src="js/my-custom.js")
     script(src="js/css3-animate-it.js")
 
-    script(type="text/javascript", src="socket.io/socket.io.js")
-    script(type="text/javascript", src="js/storyjs-embed.js")
-    script(type="text/javascript", src="js/timeline-min.js")
+    //script(type="text/javascript", src="socket.io/socket.io.js")
+    //script(type="text/javascript", src="js/storyjs-embed.js")
+    //script(type="text/javascript", src="js/timeline-min.js")
 
-    script(type="text/javascript", src="data/accelerators.js")
-    script(type="text/javascript", src="js/jquery.base64.min.js")
-    script(type="text/javascript", src="js/t4tc-monitor-index.js")
+    //script(type="text/javascript", src="data/accelerators.js")
+    //script(type="text/javascript", src="js/jquery.base64.min.js")
+    //script(type="text/javascript", src="js/t4tc-monitor-index.js")
 
-    script(src="js/jquery.flot.min.js")
+    //script(src="js/jquery.flot.min.js")
     //script(src="js/jquery.flot.tooltip.js")
-    script(src='js/raphael-min.js')
-    script(src='js/justgage.js')
-    script(src='js/challenge-dashboard.js')
+    //script(src='js/raphael-min.js')
+    //script(src='js/justgage.js')
+    //script(src='js/challenge-dashboard.js')
+    script(type="text/javascript")
+      | $(document).ready(function(){
+      |   $("#tagcloud a").tagcloud({
+      |          size: {
+      |            start: 14,
+      |            end: 24, 
+      |            unit: 'pt'
+      |          }, 
+      |          color: {
+      |            start: "#DDD",
+      |            end: "#000"
+      |          }
+      |   });
+      | });
 
     style(type="text/css", src="css/timeline.css")
